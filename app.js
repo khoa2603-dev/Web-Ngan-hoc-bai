@@ -98,10 +98,20 @@ function renderMath(element) {
     } catch (e) {
       console.warn('KaTeX render error:', e);
     }
+  } else {
+    setTimeout(() => {
+      if (window.renderMathInElement) {
+        renderMath(target);
+      }
+    }, 250);
   }
 }
 
 window.addEventListener('load', () => {
+  renderMath();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   renderMath();
 });
 
@@ -462,13 +472,13 @@ const QB = [
   },
   {
     id: 'c2q03', ch: 2, type: 'tf', isCalc: false, topic: 'Đơn vị ppm mẫu lỏng',
-    prompt: 'Đối với mẫu lỏng loãng, $1\\text{ ppm} = 1\\text{ mg/L} = 1\\ \\mu\\text{g/mL}.',
+    prompt: 'Đối với mẫu lỏng loãng, $1\\text{ ppm} = 1\\text{ mg/L} = 1\\ \\mu\\text{g/mL}$.',
     ans: true,
     exp: 'Đúng. Theo trang 2 PDF Chương 2: Mẫu lỏng: 1 ppm = 1 mg/l = 1 µg/ml.'
   },
   {
     id: 'c2q04', ch: 2, type: 'tf', isCalc: false, topic: 'Đơn vị ppb mẫu lỏng',
-    prompt: 'Đối với mẫu lỏng loãng, $1\\text{ ppb} = 1\\ \\mu\\text{g/L} = 1\\text{ ng/mL} = 10^{-3}\\text{ ppm}.',
+    prompt: 'Đối với mẫu lỏng loãng, $1\\text{ ppb} = 1\\ \\mu\\text{g/L} = 1\\text{ ng/mL} = 10^{-3}\\text{ ppm}$.',
     ans: true,
     exp: 'Đúng. Theo trang 2 PDF Chương 2: Mẫu lỏng: 1 ppb = 1 µg/l = 1 ng/ml (= 1/1000 ppm).'
   },
@@ -998,7 +1008,7 @@ function setTypeChecks(arr) {
   });
 }
 
-// Presets
+// Presets (Chỉ cấu hình lựa chọn, KHÔNG tự động cuộn màn hình hoặc tạo đề)
 document.querySelectorAll('.preset').forEach(btn => {
   btn.addEventListener('click', () => {
     sound.playClick();
@@ -1028,16 +1038,21 @@ document.querySelectorAll('.preset').forEach(btn => {
         setTypeChecks(['mcq', 'tf', 'color', 'drag']);
       }
     }
-    generateQuiz();
   });
 });
 
 if (elCalcOnlyToggle) {
   elCalcOnlyToggle.addEventListener('change', () => {
     sound.playClick();
-    generateQuiz();
   });
 }
+
+document.querySelectorAll('#chapterChecks input, #typeChecks input').forEach(input => {
+  input.addEventListener('change', () => {
+    sound.playClick();
+    document.querySelectorAll('.preset').forEach(p => p.classList.remove('active'));
+  });
+});
 
 // Balance Selection
 function balanceQuestions(pool, targetCount) {
@@ -1077,7 +1092,7 @@ function balanceQuestions(pool, targetCount) {
 // ==========================================
 // 6. TẠO VÀ HIỂN THỊ BỘ CÂU HỎI
 // ==========================================
-function generateQuiz() {
+function generateQuiz(shouldScroll = false) {
   sound.playClick();
   const chapters = getSelectedChapters();
   const types = getSelectedTypes();
@@ -1138,10 +1153,13 @@ function generateQuiz() {
   renderQuiz();
   startTimer();
 
-  window.scrollTo({
-    top: elStickyStats.offsetTop - 20,
-    behavior: 'smooth'
-  });
+  // CHỈ CUỘN XUỐNG KHI NGƯỜI DÙNG BẤM "TẠO ĐỀ" (shouldScroll === true)
+  if (shouldScroll) {
+    const target = elQuizHeader || elStickyStats || elQuiz;
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
 
 function renderQuiz() {
@@ -1902,10 +1920,243 @@ if (cheatModal) {
   });
 }
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && cheatModal && cheatModal.classList.contains('open')) {
-    closeCheatModal();
+  if (e.key === 'Escape') {
+    if (elFzOverlay && elFzOverlay.classList.contains('active')) {
+      e.preventDefault();
+      closeFormulaZoom();
+      return;
+    }
+    if (cheatModal && cheatModal.classList.contains('open')) {
+      closeCheatModal();
+    }
   }
 });
+
+// ==========================================
+// 8.5. BỘ ĐIỀU KHIỂN PHÓNG TO CÔNG THỨC (FORMULA ZOOM LIGHTBOX)
+// ==========================================
+let zoomFormulaList = [];
+let currentZoomIndex = 0;
+
+const elFzOverlay = document.getElementById('formulaZoomOverlay');
+const elFzTitle = document.getElementById('fzTitle');
+const elFzTag = document.getElementById('fzTag');
+const elFzMath = document.getElementById('fzMath');
+const elFzDesc = document.getElementById('fzDesc');
+const elFzCounter = document.getElementById('fzCounter');
+const elFzPrevBtn = document.getElementById('fzPrevBtn');
+const elFzNextBtn = document.getElementById('fzNextBtn');
+const elFzCloseBtn = document.getElementById('fzCloseBtn');
+const elFzCard = document.getElementById('formulaZoomCard');
+
+function collectBoardFormulas() {
+  const items = [];
+  const tiles = document.querySelectorAll('.fullscreen-board-grid .board-tile');
+  tiles.forEach((tile, tileIdx) => {
+    const tileTagEl = tile.querySelector('.tile-tag');
+    const tileH4 = tile.querySelector('.tile-header h4');
+    const categoryName = `${tileTagEl ? tileTagEl.textContent.trim() : `MỤC ${tileIdx + 1}`} • ${tileH4 ? tileH4.textContent.trim() : ''}`;
+
+    const rows = tile.querySelectorAll('.tile-row');
+    rows.forEach((row, rowIdx) => {
+      const nameEl = row.querySelector('.t-name');
+      const formulaEl = row.querySelector('.t-formula');
+      const descEl = row.querySelector('.t-desc');
+
+      const isNotInPdf = row.classList.contains('not-in-pdf') || row.dataset.notInPdf === 'true';
+      const isExtended = row.classList.contains('formula-extended') || row.dataset.extended === 'true';
+
+      if (!row.dataset.rawFormula && formulaEl) {
+        row.dataset.rawFormula = formulaEl.innerHTML;
+      }
+      if (!row.dataset.rawDesc && descEl) {
+        row.dataset.rawDesc = descEl.innerHTML;
+      }
+      if (!row.dataset.rawName && nameEl) {
+        row.dataset.rawName = nameEl.innerHTML;
+      }
+
+      items.push({
+        element: row,
+        category: categoryName,
+        title: row.dataset.rawName || (nameEl ? nameEl.innerHTML.trim() : `Công thức ${rowIdx + 1}`),
+        formulaHtml: row.dataset.rawFormula || (formulaEl ? formulaEl.innerHTML.trim() : ''),
+        descHtml: row.dataset.rawDesc || (descEl ? descEl.innerHTML.trim() : ''),
+        notInPdf: isNotInPdf,
+        extended: isExtended
+      });
+    });
+  });
+  return items;
+}
+
+function openFormulaZoom(index) {
+  if (!zoomFormulaList.length) {
+    zoomFormulaList = collectBoardFormulas();
+  }
+  if (!zoomFormulaList.length) return;
+
+  if (index < 0) index = zoomFormulaList.length - 1;
+  if (index >= zoomFormulaList.length) index = 0;
+  currentZoomIndex = index;
+
+  const item = zoomFormulaList[currentZoomIndex];
+  if (!item) return;
+
+  sound.playClick();
+
+  // Tự động điều chỉnh kích thước cho công thức dài để luôn vừa vặn không cuộn ngang
+  const rawMathContent = (item.formulaHtml || item.descHtml || '');
+  if (elFzCard) {
+    elFzCard.classList.toggle('fz-wide-formula', rawMathContent.length > 70);
+    elFzCard.classList.toggle('is-not-in-pdf', !!item.notInPdf);
+    elFzCard.classList.toggle('is-extended-pdf', !!item.extended);
+  }
+
+  if (elFzTag) {
+    if (item.notInPdf) {
+      elFzTag.innerHTML = `<i class='bx bx-x-circle'></i> KHÔNG CÓ TRONG SLIDE PDF • ${item.category}`;
+    } else if (item.extended) {
+      elFzTag.innerHTML = `<i class='bx bx-bolt-circle'></i> CÔNG THỨC GIẢI NHANH BỔ SUNG • ${item.category}`;
+    } else {
+      elFzTag.innerHTML = `<i class='bx bx-book-bookmark'></i> ${item.category}`;
+    }
+  }
+
+  if (elFzTitle) {
+    elFzTitle.innerHTML = item.title;
+    renderMath(elFzTitle);
+  }
+
+  if (elFzMath) {
+    if (item.formulaHtml) {
+      elFzMath.style.display = 'flex';
+      elFzMath.innerHTML = item.formulaHtml;
+      renderMath(elFzMath);
+    } else if (item.descHtml) {
+      elFzMath.style.display = 'flex';
+      elFzMath.innerHTML = item.descHtml;
+      renderMath(elFzMath);
+    } else {
+      elFzMath.style.display = 'none';
+    }
+  }
+
+  if (elFzDesc) {
+    let alertHtml = '';
+    if (item.notInPdf) {
+      alertHtml = `<div class="fz-alert-not-pdf"><i class='bx bx-error-circle'></i> <strong>Lưu ý:</strong> Công thức này <strong>hoàn toàn không có trong 4 slide PDF</strong> bài giảng, đây là kiến thức mở rộng từ giáo trình Hóa Phân Tích (thường dùng trong ngành Dược).</div>`;
+    } else if (item.extended) {
+      alertHtml = `<div class="fz-alert-extended"><i class='bx bx-bulb'></i> <strong>Công thức giải nhanh:</strong> Slide PDF chỉ có bài toán ví dụ hoặc sơ đồ phản ứng từng nấc; đây là biểu thức rút gọn được đúc kết để tính nhanh kết quả khi làm bài thi.</div>`;
+    }
+
+    if (alertHtml || (item.descHtml && item.formulaHtml)) {
+      elFzDesc.style.display = 'block';
+      let content = alertHtml;
+      if (item.descHtml && item.formulaHtml) {
+        const descText = item.descHtml.startsWith('📚') ? item.descHtml : `<strong>💡 Ghi chú:</strong><br>${item.descHtml}`;
+        content += (content ? '<div style="margin-top: 8px;">' : '') + descText + (content ? '</div>' : '');
+      }
+      elFzDesc.innerHTML = content;
+      renderMath(elFzDesc);
+    } else {
+      elFzDesc.style.display = 'none';
+    }
+  }
+
+  if (elFzCounter) {
+    elFzCounter.textContent = `${currentZoomIndex + 1} / ${zoomFormulaList.length}`;
+  }
+
+  if (elFzOverlay) {
+    elFzOverlay.classList.add('active');
+    elFzOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  if (elFzCard) {
+    renderMath(elFzCard);
+  }
+}
+
+function closeFormulaZoom() {
+  if (elFzOverlay && elFzOverlay.classList.contains('active')) {
+    sound.playClick();
+    elFzOverlay.classList.remove('active');
+    elFzOverlay.setAttribute('aria-hidden', 'true');
+  }
+}
+
+function initFormulaZoom() {
+  zoomFormulaList = collectBoardFormulas();
+
+  zoomFormulaList.forEach((item, idx) => {
+    item.element.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openFormulaZoom(idx);
+    });
+  });
+
+  // Hỗ trợ cả công thức hay gặp ở thanh bên Desktop
+  document.querySelectorAll('.quick-formula-item').forEach((item) => {
+    item.style.cursor = 'zoom-in';
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sound.playClick();
+      const nameEl = item.querySelector('.quick-formula-name');
+      const mathEl = item.querySelector('.quick-formula-math');
+      const mathContent = mathEl ? mathEl.innerHTML.trim() : '';
+
+      if (elFzCard) {
+        elFzCard.classList.toggle('fz-wide-formula', mathContent.length > 70);
+      }
+
+      if (elFzTag) elFzTag.innerHTML = `<i class='bx bx-calculator'></i> Công thức hay gặp (PDF)`;
+      if (elFzTitle) {
+        elFzTitle.innerHTML = nameEl ? nameEl.innerHTML.trim() : 'Công thức';
+        renderMath(elFzTitle);
+      }
+      if (elFzMath) {
+        elFzMath.style.display = 'flex';
+        elFzMath.innerHTML = mathContent;
+        renderMath(elFzMath);
+      }
+      if (elFzDesc) elFzDesc.style.display = 'none';
+      if (elFzCounter) elFzCounter.textContent = `⭐ Hay gặp`;
+      if (elFzOverlay) {
+        elFzOverlay.classList.add('active');
+        elFzOverlay.setAttribute('aria-hidden', 'false');
+      }
+      if (elFzCard) renderMath(elFzCard);
+    });
+  });
+
+  // Nút đóng & điều hướng
+  elFzCloseBtn?.addEventListener('click', closeFormulaZoom);
+  elFzOverlay?.addEventListener('click', (e) => {
+    if (e.target === elFzOverlay) closeFormulaZoom();
+  });
+  elFzPrevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openFormulaZoom(currentZoomIndex - 1);
+  });
+  elFzNextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openFormulaZoom(currentZoomIndex + 1);
+  });
+
+  // Phím tắt bàn phím
+  window.addEventListener('keydown', (e) => {
+    if (elFzOverlay && elFzOverlay.classList.contains('active')) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        openFormulaZoom(currentZoomIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        openFormulaZoom(currentZoomIndex + 1);
+      }
+    }
+  });
+}
 
 // Modal Tabs
 document.querySelectorAll('.modal-tab-btn').forEach(btn => {
@@ -1941,27 +2192,37 @@ if (starFilterBtn) {
     isStarredOnlyFilter = !isStarredOnlyFilter;
     starFilterBtn.classList.toggle('active', isStarredOnlyFilter);
     if (isStarredOnlyFilter) {
-      starFilterBtn.innerHTML = "<i class='bx bxs-star'></i> Đang xem câu khó (⭐)";
+      starFilterBtn.innerHTML = "<i class='bx bxs-star'></i> Đang xem câu khó";
     } else {
-      starFilterBtn.innerHTML = "<i class='bx bx-star'></i> Chỉ xem câu khó (⭐)";
+      starFilterBtn.innerHTML = "<i class='bx bx-star'></i> Chỉ xem câu khó";
     }
-    generateQuiz();
   });
 }
 
-// Search input
+// Search input: Tìm kiếm khi ấn Enter hoặc khi bấm nút "Tạo đề"
 if (elSearchInput) {
-  elSearchInput.addEventListener('input', () => {
-    clearTimeout(elSearchInput._timer);
-    elSearchInput._timer = setTimeout(() => {
-      generateQuiz();
-    }, 400);
+  elSearchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      generateQuiz(true);
+    }
   });
 }
 
-// Buttons
-document.getElementById('generateBtn')?.addEventListener('click', generateQuiz);
-document.getElementById('newSetBtn')?.addEventListener('click', generateQuiz);
+// Dropdown changes: Chỉ lưu tùy chọn, không tự ý cuộn màn hình
+[elQuestionCount, elOrderMode, elExplainMode].forEach(sel => {
+  sel?.addEventListener('change', () => {
+    sound.playClick();
+  });
+});
+
+// Buttons: CHỈ KHI ẤN NÚT NÀY MỚI TẠO ĐỀ VÀ CUỘN MÀN HÌNH XUỐNG
+document.getElementById('generateBtn')?.addEventListener('click', () => {
+  generateQuiz(true);
+});
+document.getElementById('newSetBtn')?.addEventListener('click', () => {
+  generateQuiz(true);
+});
 document.getElementById('checkAllBtn')?.addEventListener('click', checkAllQuestions);
 document.getElementById('showAllBtn')?.addEventListener('click', revealAllQuestions);
 document.getElementById('resetBtn')?.addEventListener('click', resetCurrentSet);
@@ -2147,8 +2408,7 @@ document.getElementById('tabNavQuiz')?.addEventListener('click', () => {
 document.getElementById('tabNavCalc')?.addEventListener('click', () => {
   sound.playClick();
   document.querySelector('[data-preset="calc"]')?.click();
-  const qEl = document.getElementById('quizHeader') || document.getElementById('quiz');
-  if (qEl) qEl.scrollIntoView({ behavior: 'smooth' });
+  generateQuiz(true);
 });
 
 document.getElementById('tabNavFormulas')?.addEventListener('click', () => {
@@ -2194,4 +2454,5 @@ function setFontSize(size) {
 generateQuiz();
 initDeviceMode();
 initFontSize();
+initFormulaZoom();
 

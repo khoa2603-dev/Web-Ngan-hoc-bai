@@ -115,110 +115,220 @@
     <!-- BỐ CỤC WORKSPACE CHÍNH: MAIN CONTENT + SIDEBAR LAPTOP -->
     <div class="workspace-layout">
       <div class="workspace-main">
-        <!-- BỘ LỌC VÀ CẤU HÌNH ĐỀ ÔN TẬP -->
-        <section class="card">
-      <div class="card-title-row">
-        <div class="card-title-group">
-          <div class="card-icon"><i class='bx bx-slider-alt'></i></div>
-          <div>
-            <div class="card-title">Cấu hình bộ câu hỏi</div>
-            <div class="card-subtitle">Tùy biến nội dung, dạng câu và số lượng phù hợp với mục tiêu ôn tập</div>
+        <!-- BỘ LỌC VÀ CẤU HÌNH ĐỀ ÔN TẬP (STYLE NOTION) -->
+        <section class="card notion-config-card" id="filterConfigCard">
+          <!-- Notion Card Header -->
+          <div class="notion-header-row">
+            <div class="notion-header-info">
+              <div class="notion-page-icon">
+                <i class='bx bx-slider-alt'></i>
+              </div>
+              <div>
+                <h2 class="notion-title">Cấu hình bộ câu hỏi</h2>
+                <p class="notion-desc">Tùy biến nội dung, dạng câu và số lượng phù hợp với mục tiêu ôn tập</p>
+              </div>
+            </div>
+            <div class="notion-top-actions">
+              <button type="button" class="notion-action-btn" id="openCalcGuideBtn" title="Tra cứu công thức từ 4 bài giảng PDF">
+                <i class='bx bx-calculator'></i>
+                <span>Tra cứu công thức</span>
+              </button>
+              <button type="button" class="notion-action-btn" id="bookmarkFilterBtn" title="Chỉ hiển thị các câu hỏi đã đánh dấu">
+                <i class='bx bx-star'></i>
+                <span>Chỉ xem câu khó</span>
+              </button>
+            </div>
           </div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="btn btn-ghost" id="openCalcGuideBtn">
-            <i class='bx bx-calculator'></i> Tra cứu công thức tính toán
-          </button>
-          <button type="button" class="btn btn-ghost" id="bookmarkFilterBtn">
-            <i class='bx bx-star'></i> Chỉ xem câu khó (⭐)
-          </button>
-        </div>
-      </div>
 
-      <!-- Chọn nhanh theo bộ đề -->
-      <div class="field-label"><i class='bx bx-bolt-circle'></i> Chọn nhanh bộ đề</div>
-      <div class="preset-row">
-        <button type="button" class="preset btn-calc-preset" data-preset="calc"><i class='bx bx-calculator'></i> 🧮 100% Bài tập tính toán</button>
-        <button type="button" class="preset" data-preset="1"><i class='bx bx-book-open'></i> Chương 1: Mở đầu</button>
-        <button type="button" class="preset" data-preset="2"><i class='bx bx-book-open'></i> Chương 2: Dung dịch &amp; Nồng độ</button>
-        <button type="button" class="preset" data-preset="3"><i class='bx bx-book-open'></i> Chương 3: Khối lượng &amp; Thể tích</button>
-        <button type="button" class="preset" data-preset="4"><i class='bx bx-book-open'></i> Chương 4: Acid - Base</button>
-        <button type="button" class="preset active" data-preset="all"><i class='bx bx-grid-alt'></i> Tổng hợp 1 - 4</button>
-        <button type="button" class="preset" data-preset="essay"><i class='bx bx-pencil'></i> Luyện tự luận &amp; điền</button>
-        <button type="button" class="preset" data-preset="indicator"><i class='bx bx-palette'></i> Chỉ thị màu &amp; Chuẩn độ</button>
-      </div>
+          <!-- Notion Database Views (Chọn nhanh bộ đề) -->
+          <div class="notion-section-block">
+            <div class="notion-meta-label">
+              <i class='bx bx-layout'></i>
+              <span>Chế độ học &amp; Bộ đề</span>
+            </div>
+            <div class="notion-views-bar preset-row">
+              <button type="button" class="notion-view-tab preset active" data-preset="all">
+                <i class='bx bx-grid-alt'></i>
+                <span>Tổng hợp 1 - 4</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="calc">
+                <i class='bx bx-calculator'></i>
+                <span>100% Bài tập tính toán</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="1">
+                <i class='bx bx-book-open'></i>
+                <span>Chương 1: Mở đầu</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="2">
+                <i class='bx bx-book-open'></i>
+                <span>Chương 2: Dung dịch &amp; Nồng độ</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="3">
+                <i class='bx bx-book-open'></i>
+                <span>Chương 3: Khối lượng &amp; Thể tích</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="4">
+                <i class='bx bx-book-open'></i>
+                <span>Chương 4: Acid - Base</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="essay">
+                <i class='bx bx-edit-alt'></i>
+                <span>Luyện tự luận &amp; điền</span>
+              </button>
+              <button type="button" class="notion-view-tab preset" data-preset="indicator">
+                <i class='bx bx-palette'></i>
+                <span>Chỉ thị màu &amp; Chuẩn độ</span>
+              </button>
+            </div>
+          </div>
 
-      <!-- Chế độ lọc bài tập tính toán -->
-      <div class="field-label"><i class='bx bx-filter-alt'></i> Phân loại nội dung</div>
-      <div class="check-row">
-        <div class="check-item">
-          <input type="checkbox" id="calcOnlyToggle">
-          <label for="calcOnlyToggle" style="font-weight:700; border-color:var(--primary);">
-            <i class='bx bx-calculator' style="color:var(--primary);"></i> Chỉ kiểm tra bài tập tính toán (100% Bài tập, không có lý thuyết)
-          </label>
-        </div>
-      </div>
+          <!-- Notion Properties Panel (Bảng thuộc tính lọc chi tiết) -->
+          <div class="notion-props-panel">
+            <!-- Property: Chương học -->
+            <div class="notion-prop-row">
+              <div class="notion-prop-key">
+                <i class='bx bx-book-bookmark'></i>
+                <span>Chương học</span>
+              </div>
+              <div class="notion-prop-val">
+                <div class="notion-tag-group check-row" id="chapterChecks">
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="ch1" value="1" checked>
+                    <label for="ch1"><i class='bx bx-check'></i> Chương 1: Mở đầu</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="ch2" value="2" checked>
+                    <label for="ch2"><i class='bx bx-check'></i> Chương 2: Dung dịch &amp; Nồng độ</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="ch3" value="3" checked>
+                    <label for="ch3"><i class='bx bx-check'></i> Chương 3: Khối lượng &amp; Thể tích</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="ch4" value="4" checked>
+                    <label for="ch4"><i class='bx bx-check'></i> Chương 4: Cân bằng &amp; Chuẩn độ Acid-Base</label>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <!-- Chọn theo chương -->
-      <div class="field-label"><i class='bx bx-book'></i> Chọn theo chương</div>
-      <div class="check-row" id="chapterChecks">
-        <div class="check-item"><input type="checkbox" id="ch1" value="1" checked><label for="ch1"><i class='bx bx-check'></i> Chương 1: Mở đầu</label></div>
-        <div class="check-item"><input type="checkbox" id="ch2" value="2" checked><label for="ch2"><i class='bx bx-check'></i> Chương 2: Dung dịch &amp; Nồng độ</label></div>
-        <div class="check-item"><input type="checkbox" id="ch3" value="3" checked><label for="ch3"><i class='bx bx-check'></i> Chương 3: Khối lượng &amp; Thể tích</label></div>
-        <div class="check-item"><input type="checkbox" id="ch4" value="4" checked><label for="ch4"><i class='bx bx-check'></i> Chương 4: Cân bằng &amp; Chuẩn độ Acid-Base</label></div>
-      </div>
+            <!-- Property: Dạng câu hỏi -->
+            <div class="notion-prop-row">
+              <div class="notion-prop-key">
+                <i class='bx bx-category'></i>
+                <span>Dạng câu</span>
+              </div>
+              <div class="notion-prop-val">
+                <div class="notion-tag-group check-row" id="typeChecks">
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-mcq" value="mcq" checked>
+                    <label for="type-mcq"><i class='bx bx-radio-circle-marked'></i> Trắc nghiệm</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-tf" value="tf" checked>
+                    <label for="type-tf"><i class='bx bx-check-square'></i> Đúng / Sai</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-fill" value="fill" checked>
+                    <label for="type-fill"><i class='bx bx-edit-alt'></i> Điền số / kết quả</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-drag" value="drag" checked>
+                    <label for="type-drag"><i class='bx bx-move'></i> Ghép nối</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-color" value="color" checked>
+                    <label for="type-color"><i class='bx bx-palette'></i> Nhận diện màu</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="type-short" value="short" checked>
+                    <label for="type-short"><i class='bx bx-notepad'></i> Tự luận ngắn</label>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <!-- Chọn theo dạng câu hỏi -->
-      <div class="field-label"><i class='bx bx-category-alt'></i> Dạng câu hỏi</div>
-      <div class="check-row" id="typeChecks">
-        <div class="check-item"><input type="checkbox" id="type-mcq" value="mcq" checked><label for="type-mcq"><i class='bx bx-radio-circle-marked'></i> Trắc nghiệm</label></div>
-        <div class="check-item"><input type="checkbox" id="type-tf" value="tf" checked><label for="type-tf"><i class='bx bx-check-square'></i> Đúng / Sai</label></div>
-        <div class="check-item"><input type="checkbox" id="type-fill" value="fill" checked><label for="type-fill"><i class='bx bx-edit-alt'></i> Điền số / kết quả</label></div>
-        <div class="check-item"><input type="checkbox" id="type-drag" value="drag" checked><label for="type-drag"><i class='bx bx-move'></i> Kéo thả ghép nối</label></div>
-        <div class="check-item"><input type="checkbox" id="type-color" value="color" checked><label for="type-color"><i class='bx bx-palette'></i> Nhận diện màu</label></div>
-        <div class="check-item"><input type="checkbox" id="type-short" value="short" checked><label for="type-short"><i class='bx bx-notepad'></i> Tự luận ngắn</label></div>
-      </div>
+            <!-- Property: Chế độ nội dung (Tính toán) -->
+            <div class="notion-prop-row">
+              <div class="notion-prop-key">
+                <i class='bx bx-calculator'></i>
+                <span>Nội dung</span>
+              </div>
+              <div class="notion-prop-val">
+                <label class="notion-toggle-item check-item" for="calcOnlyToggle">
+                  <input type="checkbox" id="calcOnlyToggle">
+                  <span class="notion-toggle-switch"></span>
+                  <span class="notion-toggle-label">
+                    Chỉ kiểm tra bài tập tính toán (100% Bài tập, không kèm lý thuyết)
+                  </span>
+                </label>
+              </div>
+            </div>
 
-      <!-- Cài đặt thêm -->
-      <div class="field-label"><i class='bx bx-cog'></i> Tùy chọn nâng cao</div>
-      <div class="config-grid">
-        <div class="config-box">
-          <label for="questionCount">Số lượng câu</label>
-          <select id="questionCount">
-            <option value="10">10 câu</option>
-            <option value="15">15 câu</option>
-            <option value="20" selected>20 câu</option>
-            <option value="30">30 câu</option>
-            <option value="all">Toàn bộ câu hỏi</option>
-          </select>
-        </div>
-        <div class="config-box">
-          <label for="orderMode">Thứ tự sắp xếp</label>
-          <select id="orderMode">
-            <option value="random" selected>Trộn ngẫu nhiên (Shuffle)</option>
-            <option value="chapter">Tuần tự theo chương</option>
-          </select>
-        </div>
-        <div class="config-box">
-          <label for="explainMode">Hiển thị lời giải</label>
-          <select id="explainMode">
-            <option value="yes" selected>Hiện lời giải chi tiết</option>
-            <option value="no">Chỉ hiển thị đúng / sai</option>
-          </select>
-        </div>
-      </div>
+            <!-- Property: Tùy chọn nâng cao -->
+            <div class="notion-prop-row notion-prop-row-settings">
+              <div class="notion-prop-key">
+                <i class='bx bx-cog'></i>
+                <span>Cài đặt</span>
+              </div>
+              <div class="notion-prop-val">
+                <div class="notion-select-grid config-grid">
+                  <div class="notion-select-box config-box">
+                    <label for="questionCount">Số lượng câu</label>
+                    <div class="notion-select-wrapper">
+                      <select id="questionCount">
+                        <option value="10">10 câu</option>
+                        <option value="15">15 câu</option>
+                        <option value="20" selected>20 câu</option>
+                        <option value="30">30 câu</option>
+                        <option value="all">Toàn bộ câu hỏi</option>
+                      </select>
+                      <i class='bx bx-chevron-down'></i>
+                    </div>
+                  </div>
+                  <div class="notion-select-box config-box">
+                    <label for="orderMode">Thứ tự sắp xếp</label>
+                    <div class="notion-select-wrapper">
+                      <select id="orderMode">
+                        <option value="random" selected>Trộn ngẫu nhiên (Shuffle)</option>
+                        <option value="chapter">Tuần tự theo chương</option>
+                      </select>
+                      <i class='bx bx-chevron-down'></i>
+                    </div>
+                  </div>
+                  <div class="notion-select-box config-box">
+                    <label for="explainMode">Hiển thị lời giải</label>
+                    <div class="notion-select-wrapper">
+                      <select id="explainMode">
+                        <option value="yes" selected>Hiện lời giải chi tiết</option>
+                        <option value="no">Chỉ hiển thị đúng / sai</option>
+                      </select>
+                      <i class='bx bx-chevron-down'></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <!-- Tìm kiếm theo từ khóa -->
-      <div class="search-bar-row">
-        <i class='bx bx-search'></i>
-        <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi (VD: soda, đương lượng, tính pH, pha loãng, hệ số chuyển, ppm...)">
-      </div>
+          <!-- Notion Search Bar -->
+          <div class="notion-search-wrapper search-bar-row">
+            <i class='bx bx-search'></i>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi theo từ khóa (soda, đương lượng, tính pH, pha loãng, hệ số chuyển, ppm...)">
+          </div>
 
-      <div class="action-row">
-        <button type="button" class="btn btn-primary" id="generateBtn"><i class='bx bx-play-circle'></i> Bắt đầu ôn tập</button>
-        <button type="button" class="btn btn-ghost" id="newSetBtn"><i class='bx bx-shuffle'></i> Đổi bộ câu hỏi khác</button>
-      </div>
-    </section>
+          <!-- Notion Action Bar -->
+          <div class="notion-action-bar action-row">
+            <button type="button" class="notion-btn-primary btn btn-primary" id="generateBtn">
+              <i class='bx bx-play'></i>
+              <span>Tạo đề &amp; Bắt đầu ôn tập</span>
+            </button>
+            <button type="button" class="notion-btn-secondary btn btn-ghost" id="newSetBtn">
+              <i class='bx bx-shuffle'></i>
+              <span>Đổi bộ câu hỏi khác</span>
+            </button>
+          </div>
+        </section>
 
     <!-- THANH TIẾN ĐỘ VÀ THỐNG KÊ GẮN ĐẦU TRANG (STICKY) -->
     <div class="sticky-stats" id="stickyStats">
@@ -321,7 +431,7 @@
 
       <div class="action-row">
         <button type="button" class="btn btn-primary" onclick="resetCurrentSet()"><i class='bx bx-redo'></i> Luyện lại bộ đề này</button>
-        <button type="button" class="btn btn-ghost" onclick="generateQuiz()"><i class='bx bx-shuffle'></i> Tạo đề mới ngẫu nhiên</button>
+        <button type="button" class="btn btn-ghost" onclick="generateQuiz(true)"><i class='bx bx-shuffle'></i> Tạo đề mới ngẫu nhiên</button>
         <button type="button" class="btn btn-warn" onclick="cheatBtn.click()"><i class='bx bx-book-open'></i> Xem lại sổ tay công thức</button>
       </div>
     </section>
@@ -867,8 +977,8 @@
       <div class="fullscreen-board-view" id="fullscreenBoardView">
         <div class="fullscreen-board-toolbar">
           <div class="board-toolbar-title">
-            <i class='bx bx-grid-alt'></i> <strong>BẢNG TRA CỨU TOÀN MÀN HÌNH (KHÔNG CẦN CUỘN)</strong>
-            <span>• Toàn bộ công thức trọng tâm từ 4 tập bài giảng PDF bài học</span>
+            <i class='bx bx-grid-alt'></i> <strong>BẢNG TRA CỨU TOÀN MÀN HÌNH</strong>
+            <span class="board-legend-tag not-pdf"><span class="dot red"></span> Màu đỏ: Công thức mở rộng (ngoài slide)</span>
           </div>
           <div class="board-toolbar-actions">
             <span class="zoom-lbl"><i class='bx bx-zoom-in'></i> Phóng to:</span>
@@ -921,13 +1031,15 @@
                 <div class="t-name">Từ $C\%$ sang $C_M, C_N$</div>
                 <div class="t-formula">$$C_M = \frac{10 \cdot C\% \cdot d}{M} \quad ; \quad C_N = \frac{10 \cdot C\% \cdot d}{Đ}$$</div>
               </div>
-              <div class="tile-row">
-                <div class="t-name">Độ chuẩn $T$ &amp; $T_{A/B}$</div>
+              <div class="tile-row not-in-pdf" data-not-in-pdf="true" title="Bấm để phóng to • Công thức mở rộng, không có trong slide PDF">
+                <div class="t-name"><span>Độ chuẩn $T$ &amp; $T_{A/B}$</span> <span class="not-in-pdf-badge"><i class='bx bx-x-circle'></i> Ngoài PDF</span></div>
                 <div class="t-formula">$$C_N = \frac{1000 \cdot T}{Đ} \quad ; \quad T_{A/B} = \frac{C_{NA} \cdot Đ_B}{1000}$$</div>
+                <div class="t-desc" style="display:none;">Toàn bộ 4 slide PDF không chứa công thức Độ chuẩn $T$ hay $T_{A/B}$. Đây là công thức mở rộng từ giáo trình Hóa Phân Tích Dược học.</div>
               </div>
-              <div class="tile-row">
-                <div class="t-name">PPM &amp; Lực ion $I$</div>
-                <div class="t-formula">$$\text{ppm} = C_M \cdot M \cdot 10^3 \quad ; \quad I = \frac{1}{2}\sum C_i z_i^2$$</div>
+              <div class="tile-row" title="Bấm để phóng to • Trích nguyên văn Slide 8, Chương 2">
+                <div class="t-name">Chuyển sang PPM (w/v)</div>
+                <div class="t-formula">$$\text{ppm} = C_M \cdot M \cdot 10^3 = C_N \cdot Đ \cdot 10^3$$</div>
+                <div class="t-desc" style="display:none;">📚 Trích từ Slide 8, Chương 2: Chuyển đổi nồng độ từ $(C_M \text{ hay } C_N) \to \text{ppm } (w/v)$.</div>
               </div>
             </div>
           </div>
@@ -939,21 +1051,25 @@
               <h4>Xác định đương lượng số $z$ (Chương 2)</h4>
             </div>
             <div class="tile-body">
-              <div class="tile-row">
-                <div class="t-name">Acid (Trung hòa)</div>
-                <div class="t-desc">$z = $ số $\ce{H+}$ cho ($\ce{HCl}: z=1; \ce{H2SO4}: z=2; \ce{H3PO4}: z=1,2,3$)</div>
+              <div class="tile-row" title="Bấm để phóng to • Slide 4, Chương 2 (Trang 1 PDF)">
+                <div class="t-name">Acid (Phản ứng trung hòa)</div>
+                <div class="t-formula">$$z = \text{số ion } \ce{H+} \text{ 1 phân tử axit cho}$$</div>
+                <div class="t-desc">📚 Slide 4, Chương 2 (Trang 1 PDF): $\ce{HCl}: z=1 ; \ce{H2SO4}: z=2 ; \ce{H3PO4}: z=1,2,3$</div>
               </div>
-              <div class="tile-row">
-                <div class="t-name">Base (Trung hòa)</div>
-                <div class="t-desc">$z = $ số $\ce{H+}$ nhận ($\ce{NaOH}: z=1; \ce{Ba(OH)2}: z=2$)</div>
+              <div class="tile-row" title="Bấm để phóng to • Slide 4, Chương 2 (Trang 1 PDF)">
+                <div class="t-name">Base (Phản ứng trung hòa)</div>
+                <div class="t-formula">$$z = \text{số ion } \ce{H+} \text{ 1 phân tử bazơ nhận}$$</div>
+                <div class="t-desc">📚 Slide 4, Chương 2 (Trang 1 PDF): $\ce{NaOH}: z=1 ; \ce{Ba(OH)2}: z=2$</div>
               </div>
-              <div class="tile-row">
+              <div class="tile-row" title="Bấm để phóng to • Slide 4, Chương 2 (Trang 1 PDF)">
                 <div class="t-name">Muối (Trao đổi ion)</div>
-                <div class="t-desc">$z = $ tổng điện tích cation/anion ($\ce{Al2(SO4)3}: z=2 \times 3=6$)</div>
+                <div class="t-formula">$$z = \text{điện tích ion (cation hay anion)}$$</div>
+                <div class="t-desc">📚 Slide 4, Chương 2 (Trang 1 PDF): $\ce{Al2(SO4)3}: z = 2 \times 3 = 6$</div>
               </div>
-              <div class="tile-row">
-                <div class="t-name">Oxy hóa - khử</div>
-                <div class="t-desc">$z = $ số $e^-$ nhường/nhận ($\ce{MnO4- + 5e- -> Mn^2+}: z=5$)</div>
+              <div class="tile-row" title="Bấm để phóng to • Slide 4, Chương 2 (Trang 1 PDF)">
+                <div class="t-name">Oxy hóa – khử</div>
+                <div class="t-formula">$$z = \text{số } e^- \text{ chất khử nhường / oxi hóa nhận}$$</div>
+                <div class="t-desc">📚 Slide 4, Chương 2 (Trang 1 PDF): $\ce{MnO4- + 5e- -> Mn^2+}: z=5$</div>
               </div>
             </div>
           </div>
@@ -999,9 +1115,10 @@
                 <div class="t-name">Pha loãng dung dịch</div>
                 <div class="t-formula">$$C_1 V_1 = C_2 V_2 \implies V_1 = \frac{C_2 V_2}{C_1}$$</div>
               </div>
-              <div class="tile-row">
+              <div class="tile-row" title="Bấm để phóng to • Slide 15, Chương 3">
                 <div class="t-name">Chuẩn độ ngược Xôđa</div>
                 <div class="t-formula">$$V_{\ce{HCl p.ứ}} = V_{\ce{HCl bđ}} - \frac{C_{N,\ce{NaOH}} V_{\ce{NaOH}}}{C_{N,\ce{HCl}}} \quad ; \quad Đ_{\ce{Na2CO3}} = 53$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 15, Chương 3: Bài tập chuẩn độ ngược định lượng $\ce{Na2CO3}$ bằng $\ce{HCl}$ dư và $\ce{NaOH}$.</div>
               </div>
               <div class="tile-row">
                 <div class="t-name">Chất gốc pha chuẩn</div>
@@ -1029,9 +1146,10 @@
                 <div class="t-name">Dung dịch đệm</div>
                 <div class="t-formula">$$pH = pK_a + \log\frac{C_b}{C_a} \quad ; \quad pOH = pK_b + \log\frac{C_a}{C_b}$$</div>
               </div>
-              <div class="tile-row">
+              <div class="tile-row" title="Bấm để phóng to • Slide 8 &amp; 33, Chương 4">
                 <div class="t-name">Muối lưỡng tính ($\ce{HA-}$ / $\ce{H2PO4-}$)</div>
                 <div class="t-formula">$$[\ce{H+}] = \sqrt{K_1 K_2} \implies pH = \frac{1}{2}(pK_1 + pK_2)$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 8 &amp; 33, Chương 4: Tính pH của muối lưỡng tính tại điểm tương đương của đa acid.</div>
               </div>
             </div>
           </div>
@@ -1077,13 +1195,15 @@
                 <div class="t-name">Hỗn hợp $\ce{HCl} + \ce{H3PO4}$</div>
                 <div class="t-formula">$$V_1 (\text{Metyl da cam}) = V_{\ce{HCl}} + V_2 \implies V_{\ce{HCl}} = V_1 - V_2$$</div>
               </div>
-              <div class="tile-row">
+              <div class="tile-row" title="Bấm để phóng to • Slide 40, Chương 4">
                 <div class="t-name">Hỗn hợp $\ce{NaOH} + \ce{Na2CO3}$</div>
                 <div class="t-formula">$$V_1 (\text{Phenol}) = V_{\ce{NaOH}} + V_2 \implies V_{\ce{NaOH}} = V_1 - V_2 \ ; \ V_{\ce{Na2CO3}} = 2V_2$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 40, Chương 4: Chuẩn độ hỗn hợp $\ce{NaOH} + \ce{Na2CO3}$ qua 2 nấc chỉ thị Phenolphtalein và Metyl da cam.</div>
               </div>
-              <div class="tile-row">
+              <div class="tile-row" title="Bấm để phóng to • Slide 41, Chương 4">
                 <div class="t-name">Hỗn hợp $\ce{Na2CO3} + \ce{NaHCO3}$</div>
                 <div class="t-formula">$$V_1 (\text{Phenol}) = V(\ce{Na2CO3}) \ ; \ V_{\ce{NaHCO3}} = V_2 - V_1$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 41, Chương 4: Chuẩn độ hỗn hợp $\ce{Na2CO3} + \ce{NaHCO3}$ qua 2 nấc chỉ thị Phenolphtalein và Metyl da cam.</div>
               </div>
             </div>
           </div>
@@ -1091,6 +1211,41 @@
       </div> <!-- /.fullscreen-board-view -->
     </div> <!-- /.modal-box -->
   </div> <!-- /.modal-overlay -->
+
+  <!-- MODAL PHÓNG TO CÔNG THỨC (FORMULA ZOOM LIGHTBOX) -->
+  <div class="formula-zoom-overlay" id="formulaZoomOverlay" aria-hidden="true">
+    <div class="formula-zoom-card" id="formulaZoomCard">
+      <div class="formula-zoom-header">
+        <div class="formula-zoom-meta">
+          <span class="formula-zoom-tag" id="fzTag"><i class='bx bx-book-bookmark'></i> Chi tiết công thức</span>
+          <h3 class="formula-zoom-title" id="fzTitle">Tên công thức</h3>
+        </div>
+        <button type="button" class="formula-zoom-close" id="fzCloseBtn" title="Đóng [Esc]">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      
+      <div class="formula-zoom-body">
+        <div class="formula-zoom-math" id="fzMath"></div>
+        <div class="formula-zoom-desc" id="fzDesc" style="display:none;"></div>
+      </div>
+
+      <div class="formula-zoom-footer">
+        <div class="formula-zoom-hint">
+          <span><i class='bx bx-info-circle'></i> Nhấn <strong>Esc</strong> hoặc bấm ra ngoài để đóng • <strong>← / →</strong> để xem công thức khác</span>
+        </div>
+        <div class="formula-zoom-nav">
+          <button type="button" class="fz-nav-btn" id="fzPrevBtn" title="Công thức trước [←]">
+            <i class='bx bx-chevron-left'></i> Trước
+          </button>
+          <span class="fz-counter" id="fzCounter">1 / 32</span>
+          <button type="button" class="fz-nav-btn" id="fzNextBtn" title="Công thức kế tiếp [→]">
+            Sau <i class='bx bx-chevron-right'></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
