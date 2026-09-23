@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ôn tập Hóa học Phân tích - Chương 1 đến 4 | Dành cho bé Ngân</title>
+  <meta name="description" content="Trang web ôn tập Hóa học Phân tích chương 1 đến chương 4 đầy đủ công thức chuẩn PDF và chuyên đề 100% bài tập tính toán dành cho bé Ngân.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+  <!-- KaTeX & mhchem (LaTeX Math & Chemical Formulas) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas Confetti khi hoàn thành điểm cao -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Banner thông báo khi chuyển sang mô phỏng iPhone trên Laptop -->
+  <div class="iphone-indicator-bar" id="iphoneIndicatorBar">
+    <span><i class='bx bx-mobile-alt'></i> Đang hiển thị mô phỏng iPhone 16 Pro (Giao diện mobile tối ưu)</span>
+    <button type="button" id="exitIphoneBtn"><i class='bx bx-laptop'></i> Quay lại giao diện Laptop</button>
+  </div>
+
+  <!-- IPHONE FRAME WRAPPER & BEZEL -->
+  <div class="iphone-frame-wrapper" id="iphoneFrameWrapper">
+    <div class="iphone-bezel" id="iphoneBezel">
+      
+      <!-- Dynamic Island tương tác iPhone 16 Pro -->
+      <div class="dynamic-island" id="dynamicIsland" title="Dynamic Island iPhone 16 Pro (Bấm để xem thời gian)">
+        <div class="island-camera"></div>
+        <div class="island-sensor"></div>
+        <div class="island-content">
+          <span class="island-pill-text"><i class='bx bxs-heart'></i> Bé Ngân</span>
+          <span class="island-pill-timer" id="islandTimer">00:00</span>
+        </div>
+      </div>
+
+      <!-- iOS Status Bar -->
+      <div class="ios-status-bar" id="iosStatusBar">
+        <div class="ios-time" id="iosTime">9:41</div>
+        <div class="ios-status-icons">
+          <i class='bx bx-signal-5'></i>
+          <span class="ios-net">5G</span>
+          <i class='bx bx-wifi'></i>
+          <span class="ios-battery"><span class="ios-battery-fill"></span></span>
+        </div>
+      </div>
+
+      <!-- SCREEN VIEWPORT (Cuộn nội dung web) -->
+      <div class="screen-viewport" id="screenViewport">
+        <div class="page" id="mainPage">
+          <!-- HERO HEADER -->
+          <header class="hero">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            
+            <div class="hero-top">
+              <div class="hero-badge">
+                <i class='bx bxs-heart'></i> Hóa học phân tích
+              </div>
+
+              <!-- BỘ CHUYỂN ĐỔI THIẾT BỊ (AUTO / LAPTOP / IPHONE) -->
+              <div class="device-switcher" id="deviceSwitcher" title="Chuyển đổi giao diện hiển thị">
+                <button type="button" class="dev-btn active" data-mode="auto" title="Tự động nhận diện thiết bị">
+                  <i class='bx bx-devices'></i> <span class="dev-lbl">Tự động</span>
+                </button>
+                <button type="button" class="dev-btn" data-mode="laptop" title="Giao diện Laptop rộng hai bên kèm bảng điều hướng">
+                  <i class='bx bx-laptop'></i> <span class="dev-lbl">Laptop</span>
+                </button>
+                <button type="button" class="dev-btn" data-mode="iphone" title="Giao diện iPhone 16 Pro tối ưu màn hình cảm ứng">
+                  <i class='bx bx-mobile-alt'></i> <span class="dev-lbl">iPhone</span>
+                </button>
+              </div>
+
+              <div class="hero-actions">
+                <button type="button" class="icon-btn" id="themeToggleBtn" title="Chuyển chế độ Sáng / Tối">
+                  <i class='bx bx-moon'></i>
+                </button>
+                <button type="button" class="icon-btn" id="soundToggleBtn" title="Bật / Tắt âm thanh hiệu ứng">
+                  <i class='bx bx-volume-full'></i>
+                </button>
+                <button type="button" class="icon-btn" id="calcHubBtn" title="Mở Sổ tay công thức tính toán từ 4 file PDF">
+                  <i class='bx bx-calculator'></i>
+                </button>
+                <button type="button" class="icon-btn" id="cheatSheetBtn" title="Mở Sổ tay tóm tắt toàn bộ 4 chương (Dạng Tab)">
+                  <i class='bx bx-book-bookmark'></i>
+                </button>
+                <button type="button" class="icon-btn" id="cheatBoardBtn" title="Mở Bảng công thức Fullscreen không cuộn (8 Ô vuông)">
+                  <i class='bx bx-grid-alt'></i>
+                </button>
+              </div>
+            </div>
+
+      <h1>Hệ thống Ôn tập <span class="highlight">Hóa Phân tích 1 đến 4</span></h1>
+      <p class="hero-desc">
+        Hệ thống ôn luyện toàn diện chuẩn theo <strong>4 tập bài giảng PDF</strong>: Đại cương, Nồng độ &amp; Đương lượng, Phân tích Khối lượng - Thể tích và Cân bằng Chuẩn độ Acid-Base. Tích hợp chế độ <strong>chuyên đề 100% bài tập tính toán</strong> không kèm lý thuyết!
+      </p>
+
+      <div class="hero-chips">
+        <div class="hero-chip"><i class='bx bx-book-content'></i> Chuẩn 4 File PDF Bài giảng</div>
+        <div class="hero-chip"><i class='bx bx-calculator'></i> Chuyên đề 100% Bài tập tính toán</div>
+        <div class="hero-chip"><i class='bx bx-math'></i> Công thức $\text{\LaTeX}$ &amp; $\ce{Phản ứng}$</div>
+        <div class="hero-chip"><i class='bx bx-collection'></i> Hơn 110 Câu hỏi phong phú</div>
+        <div class="hero-chip"><i class='bx bx-timer'></i> Đồng hồ bấm giờ làm bài</div>
+      </div>
+    </header>
+
+    <!-- BỐ CỤC WORKSPACE CHÍNH: MAIN CONTENT + SIDEBAR LAPTOP -->
+    <div class="workspace-layout">
+      <div class="workspace-main">
+        <!-- BỘ LỌC VÀ CẤU HÌNH ĐỀ ÔN TẬP -->
+        <section class="card">
+      <div class="card-title-row">
+        <div class="card-title-group">
+          <div class="card-icon"><i class='bx bx-slider-alt'></i></div>
+          <div>
+            <div class="card-title">Cấu hình bộ câu hỏi</div>
+            <div class="card-subtitle">Tùy biến nội dung, dạng câu và số lượng phù hợp với mục tiêu ôn tập</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-ghost" id="openCalcGuideBtn">
+            <i class='bx bx-calculator'></i> Tra cứu công thức tính toán
+          </button>
+          <button type="button" class="btn btn-ghost" id="bookmarkFilterBtn">
+            <i class='bx bx-star'></i> Chỉ xem câu khó (⭐)
+          </button>
+        </div>
+      </div>
+
+      <!-- Chọn nhanh theo bộ đề -->
+      <div class="field-label"><i class='bx bx-bolt-circle'></i> Chọn nhanh bộ đề</div>
+      <div class="preset-row">
+        <button type="button" class="preset btn-calc-preset" data-preset="calc"><i class='bx bx-calculator'></i> 🧮 100% Bài tập tính toán</button>
+        <button type="button" class="preset" data-preset="1"><i class='bx bx-book-open'></i> Chương 1: Mở đầu</button>
+        <button type="button" class="preset" data-preset="2"><i class='bx bx-book-open'></i> Chương 2: Dung dịch &amp; Nồng độ</button>
+        <button type="button" class="preset" data-preset="3"><i class='bx bx-book-open'></i> Chương 3: Khối lượng &amp; Thể tích</button>
+        <button type="button" class="preset" data-preset="4"><i class='bx bx-book-open'></i> Chương 4: Acid - Base</button>
+        <button type="button" class="preset active" data-preset="all"><i class='bx bx-grid-alt'></i> Tổng hợp 1 - 4</button>
+        <button type="button" class="preset" data-preset="essay"><i class='bx bx-pencil'></i> Luyện tự luận &amp; điền</button>
+        <button type="button" class="preset" data-preset="indicator"><i class='bx bx-palette'></i> Chỉ thị màu &amp; Chuẩn độ</button>
+      </div>
+
+      <!-- Chế độ lọc bài tập tính toán -->
+      <div class="field-label"><i class='bx bx-filter-alt'></i> Phân loại nội dung</div>
+      <div class="check-row">
+        <div class="check-item">
+          <input type="checkbox" id="calcOnlyToggle">
+          <label for="calcOnlyToggle" style="font-weight:700; border-color:var(--primary);">
+            <i class='bx bx-calculator' style="color:var(--primary);"></i> Chỉ kiểm tra bài tập tính toán (100% Bài tập, không có lý thuyết)
+          </label>
+        </div>
+      </div>
+
+      <!-- Chọn theo chương -->
+      <div class="field-label"><i class='bx bx-book'></i> Chọn theo chương</div>
+      <div class="check-row" id="chapterChecks">
+        <div class="check-item"><input type="checkbox" id="ch1" value="1" checked><label for="ch1"><i class='bx bx-check'></i> Chương 1: Mở đầu</label></div>
+        <div class="check-item"><input type="checkbox" id="ch2" value="2" checked><label for="ch2"><i class='bx bx-check'></i> Chương 2: Dung dịch &amp; Nồng độ</label></div>
+        <div class="check-item"><input type="checkbox" id="ch3" value="3" checked><label for="ch3"><i class='bx bx-check'></i> Chương 3: Khối lượng &amp; Thể tích</label></div>
+        <div class="check-item"><input type="checkbox" id="ch4" value="4" checked><label for="ch4"><i class='bx bx-check'></i> Chương 4: Cân bằng &amp; Chuẩn độ Acid-Base</label></div>
+      </div>
+
+      <!-- Chọn theo dạng câu hỏi -->
+      <div class="field-label"><i class='bx bx-category-alt'></i> Dạng câu hỏi</div>
+      <div class="check-row" id="typeChecks">
+        <div class="check-item"><input type="checkbox" id="type-mcq" value="mcq" checked><label for="type-mcq"><i class='bx bx-radio-circle-marked'></i> Trắc nghiệm</label></div>
+        <div class="check-item"><input type="checkbox" id="type-tf" value="tf" checked><label for="type-tf"><i class='bx bx-check-square'></i> Đúng / Sai</label></div>
+        <div class="check-item"><input type="checkbox" id="type-fill" value="fill" checked><label for="type-fill"><i class='bx bx-edit-alt'></i> Điền số / kết quả</label></div>
+        <div class="check-item"><input type="checkbox" id="type-drag" value="drag" checked><label for="type-drag"><i class='bx bx-move'></i> Kéo thả ghép nối</label></div>
+        <div class="check-item"><input type="checkbox" id="type-color" value="color" checked><label for="type-color"><i class='bx bx-palette'></i> Nhận diện màu</label></div>
+        <div class="check-item"><input type="checkbox" id="type-short" value="short" checked><label for="type-short"><i class='bx bx-notepad'></i> Tự luận ngắn</label></div>
+      </div>
+
+      <!-- Cài đặt thêm -->
+      <div class="field-label"><i class='bx bx-cog'></i> Tùy chọn nâng cao</div>
+      <div class="config-grid">
+        <div class="config-box">
+          <label for="questionCount">Số lượng câu</label>
+          <select id="questionCount">
+            <option value="10">10 câu</option>
+            <option value="15">15 câu</option>
+            <option value="20" selected>20 câu</option>
+            <option value="30">30 câu</option>
+            <option value="all">Toàn bộ câu hỏi</option>
+          </select>
+        </div>
+        <div class="config-box">
+          <label for="orderMode">Thứ tự sắp xếp</label>
+          <select id="orderMode">
+            <option value="random" selected>Trộn ngẫu nhiên (Shuffle)</option>
+            <option value="chapter">Tuần tự theo chương</option>
+          </select>
+        </div>
+        <div class="config-box">
+          <label for="explainMode">Hiển thị lời giải</label>
+          <select id="explainMode">
+            <option value="yes" selected>Hiện lời giải chi tiết</option>
+            <option value="no">Chỉ hiển thị đúng / sai</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tìm kiếm theo từ khóa -->
+      <div class="search-bar-row">
+        <i class='bx bx-search'></i>
+        <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi (VD: soda, đương lượng, tính pH, pha loãng, hệ số chuyển, ppm...)">
+      </div>
+
+      <div class="action-row">
+        <button type="button" class="btn btn-primary" id="generateBtn"><i class='bx bx-play-circle'></i> Bắt đầu ôn tập</button>
+        <button type="button" class="btn btn-ghost" id="newSetBtn"><i class='bx bx-shuffle'></i> Đổi bộ câu hỏi khác</button>
+      </div>
+    </section>
+
+    <!-- THANH TIẾN ĐỘ VÀ THỐNG KÊ GẮN ĐẦU TRANG (STICKY) -->
+    <div class="sticky-stats" id="stickyStats">
+      <div class="sticky-stats-inner">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-num" id="statTotal">0</span>
+            <span class="stat-title">Tổng câu</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statChecked">0</span>
+            <span class="stat-title">Đã làm</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statCorrect">0</span>
+            <span class="stat-title">Số câu đúng</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statScore">0%</span>
+            <span class="stat-title">Điểm số</span>
+          </div>
+          <div class="stat-card" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <span class="stat-num" id="timerDisplay" style="color:var(--primary);">00:00</span>
+            <button type="button" id="timerToggleBtn" style="background:none; border:none; color:var(--text-3); font-size:11px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:2px;">
+              <i class='bx bx-pause'></i> Tạm dừng
+            </button>
+          </div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THANH ĐIỀU KHIỂN BÀI THI -->
+    <div class="quiz-header" id="quizHeader">
+      <div class="quiz-header-info">
+        <div class="quiz-header-icon"><i class='bx bx-edit'></i></div>
+        <div>
+          <h2>Danh sách câu hỏi ôn tập</h2>
+          <div class="quiz-header-desc" id="quizInfo">Đang tải...</div>
+        </div>
+      </div>
+      <div class="quiz-header-actions">
+        <!-- Bộ chỉnh cỡ chữ linh hoạt -->
+        <div class="font-size-control" id="fontSizeControl" title="Điều chỉnh cỡ chữ câu hỏi">
+          <span class="font-size-lbl"><i class='bx bx-font-size'></i> Cỡ chữ:</span>
+          <button type="button" class="btn-font-size" data-size="sm" title="Cỡ chữ vừa (16.5px)">A-</button>
+          <button type="button" class="btn-font-size active" data-size="md" title="Cỡ chữ to rõ (18.5px)">A</button>
+          <button type="button" class="btn-font-size" data-size="lg" title="Cỡ chữ rất to (21px)">A+</button>
+        </div>
+        <div class="action-row" style="margin:0">
+          <button type="button" class="btn btn-success" id="checkAllBtn"><i class='bx bx-check-double'></i> Chấm tất cả</button>
+          <button type="button" class="btn btn-warn" id="showAllBtn"><i class='bx bx-show'></i> Hiện đáp án</button>
+          <button type="button" class="btn btn-danger" id="resetBtn"><i class='bx bx-reset'></i> Làm lại</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HỘP THÔNG BÁO RỖNG NẾU KHÔNG CÓ CÂU HỎI PHÙ HỢP -->
+    <div class="empty-box" id="emptyBox">
+      <i class='bx bx-search-alt'></i>
+      <p>Không tìm thấy câu hỏi nào phù hợp với bộ lọc hiện tại.</p>
+      <p style="font-size:13px; color:var(--text-4); margin-top:6px;">Bé Ngân hãy thử chọn thêm chương hoặc đổi từ khóa tìm kiếm nhé!</p>
+    </div>
+
+    <!-- KHU VỰC HIỂN THỊ CÂU HỎI -->
+    <main class="quiz-list" id="quiz"></main>
+
+    <!-- BẢNG TỔNG KẾT ĐIỂM SỐ -->
+    <section class="results-card" id="resultsCard">
+      <div class="results-header">
+        <div class="results-icon"><i class='bx bxs-award'></i></div>
+        <div>
+          <div class="results-title">Tổng kết kết quả ôn tập</div>
+          <div style="font-size:13px; color:var(--text-3);">Đánh giá mức độ nắm vững kiến thức Hóa học Phân tích</div>
+        </div>
+      </div>
+      
+      <div class="results-msg" id="resultMessage"></div>
+      
+      <div class="results-stats-grid">
+        <div class="result-stat-item">
+          <span class="result-stat-val" id="resultCorrect" style="color:var(--green);">0</span>
+          <span class="result-stat-lbl">Số câu đúng</span>
+        </div>
+        <div class="result-stat-item">
+          <span class="result-stat-val" id="resultWrong" style="color:var(--red);">0</span>
+          <span class="result-stat-lbl">Số câu sai</span>
+        </div>
+        <div class="result-stat-item">
+          <span class="result-stat-val" id="resultPending" style="color:var(--yellow);">0</span>
+          <span class="result-stat-lbl">Chờ đánh giá</span>
+        </div>
+        <div class="result-stat-item">
+          <span class="result-stat-val" id="resultScore" style="color:var(--primary);">0%</span>
+          <span class="result-stat-lbl">Tỷ lệ chính xác</span>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button type="button" class="btn btn-primary" onclick="resetCurrentSet()"><i class='bx bx-redo'></i> Luyện lại bộ đề này</button>
+        <button type="button" class="btn btn-ghost" onclick="generateQuiz()"><i class='bx bx-shuffle'></i> Tạo đề mới ngẫu nhiên</button>
+        <button type="button" class="btn btn-warn" onclick="cheatBtn.click()"><i class='bx bx-book-open'></i> Xem lại sổ tay công thức</button>
+      </div>
+    </section>
+  </div> <!-- /.workspace-main -->
+
+  <!-- WORKSPACE SIDEBAR CHO LAPTOP (TỐI ƯU 2 BÊN TRỐNG RỘNG) -->
+  <aside class="workspace-sidebar" id="desktopSidebar">
+    
+    <!-- WIDGET 1: BẢNG SƠ ĐỒ ĐIỀU HƯỚNG CÂU HỎI (QUESTION PALETTE) -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">
+        <div class="sidebar-card-title">
+          <i class='bx bx-grid-alt'></i> Sơ đồ câu hỏi
+        </div>
+        <span class="sidebar-badge" id="paletteBadge">0/20</span>
+      </div>
+      <div class="palette-legend">
+        <span class="legend-item"><span class="legend-dot unattempted"></span> Chưa làm</span>
+        <span class="legend-item"><span class="legend-dot answered"></span> Đã chọn</span>
+        <span class="legend-item"><span class="legend-dot correct"></span> Đúng</span>
+        <span class="legend-item"><span class="legend-dot wrong"></span> Sai</span>
+      </div>
+      <div class="question-palette-grid" id="questionPaletteGrid"></div>
+      <div class="palette-hint"><i class='bx bx-info-circle'></i> Bấm số câu để cuộn mượt đến câu đó</div>
+    </div>
+
+    <!-- WIDGET 2: ĐỒNG HỒ & THAO TÁC BÀI THI -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">
+        <div class="sidebar-card-title">
+          <i class='bx bx-timer'></i> Đồng hồ &amp; Điểm số
+        </div>
+        <button type="button" class="sidebar-timer-btn" id="sidebarTimerToggleBtn" title="Bắt đầu / Tạm dừng">
+          <i class='bx bx-pause'></i>
+        </button>
+      </div>
+      <div class="sidebar-timer-display" id="sidebarTimerDisplay">00:00</div>
+      <div class="sidebar-progress-track">
+        <div class="sidebar-progress-bar" id="sidebarProgressBar"></div>
+      </div>
+      <div class="sidebar-stats-row">
+        <div>Đã làm: <strong id="sidebarStatChecked">0</strong>/<span id="sidebarStatTotal">0</span></div>
+        <div>Đúng: <strong id="sidebarStatCorrect" style="color:var(--green)">0</strong></div>
+        <div>Điểm: <strong id="sidebarStatScore" style="color:var(--primary)">0%</strong></div>
+      </div>
+      <div class="sidebar-actions-col">
+        <button type="button" class="btn btn-success btn-sm w-100" id="sidebarCheckAllBtn"><i class='bx bx-check-double'></i> Chấm toàn bộ bài thi</button>
+        <button type="button" class="btn btn-warn btn-sm w-100" id="sidebarShowAllBtn"><i class='bx bx-show'></i> Hiện đáp án &amp; lời giải</button>
+        <button type="button" class="btn btn-ghost btn-sm w-100" id="sidebarScrollTopBtn"><i class='bx bx-up-arrow-alt'></i> Cuộn lên đầu trang</button>
+      </div>
+    </div>
+
+    <!-- WIDGET 3: BẢNG CÔNG THỨC HAY GẶP TỪ 4 FILE PDF -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">
+        <div class="sidebar-card-title">
+          <i class='bx bx-calculator'></i> Công thức hay gặp (PDF)
+        </div>
+      </div>
+      <div class="quick-formula-list">
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Nồng độ đương lượng $C_N$</div>
+          <div class="quick-formula-math">$$C_N = z \cdot C_M = \frac{10 \cdot C\% \cdot d}{Đ}$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Phân tích khối lượng (Hệ số K)</div>
+          <div class="quick-formula-math">$$m = q \cdot K \quad ; \quad X\% = \frac{K \cdot q \cdot 100}{p}$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Pha loãng &amp; Chuẩn độ thể tích</div>
+          <div class="quick-formula-math">$$C_1 V_1 = C_2 V_2 \quad ; \quad C_{NX} V_X = C_{NR} V_R$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Tính pH Đơn acid &amp; Đệm</div>
+          <div class="quick-formula-math">$$pH = \frac{1}{2}(pK_a - \log C_a) \quad ; \quad pH = pK_a + \log\frac{C_b}{C_a}$$</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+        <button type="button" class="btn btn-primary btn-sm w-100" id="sidebarOpenCheatBtn">
+          <i class='bx bx-book-open'></i> Mở Sổ tay đầy đủ 4 Chương
+        </button>
+        <button type="button" class="btn btn-outline btn-sm w-100" id="sidebarOpenBoardBtn" style="border-color:var(--primary); color:var(--primary); font-weight:700;">
+          <i class='bx bx-grid-alt'></i> ⛶ Bảng Fullscreen (Không cuộn)
+        </button>
+      </div>
+    </div>
+
+  </aside>
+</div> <!-- /.workspace-layout -->
+
+</div> <!-- /.page -->
+</div> <!-- /.screen-viewport -->
+
+    <!-- iOS BOTTOM TAB BAR (HIỂN THỊ CỐ ĐỊNH KHI Ở CHẾ ĐỘ IPHONE / MOBILE) -->
+    <nav class="ios-tab-bar" id="iosTabBar">
+      <button type="button" class="tab-item active" id="tabNavQuiz" title="Đề ôn tập">
+        <i class='bx bx-edit-alt'></i>
+        <span>Làm bài</span>
+      </button>
+      <button type="button" class="tab-item" id="tabNavCalc" title="100% Bài tập tính toán">
+        <i class='bx bx-calculator'></i>
+        <span>Bài tập</span>
+      </button>
+      <button type="button" class="tab-item" id="tabNavFormulas" title="Tra cứu công thức PDF">
+        <i class='bx bx-book-bookmark'></i>
+        <span>Công thức</span>
+      </button>
+      <button type="button" class="tab-item" id="tabNavStarred" title="Xem các câu khó">
+        <i class='bx bx-star'></i>
+        <span>Câu khó</span>
+      </button>
+      <button type="button" class="tab-item" id="tabNavTheme" title="Chuyển chế độ sáng/tối">
+        <i class='bx bx-moon'></i>
+        <span>Giao diện</span>
+      </button>
+    </nav>
+
+    <!-- Home Indicator cho iPhone -->
+    <div class="ios-home-indicator" id="iosHomeIndicator"></div>
+  </div> <!-- /.iphone-bezel -->
+</div> <!-- /.iphone-frame-wrapper -->
+
+  <!-- SỔ TAY CÔNG THỨC & LÝ THUYẾT TÓM TẮT (MODAL POPUP) -->
+  <div class="modal-overlay" id="cheatSheetModal">
+    <div class="modal-box" id="modalBox">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3><i class='bx bx-book-bookmark'></i> Sổ tay Công thức Hóa Phân tích</h3>
+          <span class="modal-badge-pdf">Chuẩn 4 PDF</span>
+        </div>
+
+        <!-- BỘ CHUYỂN DẠNG HIỂN THỊ (TAB VS TOÀN MÀN HÌNH KHÔNG CUỘN) -->
+        <div class="modal-view-mode-toggle" id="modalViewModeToggle">
+          <button type="button" class="view-toggle-btn active" id="btnViewTab" data-view="tab" title="Xem chi tiết từng chương theo Tab">
+            <i class='bx bx-windows'></i> <span>Dạng Tab</span>
+          </button>
+          <button type="button" class="view-toggle-btn" id="btnViewBoard" data-view="board" title="Toàn màn hình không cuộn - 8 ô vuông từng mục">
+            <i class='bx bx-grid-alt'></i> <span>Bảng Fullscreen (Không cuộn)</span>
+          </button>
+        </div>
+
+        <div class="modal-header-actions">
+          <button type="button" class="modal-expand-btn" id="modalExpandBtn" title="Mở rộng / Thu nhỏ toàn màn hình">
+            <i class='bx bx-fullscreen'></i>
+          </button>
+          <button type="button" class="modal-close-btn" id="cheatCloseBtn" title="Đóng sổ tay"><i class='bx bx-x'></i></button>
+        </div>
+      </div>
+
+      <!-- DẠNG 1: DẠNG TAB (TABBED VIEW) -->
+      <div class="modal-tabbed-view" id="modalTabbedView">
+        <div class="modal-tabs">
+          <button type="button" class="modal-tab-btn active" data-tab="tab-calculations">🧮 Công thức tính toán (PDF)</button>
+          <button type="button" class="modal-tab-btn" data-tab="tab-concentrations">Nồng độ &amp; Đương lượng</button>
+          <button type="button" class="modal-tab-btn" data-tab="tab-indicators">Chất chỉ thị pH</button>
+          <button type="button" class="modal-tab-btn" data-tab="tab-ph">Công thức tính pH</button>
+          <button type="button" class="modal-tab-btn" data-tab="tab-process">Quy trình &amp; Hàm lượng</button>
+        </div>
+        <div class="modal-body">
+        
+        <!-- TAB CHUYÊN ĐỀ TÍNH TOÁN (100% CÔNG THỨC TỪ 4 FILE PDF) -->
+        <div class="cheat-tab-content" id="tab-calculations">
+          <div class="cheat-card-callout">
+            <strong>🧮 Tổng hợp toàn bộ công thức tính toán từ 4 file PDF bài giảng:</strong>
+            <p style="font-size:13px; margin-top:4px;">Bao gồm công thức nồng độ, chuyển đổi nồng độ, phân tích khối lượng, chuẩn độ thể tích và tính $pH$ các giai đoạn.</p>
+          </div>
+
+          <h4 style="font-size:15px; margin:16px 0 8px; color:var(--primary);"><i class='bx bx-bulb'></i> 1. Các công thức nồng độ &amp; Chuyển đổi nồng độ (Chương 2 PDF)</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Dạng nồng độ</th>
+                <th>Công thức trong Slide PDF</th>
+                <th>Công thức chuyển đổi nhanh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nồng độ mol $C_M$</strong></td>
+                <td>$$C_M = \frac{n}{V} = \frac{m}{M \cdot V} \implies m = C_M \cdot M \cdot V$$</td>
+                <td>$$C_M = \frac{10 \cdot C\% \cdot d}{M}$$</td>
+              </tr>
+              <tr>
+                <td><strong>Nồng độ đương lượng $C_N$</strong></td>
+                <td>$$C_N = \frac{m}{Đ \cdot V} \implies m = C_N \cdot Đ \cdot V$$</td>
+                <td>$$C_N = z \cdot C_M = \frac{10 \cdot C\% \cdot d}{Đ}$$</td>
+              </tr>
+              <tr>
+                <td><strong>Đương lượng gam $Đ$</strong></td>
+                <td>$$Đ = \frac{M}{z}$$</td>
+                <td>$z$: số $\ce{H+}$ axit cho, số $\ce{H+}$ bazơ nhận, điện tích ion, hoặc số $e^-$ trao đổi</td>
+              </tr>
+              <tr>
+                <td><strong>Nồng độ ppm, ppb</strong></td>
+                <td>$$1\text{ ppm} = 1\text{ mg/L} = 1\ \mu\text{g/mL} = 1\text{ mg/kg}$$<br>$$1\text{ ppb} = 1\ \mu\text{g/L} = 1\text{ ng/mL} = 10^{-3}\text{ ppm}$$</td>
+                <td>$$\text{ppm} = C_M \cdot M \cdot 10^3 = C_N \cdot Đ \cdot 10^3$$</td>
+              </tr>
+              <tr>
+                <td><strong>Nồng độ gam $P$ &amp; Phần mol $N$</strong></td>
+                <td>$$P\text{ (g/L)} = \frac{m}{V} = C_M \cdot M$$<br>$$N_A = \frac{n_A}{n_A + n_B} \quad (N_A + N_B = 1)$$</td>
+                <td>Áp dụng xác định tỉ lệ mol các cấu tử trong dung dịch</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-size:15px; margin:20px 0 8px; color:var(--primary);"><i class='bx bx-bulb'></i> 2. Công thức Phân tích khối lượng &amp; Pha loãng (Chương 3 PDF)</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Nội dung</th>
+                <th>Công thức chuẩn trong PDF</th>
+                <th>Ví dụ thực tế trong Slide</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hệ số chuyển $K$</strong></td>
+                <td>$$K = \frac{\text{PTL/NTL dạng cần xđ}}{\text{PTL dạng cân}}$$</td>
+                <td>$\ce{Si}$ từ dạng cân $\ce{SiO2}$: $K = \frac{28,08}{60,08} = 0,4674$</td>
+              </tr>
+              <tr>
+                <td><strong>Khối lượng chất $m$</strong></td>
+                <td>$$m = \text{KL dạng cân} \times K$$</td>
+                <td>$m_{\ce{Si}} = 0,1245\text{ g } \ce{SiO2} \times 0,4674 = 0,0582\text{ g}$</td>
+              </tr>
+              <tr>
+                <td><strong>Hàm lượng $\% (w/w)$</strong></td>
+                <td>$$X(\% w/w) = \frac{K \cdot q \cdot 100}{p}$$</td>
+                <td>$p$: khối lượng mẫu cân, $q$: khối lượng dạng cân</td>
+              </tr>
+              <tr>
+                <td><strong>Độ ẩm của mẫu</strong></td>
+                <td>$$\text{Độ ẩm } (\%) = \frac{(p - p') \cdot 100}{p}$$</td>
+                <td>$p$: khối lượng ban đầu, $p'$: khối lượng sau khi sấy khô</td>
+              </tr>
+              <tr>
+                <td><strong>Pha loãng dung dịch</strong></td>
+                <td>$$C_1 V_1 = C_2 V_2$$</td>
+                <td>Lấy $250\text{ mL } \ce{NaOH } 0,2\text{ M}$ pha thành $1000\text{ mL } \ce{NaOH } 0,05\text{ M}$</td>
+              </tr>
+              <tr>
+                <td><strong>Định luật đương lượng</strong></td>
+                <td>$$C_{NX} \cdot V_X = C_{NR} \cdot V_R$$</td>
+                <td>Số $\text{mmol}$ đương lượng thuốc thử $=$ số $\text{mmol}$ đương lượng chất định phân</td>
+              </tr>
+              <tr>
+                <td><strong>Chuẩn độ ngược (Xôđa $\ce{Na2CO3}$)</strong></td>
+                <td>$$n_{\ce{HCl pư}} = C_{N\ce{HCl}} \cdot V_{\ce{HCl}} - C_{N\ce{NaOH}} \cdot V_{\ce{NaOH}}$$</td>
+                <td>$$m_{\ce{Na2CO3}} = n_{\ce{HCl pư}} \cdot Đ_{\ce{Na2CO3}} \cdot 10^{-3} \quad (Đ = \frac{106}{2} = 53)$$</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-size:15px; margin:20px 0 8px; color:var(--primary);"><i class='bx bx-bulb'></i> 3. Công thức Tính $pH$ &amp; Đường chuẩn độ Acid - Base (Chương 4 PDF)</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Hệ dung dịch</th>
+                <th>Công thức tính $[\ce{H+}]$ / $[\ce{OH-}]$</th>
+                <th>Công thức tính $pH$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Đơn acid mạnh $C_a$</td>
+                <td>$$[\ce{H+}] = C_a$$</td>
+                <td>$$pH = -\log C_a$$</td>
+              </tr>
+              <tr>
+                <td>Đơn base mạnh $C_b$</td>
+                <td>$$[\ce{OH-}] = C_b$$</td>
+                <td>$$pH = 14 + \log C_b$$</td>
+              </tr>
+              <tr>
+                <td>Đơn acid yếu $\ce{HA}$ ($K_a, C_a$)</td>
+                <td>$$[\ce{H+}] = \sqrt{C_a K_a}$$</td>
+                <td>$$pH = \frac{1}{2}(pK_a - \log C_a)$$</td>
+              </tr>
+              <tr>
+                <td>Đơn base yếu $\ce{BOH}$ ($K_b, C_b$)</td>
+                <td>$$[\ce{OH-}] = \sqrt{C_b K_b}$$</td>
+                <td>$$pH = 14 - \frac{1}{2}(pK_b - \log C_b)$$</td>
+              </tr>
+              <tr>
+                <td>Dung dịch đệm $\ce{HA / A-}$</td>
+                <td>$$[\ce{H+}] = K_a \cdot \frac{C_a}{C_b}$$</td>
+                <td>$$pH = pK_a + \log\frac{C_b}{C_a} \quad (\text{Henderson-Hasselbalch})$$</td>
+              </tr>
+              <tr>
+                <td>Đa acid $\ce{H3PO4}$ tại ĐTĐ 1</td>
+                <td>$$[\ce{H+}] = \sqrt{K_1 K_2}$$</td>
+                <td>$$pH = \frac{1}{2}(pK_1 + pK_2) \approx 4,67 \quad (\text{tạo } \ce{NaH2PO4})$$</td>
+              </tr>
+              <tr>
+                <td>Đa acid $\ce{H3PO4}$ tại ĐTĐ 2</td>
+                <td>$$[\ce{H+}] = \sqrt{K_2 K_3}$$</td>
+                <td>$$pH = \frac{1}{2}(pK_2 + pK_3) \approx 9,78 \quad (\text{tạo } \ce{Na2HPO4})$$</td>
+              </tr>
+              <tr>
+                <td>Chuẩn độ Acid mạnh bằng Base mạnh</td>
+                <td>Trước TĐ: $[\ce{H+}] = \frac{C_0 V_0 - C V}{V_0 + V}$<br>Sau TĐ: $[\ce{OH-}] = \frac{C V - C_0 V_0}{V_0 + V}$</td>
+                <td>Trước TĐ: $pH = -\log[\ce{H+}]$<br>Tại TĐ: $pH = 7$<br>Sau TĐ: $pH = 14 + \log[\ce{OH-}]$</td>
+              </tr>
+              <tr>
+                <td>Chuẩn độ hỗn hợp $\ce{HCl + H3PO4}$</td>
+                <td>$V_1$: với Metyl da cam (trung hòa $\ce{HCl}$ + nấc 1 $\ce{H3PO4}$)<br>$V_2$: thêm Phenolphtalein (trung hòa nấc 2 $\ce{H3PO4}$)</td>
+                <td>$$V_{\ce{HCl}} = V_1 - V_2 \quad ; \quad V_{\ce{H3PO4}} = V_2$$</td>
+              </tr>
+              <tr>
+                <td>Chuẩn độ hỗn hợp $\ce{NaOH + Na2CO3}$</td>
+                <td>$V_1$: với Phenolphtalein (trung hòa $\ce{NaOH}$ + nấc 1 $\ce{Na2CO3}$)<br>$V_2$: thêm Metyl da cam (trung hòa nấc 2 $\ce{NaHCO3}$)</td>
+                <td>$$V_{\ce{NaOH}} = V_1 - V_2 \quad ; \quad V_{\ce{Na2CO3}} = 2 V_2$$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 2: NỒNG ĐỘ & ĐƯƠNG LƯỢNG -->
+        <div class="cheat-tab-content" id="tab-concentrations" style="display:none;">
+          <div class="cheat-card-callout">
+            <strong>🎯 Hệ thống công thức nồng độ chuẩn $\text{\LaTeX}$:</strong>
+            $$C_M = \frac{n}{V} = \frac{m}{M \cdot V} \quad (\text{mol/L})$$
+            $$C_N = \frac{m}{D \cdot V} = z \cdot C_M \quad (\text{N hay eq/L})$$
+            $$D = \frac{M}{z} \quad (\text{Đương lượng gam})$$
+            $$C_{NA} \cdot V_A = C_{NB} \cdot V_B \quad (\text{Định luật đương lượng})$$
+            $$C_1 \cdot V_1 = C_2 \cdot V_2 \quad (\text{Pha loãng dung dịch})$$
+            $$I = \frac{1}{2}\sum_{i} C_i \cdot z_i^2 \quad (\text{Lực ion})$$
+            $$a = f \cdot C \quad (\text{Hoạt độ ion, } f \to 1 \implies a \approx C)$$
+          </div>
+
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Loại chất</th>
+                <th>Quy tắc xác định $z$</th>
+                <th>Ví dụ phản ứng &amp; Đương lượng $D$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Acid</strong></td>
+                <td>Số proton $\ce{H+}$ cho đi trong phản ứng cụ thể</td>
+                <td>$\ce{H2SO4 -> SO4^{2-}} \implies z = 2, D = \frac{M}{2}$<br>$\ce{H3PO4 -> NaH2PO4} \implies z = 1, D = M$</td>
+              </tr>
+              <tr>
+                <td><strong>Base</strong></td>
+                <td>Số ion $\ce{OH-}$ cho đi hoặc số $\ce{H+}$ nhận vào</td>
+                <td>$\ce{NaOH} \implies z = 1, D = M$<br>$\ce{Ba(OH)2} \implies z = 2, D = \frac{M}{2}$<br>$\ce{NH3 + H+ -> NH4+} \implies z = 1$</td>
+              </tr>
+              <tr>
+                <td><strong>Muối</strong></td>
+                <td>Tổng điện tích cation (hoặc anion) trao đổi</td>
+                <td>$\ce{Al2(SO4)3} \implies z = 2 \times 3 = 6, D = \frac{M}{6}$<br>$\ce{CaCO3} \implies z = 2, D = \frac{M}{2}$</td>
+              </tr>
+              <tr>
+                <td><strong>Oxi hóa - khử</strong></td>
+                <td>Số electron ($e^-$) trao đổi trong bán phản ứng</td>
+                <td>$\ce{MnO4- + 5e- + 8H+ -> Mn^2+ + 4H2O} \implies z = 5, D = \frac{M}{5}$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 3: CHẤT CHỈ THỊ MÀU -->
+        <div class="cheat-tab-content" id="tab-indicators" style="display:none;">
+          <div class="cheat-card-callout">
+            <strong>🎨 Cân bằng phân ly của chất chỉ thị acid - base ($\ce{HInd}$):</strong>
+            $$\ce{HInd <=> H+ + Ind-}$$
+            $$\text{Khoảng đổi màu: } pH = pK_{\text{Ind}} \pm 1$$
+            <strong>Quy tắc chọn chỉ thị màu trong chuẩn độ acid - base:</strong><br>
+            Chỉ thị được xem là thích hợp khi bước nhảy $pH$ của phép chuẩn độ bao trọn khoảng chuyển màu hoặc chỉ số $pT$ của chỉ thị đó.
+          </div>
+
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Chất chỉ thị</th>
+                <th>Khoảng đổi màu ($pH$)</th>
+                <th>Chỉ số $pT$</th>
+                <th>Màu dạng Acid $\to$ Base</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Metyl da cam (Methyl Orange)</strong></td>
+                <td>$3,1 \leftrightarrow 4,4$</td>
+                <td>$pT = 4,0$</td>
+                <td>Đỏ $\to$ Vàng (Da cam ở điểm cuối)</td>
+              </tr>
+              <tr>
+                <td><strong>Metyl đỏ (Methyl Red)</strong></td>
+                <td>$4,4 \leftrightarrow 6,2$</td>
+                <td>$pT = 5,0$</td>
+                <td>Đỏ $\to$ Vàng</td>
+              </tr>
+              <tr>
+                <td><strong>Phenolphtalein (pp)</strong></td>
+                <td>$8,0 \leftrightarrow 10,0$</td>
+                <td>$pT = 9,0$</td>
+                <td>Không màu $\to$ Hồng tím</td>
+              </tr>
+              <tr>
+                <td><strong>Giấy quỳ tím</strong></td>
+                <td>$5,0 \leftrightarrow 8,0$</td>
+                <td>–</td>
+                <td>Đỏ ($pH < 5$) $\to$ Tím $\to$ Xanh ($pH > 8$)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 4: CÔNG THỨC TÍNH PH -->
+        <div class="cheat-tab-content" id="tab-ph" style="display:none;">
+          <div class="cheat-card-callout">
+            <strong>Tích số ion của nước ở $25^\circ\text{C}$:</strong>
+            $$K_w = [\ce{H+}][\ce{OH-}] = 10^{-14} \implies pH + pOH = 14$$
+            $$K_a \cdot K_b = K_w = 10^{-14} \implies pK_a + pK_b = 14$$
+          </div>
+
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Dạng dung dịch</th>
+                <th>Công thức tính $[\ce{H+}]$ hoặc $pH$</th>
+                <th>Điều kiện &amp; Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Đơn acid mạnh $C_a$</td>
+                <td>$$pH = -\log C_a$$</td>
+                <td>Phân ly hoàn toàn: $\ce{HCl -> H+ + Cl-}$</td>
+              </tr>
+              <tr>
+                <td>Đơn base mạnh $C_b$</td>
+                <td>$$pH = 14 + \log C_b$$</td>
+                <td>$pOH = -\log C_b$</td>
+              </tr>
+              <tr>
+                <td>Đơn acid yếu $\ce{HA}$</td>
+                <td>$$[\ce{H+}] = \sqrt{K_a \cdot C_a} \implies pH = \frac{1}{2}(pK_a - \log C_a)$$</td>
+                <td>Áp dụng khi $\frac{C_a}{K_a} \ge 400$</td>
+              </tr>
+              <tr>
+                <td>Đơn base yếu $\ce{B}$</td>
+                <td>$$[\ce{OH-}] = \sqrt{K_b \cdot C_b} \implies pH = 14 - \frac{1}{2}(pK_b - \log C_b)$$</td>
+                <td>Áp dụng khi $\frac{C_b}{K_b} \ge 400$</td>
+              </tr>
+              <tr>
+                <td>Hệ đệm acid $\ce{HA / A-}$</td>
+                <td>$$[\ce{H+}] = K_a \cdot \frac{C_a}{C_b} \implies pH = pK_a + \log\frac{C_b}{C_a}$$</td>
+                <td>Phương trình Henderson-Hasselbalch</td>
+              </tr>
+              <tr>
+                <td>Muối lưỡng tính $\ce{HA-}$</td>
+                <td>$$[\ce{H+}] = \sqrt{K_{a1} \cdot K_{a2}} \implies pH = \frac{1}{2}(pK_{a1} + pK_{a2})$$</td>
+                <td>VD: $\ce{NaHCO3}$, $\ce{NaH2PO4}$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 5: QUY TRÌNH & HÀM LƯỢNG MẪU -->
+        <div class="cheat-tab-content" id="tab-process" style="display:none;">
+          <div class="cheat-card-callout">
+            <strong>6 Bước quy trình phân tích tổng quát (Chương 1 PDF):</strong><br>
+            $1.$ Xác định vấn đề phân tích $\longrightarrow$<br>
+            $2.$ Chọn phương pháp phân tích tối ưu $\longrightarrow$<br>
+            $3.$ Lấy mẫu đại diện $\longrightarrow$<br>
+            $4.$ Xử lý mẫu và hòa tan $\longrightarrow$<br>
+            $5.$ Tiến hành đo đạc / định lượng $\longrightarrow$<br>
+            $6.$ Xử lý thống kê số liệu và báo cáo kết quả.
+          </div>
+
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Phân loại cấu tử</th>
+                <th>Khoảng hàm lượng trong mẫu (Slide PDF)</th>
+                <th>Phương pháp phân tích tương ứng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cấu tử đa lượng (Macro)</td>
+                <td>$0,1\% \le \%X \le 100\%$</td>
+                <td>Phương pháp phân tích hóa học</td>
+              </tr>
+              <tr>
+                <td>Cấu tử vi lượng (Micro)</td>
+                <td>$0,01\% \le \%X \le 0,1\%$</td>
+                <td>Phương pháp phân tích công cụ</td>
+              </tr>
+              <tr>
+                <td>Cấu tử vết (Trace)</td>
+                <td>$10^{-7}\% \le \%X \le 0,01\%$</td>
+                <td>Phương pháp phân tích công cụ độ nhạy cao</td>
+              </tr>
+              <tr>
+                <td>Cấu tử siêu vết (Ultra-trace)</td>
+                <td>$\%X < 10^{-7}\%$</td>
+                <td>Phương pháp phân tích công cụ độ nhạy rất cao</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Cấp bậc hóa chất (Slide PDF)</th>
+                <th>Độ tinh khiết quy định</th>
+                <th>Ứng dụng phân tích</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kỹ thuật (Tech grade)</td>
+                <td>$X \le 99\%$</td>
+                <td><strong>Chú ý: không dùng trong hóa phân tích!</strong></td>
+              </tr>
+              <tr>
+                <td>Tinh khiết phân tích (PA/AR)</td>
+                <td>$99,90\% \le X \le 99,99\%$</td>
+                <td>Hóa chất chuẩn dùng trong phân tích định lượng</td>
+              </tr>
+              <tr>
+                <td>Tinh khiết hóa học (CP)</td>
+                <td>$99,990\% \le X \le 99,999\%$</td>
+                <td>Dùng trong phân tích yêu cầu độ tinh khiết cao</td>
+              </tr>
+              <tr>
+                <td>Tinh khiết quang học (đặc biệt)</td>
+                <td>$99,9990\% \le X \le 99,9999\%$</td>
+                <td>Dùng trong quang phổ, sắc ký HPLC, AAS, ICP-MS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- /#tab-process -->
+      </div> <!-- /.modal-body -->
+    </div> <!-- /.modal-tabbed-view -->
+
+      <!-- DẠNG 2: BẢNG TOÀN MÀN HÌNH KHÔNG CẦN CUỘN (8 Ô VUÔNG TỪNG MỤC CHUẨN 4 PDF) -->
+      <div class="fullscreen-board-view" id="fullscreenBoardView">
+        <div class="fullscreen-board-toolbar">
+          <div class="board-toolbar-title">
+            <i class='bx bx-grid-alt'></i> <strong>BẢNG TRA CỨU TOÀN MÀN HÌNH (KHÔNG CẦN CUỘN)</strong>
+            <span>• Toàn bộ công thức trọng tâm từ 4 tập bài giảng PDF bài học</span>
+          </div>
+          <div class="board-toolbar-actions">
+            <span class="zoom-lbl"><i class='bx bx-zoom-in'></i> Phóng to:</span>
+            <button type="button" class="btn-board-zoom" id="btnZoomOut" title="Thu nhỏ chữ">-</button>
+            <span class="board-zoom-val" id="boardZoomVal">100%</span>
+            <button type="button" class="btn-board-zoom" id="btnZoomIn" title="Phóng to chữ">+</button>
+            <button type="button" class="btn-board-zoom" id="btnZoomReset" title="Đặt lại 100%"><i class='bx bx-reset'></i></button>
+          </div>
+        </div>
+
+        <div class="fullscreen-board-grid" id="fullscreenBoardGrid">
+          <!-- Ô 1: NỒNG ĐỘ DUNG DỊCH (CHƯƠNG 2) -->
+          <div class="board-tile tile-c-blue">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-vial'></i> MỤC 1</span>
+              <h4>Nồng độ dung dịch (Chương 2)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Nồng độ Mol $C_M$</div>
+                <div class="t-formula">$$C_M = \frac{n}{V} = \frac{m}{M \cdot V} \implies m = C_M \cdot M \cdot V$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Nồng độ đương lượng $C_N$</div>
+                <div class="t-formula">$$C_N = \frac{m}{Đ \cdot V} \implies m = C_N \cdot Đ \cdot V \quad \left(Đ = \frac{M}{z}\right)$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Nồng độ phần trăm $C\%$</div>
+                <div class="t-formula">$$\%(w/w) = \frac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100 \quad ; \quad \%(w/v) = \frac{m_{\text{ct}}}{V} \cdot 100$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Phần mol $N_A$ &amp; Gam/L</div>
+                <div class="t-formula">$$N_A = \frac{n_A}{n_A + n_B} \ (N_A+N_B=1) \quad ; \quad P\text{ (g/L)} = C_M \cdot M$$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 2: CHUYỂN ĐỔI NỒNG ĐỘ & PPM (CHƯƠNG 2) -->
+          <div class="board-tile tile-c-cyan">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-transfer'></i> MỤC 2</span>
+              <h4>Chuyển đổi nồng độ &amp; ppm (Chương 2)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Liên hệ $C_N$ và $C_M$</div>
+                <div class="t-formula">$$C_N = z \cdot C_M \quad ; \quad Đ = \frac{M}{z}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Từ $C\%$ sang $C_M, C_N$</div>
+                <div class="t-formula">$$C_M = \frac{10 \cdot C\% \cdot d}{M} \quad ; \quad C_N = \frac{10 \cdot C\% \cdot d}{Đ}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Độ chuẩn $T$ &amp; $T_{A/B}$</div>
+                <div class="t-formula">$$C_N = \frac{1000 \cdot T}{Đ} \quad ; \quad T_{A/B} = \frac{C_{NA} \cdot Đ_B}{1000}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">PPM &amp; Lực ion $I$</div>
+                <div class="t-formula">$$\text{ppm} = C_M \cdot M \cdot 10^3 \quad ; \quad I = \frac{1}{2}\sum C_i z_i^2$$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 3: QUY TẮC ĐƯƠNG LƯỢNG SỐ z (CHƯƠNG 2) -->
+          <div class="board-tile tile-c-amber">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-check-circle'></i> MỤC 3</span>
+              <h4>Xác định đương lượng số $z$ (Chương 2)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Acid (Trung hòa)</div>
+                <div class="t-desc">$z = $ số $\ce{H+}$ cho ($\ce{HCl}: z=1; \ce{H2SO4}: z=2; \ce{H3PO4}: z=1,2,3$)</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Base (Trung hòa)</div>
+                <div class="t-desc">$z = $ số $\ce{H+}$ nhận ($\ce{NaOH}: z=1; \ce{Ba(OH)2}: z=2$)</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Muối (Trao đổi ion)</div>
+                <div class="t-desc">$z = $ tổng điện tích cation/anion ($\ce{Al2(SO4)3}: z=2 \times 3=6$)</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Oxy hóa - khử</div>
+                <div class="t-desc">$z = $ số $e^-$ nhường/nhận ($\ce{MnO4- + 5e- -> Mn^2+}: z=5$)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 4: PHÂN TÍCH KHỐI LƯỢNG (CHƯƠNG 3) -->
+          <div class="board-tile tile-c-emerald">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-scale'></i> MỤC 4</span>
+              <h4>Phân tích khối lượng (Chương 3)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Hệ số chuyển hóa $K$</div>
+                <div class="t-formula">$$K = \frac{a \cdot M_{\text{cần xđ}}}{b \cdot M_{\text{dạng cân}}} \quad \left(\ce{Fe} \to \ce{Fe2O3}: K = \frac{2 \cdot 55,85}{159,7}\right)$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Khối lượng chất $m$</div>
+                <div class="t-formula">$$m = q \cdot K \quad (q\text{: khối lượng dạng cân})$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Hàm lượng $\%X$ trong mẫu</div>
+                <div class="t-formula">$$X(\%) = \frac{K \cdot q \cdot 100}{p} \quad (p\text{: khối lượng mẫu ban đầu})$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Độ ẩm dược liệu</div>
+                <div class="t-formula">$$\text{Độ ẩm } (\%) = \frac{(p - p') \cdot 100}{p} \quad (p'\text{: KL sau sấy khô})$$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 5: THỂ TÍCH & PHA LOÃNG (CHƯƠNG 3) -->
+          <div class="board-tile tile-c-purple">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-test-tube'></i> MỤC 5</span>
+              <h4>Thể tích &amp; Pha loãng (Chương 3)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Định luật đương lượng</div>
+                <div class="t-formula">$$C_{NX} \cdot V_X = C_{NR} \cdot V_R \implies C_{NX} = \frac{C_{NR} V_R}{V_X}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Pha loãng dung dịch</div>
+                <div class="t-formula">$$C_1 V_1 = C_2 V_2 \implies V_1 = \frac{C_2 V_2}{C_1}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Chuẩn độ ngược Xôđa</div>
+                <div class="t-formula">$$V_{\ce{HCl p.ứ}} = V_{\ce{HCl bđ}} - \frac{C_{N,\ce{NaOH}} V_{\ce{NaOH}}}{C_{N,\ce{HCl}}} \quad ; \quad Đ_{\ce{Na2CO3}} = 53$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Chất gốc pha chuẩn</div>
+                <div class="t-desc">Độ tinh khiết $\ge 99,9\%$: $\ce{K2Cr2O7}, \ce{H2C2O4.2H2O}, \ce{NaCl}, \ce{Au}, \ce{Pt}$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 6: CÔNG THỨC TÍNH pH (CHƯƠNG 4) -->
+          <div class="board-tile tile-c-rose">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-calculator'></i> MỤC 6</span>
+              <h4>Công thức tính pH (Chương 4)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Acid mạnh &amp; Base mạnh</div>
+                <div class="t-formula">$$pH = -\log C_a \quad ; \quad pH = 14 + \log C_b$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Đơn acid yếu &amp; Base yếu</div>
+                <div class="t-formula">$$pH = \frac{1}{2}(pK_a - \log C_a) \ ; \ pH = 14 - \frac{1}{2}(pK_b - \log C_b)$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Dung dịch đệm</div>
+                <div class="t-formula">$$pH = pK_a + \log\frac{C_b}{C_a} \quad ; \quad pOH = pK_b + \log\frac{C_a}{C_b}$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Muối lưỡng tính ($\ce{HA-}$ / $\ce{H2PO4-}$)</div>
+                <div class="t-formula">$$[\ce{H+}] = \sqrt{K_1 K_2} \implies pH = \frac{1}{2}(pK_1 + pK_2)$$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 7: CHỈ THỊ & ĐIỂM TƯƠNG ĐƯƠNG (CHƯƠNG 4) -->
+          <div class="board-tile tile-c-orange">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-palette'></i> MỤC 7</span>
+              <h4>Chỉ thị &amp; Điểm tương đương (Chương 4)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Khoảng đổi màu chỉ thị</div>
+                <div class="t-formula">$$pH = pK_a \pm 1$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Chỉ số chuẩn độ $pT$</div>
+                <div class="t-desc">Phenolphtalein ($8 - 10, pT = 9$); Metyl da cam ($3,1 - 4,4, pT = 4$)</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Acid yếu + Base mạnh</div>
+                <div class="t-desc">ĐTĐ có $pH > 7$ $\implies$ <strong>Bắt buộc dùng Phenolphtalein</strong></div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Base yếu + Acid mạnh</div>
+                <div class="t-desc">ĐTĐ có $pH < 7$ $\implies$ <strong>Bắt buộc dùng Metyl da cam</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 8: CHUẨN ĐỘ HỖN HỢP & ĐA ACID (CHƯƠNG 4) -->
+          <div class="board-tile tile-c-teal">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-layer'></i> MỤC 8</span>
+              <h4>Chuẩn độ hỗn hợp &amp; Đa acid (Chương 4)</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row">
+                <div class="t-name">Đa acid $\ce{H3PO4}$ + $\ce{NaOH}$</div>
+                <div class="t-formula">$$pH_{\text{I}} = \frac{pK_1+pK_2}{2} \approx 4,66 \ ; \ pH_{\text{II}} = \frac{pK_2+pK_3}{2} \approx 9,78$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Hỗn hợp $\ce{HCl} + \ce{H3PO4}$</div>
+                <div class="t-formula">$$V_1 (\text{Metyl da cam}) = V_{\ce{HCl}} + V_2 \implies V_{\ce{HCl}} = V_1 - V_2$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Hỗn hợp $\ce{NaOH} + \ce{Na2CO3}$</div>
+                <div class="t-formula">$$V_1 (\text{Phenol}) = V_{\ce{NaOH}} + V_2 \implies V_{\ce{NaOH}} = V_1 - V_2 \ ; \ V_{\ce{Na2CO3}} = 2V_2$$</div>
+              </div>
+              <div class="tile-row">
+                <div class="t-name">Hỗn hợp $\ce{Na2CO3} + \ce{NaHCO3}$</div>
+                <div class="t-formula">$$V_1 (\text{Phenol}) = V(\ce{Na2CO3}) \ ; \ V_{\ce{NaHCO3}} = V_2 - V_1$$</div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /.fullscreen-board-grid -->
+      </div> <!-- /.fullscreen-board-view -->
+    </div> <!-- /.modal-box -->
+  </div> <!-- /.modal-overlay -->
+
+  <script src="app.js"></script>
+</body>
+</html>
