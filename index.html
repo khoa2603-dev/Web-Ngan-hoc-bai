@@ -1245,238 +1245,480 @@
           </table>
         </div> <!-- /#tab-biochem -->
 
-        <!-- TAB MINDMAP HÓA SINH ĐẠI CƯƠNG -->
+        <!-- TAB MINDMAP HÓA SINH ĐẠI CƯƠNG (KHÔNG GIAN PHẲNG VÔ HẠN MIRO) -->
         <div class="cheat-tab-content" id="tab-mindmap" style="display:none;">
-          <div class="cheat-card-callout" style="border-left:4px solid #8b5cf6; background:rgba(139,92,246,0.07);">
-            <strong style="color:#7c3aed;"><i class='bx bx-sitemap'></i> MINDMAP HỆ THỐNG KIẾN THỨC — HÓA SINH ĐẠI CƯƠNG (CHƯƠNG 3: PROTEIN)</strong>
-            <p style="font-size:13px; margin-top:4px; color:var(--text-secondary);">Sơ đồ tư duy tóm tắt toàn bộ kiến thức lý thuyết cần nắm từ file PDF bài giảng. Click vào các nút để xem chi tiết.</p>
-          </div>
-
-          <!-- MINDMAP SVG-BASED INTERACTIVE -->
-          <div class="mindmap-container" id="mindmapContainer">
-            <!-- Central Node -->
-            <div class="mm-center">
-              <div class="mm-center-node">
-                <i class='bx bx-dna'></i>
-                <span>PROTEIN<br/>&amp; ACID AMIN</span>
+          <!-- MIRO TOPBAR -->
+          <div class="mm-miro-topbar" id="mmMiroTopbar">
+            <div class="mm-topbar-brand">
+              <div class="mm-brand-icon"><i class='bx bx-sitemap'></i></div>
+              <div class="mm-brand-text">
+                <strong>MINDMAP HÓA SINH • MIRO CANVAS</strong>
+                <span>Chương 3: Protein &amp; 20 Acid Amin • Không gian phẳng 2D</span>
               </div>
             </div>
 
-            <!-- Branch 1: Cấu tạo Amino acid -->
-            <details class="mm-branch mm-branch-1" open>
-              <summary class="mm-branch-header" style="--branch-color:#10b981;">
-                <i class='bx bx-atom'></i> 1. Cấu tạo &amp; 20 Amino Acid
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Cấu trúc chung</span>
-                  <span>L-α amino acid · nhóm <strong>–COOH</strong> và <strong>–NH₂</strong> gắn Cα · Trừ Proline (imino acid, chỉ có –NH–)</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">5 Nhóm gốc R</span>
-                  <ul class="mm-list">
-                    <li><strong>Nhóm I (7):</strong> Gly, Ala, Pro, Val, Leu, Ile, Met — Không phân cực, kỵ nước</li>
-                    <li><strong>Nhóm II (3):</strong> Phe, Tyr, Trp — Chứa nhân thơm</li>
-                    <li><strong>Nhóm III (5):</strong> Ser, Thr, Cys, Asn, Gln — Phân cực, không tích điện</li>
-                    <li><strong>Nhóm IV (3):</strong> Lys, His, Arg — Tích điện <span style="color:#10b981;">dương (+)</span></li>
-                    <li><strong>Nhóm V (2):</strong> Asp, Glu — Tích điện <span style="color:#ef4444;">âm (–)</span></li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Aa thiết yếu (8-10)</span>
-                  <span><strong>Met, Val, Leu, Ile, Thr, Phe, Trp, Lys</strong> (+Arg, His) — Cơ thể không tự tổng hợp được</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Độ tan đặc biệt</span>
-                  <span>Pro &amp; Hydroxyproline: tan được trong alcohol/ether · Tyr: khó tan trong acid/kiềm loãng · Glycine: không có C bất đối → không quang hoạt</span>
-                </div>
+            <!-- SEARCH ENGINE WITH MATCH NAVIGATION -->
+            <div class="mm-search-box">
+              <i class='bx bx-search search-icon'></i>
+              <input type="text" class="mm-search-input" id="mmSearchInput" placeholder="Tìm kiếm nhanh trong sơ đồ (vd: pHi, insulin, biure, ninhydrin, edman...)" autocomplete="off" />
+              <button type="button" class="mm-clear-btn" id="mmClearBtn" title="Xóa tìm kiếm"><i class='bx bx-x'></i></button>
+              <span class="mm-search-count" id="mmMatchBadge">0 kết quả</span>
+              <div class="mm-search-nav" id="mmSearchNav" style="display:none;">
+                <button type="button" class="mm-nav-btn" id="mmPrevMatchBtn" title="Kết quả trước"><i class='bx bx-chevron-left'></i></button>
+                <button type="button" class="mm-nav-btn" id="mmNextMatchBtn" title="Kết quả tiếp theo"><i class='bx bx-chevron-right'></i></button>
               </div>
-            </details>
+            </div>
 
-            <!-- Branch 2: Tính chất lý hóa -->
-            <details class="mm-branch mm-branch-2">
-              <summary class="mm-branch-header" style="--branch-color:#3b82f6;">
-                <i class='bx bx-bulb'></i> 2. Tính Chất Lý Hóa Amino Acid
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Quang học</span>
-                  <span>Số đồng phân lập thể = <strong>2ⁿ</strong> (n = số C bất đối) · Isoleucine &amp; Threonine: 2 carbon bất đối → 4 đồng phân · Chiều quay phụ thuộc pH môi trường</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Hấp thụ UV</span>
-                  <ul class="mm-list">
-                    <li><strong>280 nm:</strong> Trp (mạnh nhất, gấp 4× Tyr) &gt; Tyr ≫ Phe</li>
-                    <li><strong>190 nm (180–220):</strong> Liên kết peptide</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Tính lưỡng tính &amp; pHi</span>
-                  <span>$$pHi = \frac{pK_1 + pK_2}{2}$$ · Glycine: $pHi = 5{,}97$ · pH &lt; pHi → cation (+) → về cực âm (catot) · pH &gt; pHi → anion (–) → về cực dương (anot)</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Phản ứng hóa học</span>
-                  <ul class="mm-list">
-                    <li><strong>Ninhydrin:</strong> Tím xanh (tất cả α-aa) · Vàng (Proline)</li>
-                    <li><strong>NaBH₄:</strong> Khử –COOH → rượu amino (–CH₂OH)</li>
-                    <li><strong>HNO₂ (Van Slyke):</strong> –NH₂ + HNO₂ → N₂ ↑ (định lượng N)</li>
-                    <li><strong>Aldehyde (Base Schiff):</strong> Định lượng aa bằng chuẩn độ formol</li>
-                    <li><strong>Sanger (DNFB):</strong> Xác định đầu N-tận cùng</li>
-                    <li><strong>Edman (PITC):</strong> Giải trình tự từ đầu N (không phá chuỗi)</li>
-                    <li><strong>Carboxypeptidase:</strong> Xác định đầu C-tận cùng</li>
-                  </ul>
-                </div>
+            <!-- ACTION CONTROLS -->
+            <div class="mm-topbar-actions">
+              <button type="button" class="mm-btn" id="mmExpandAllBtn" title="Mở bung toàn bộ các nhánh rễ"><i class='bx bx-expand-vertical'></i> <span>Mở tất cả</span></button>
+              <button type="button" class="mm-btn" id="mmCollapseAllBtn" title="Thu gọn các nhánh"><i class='bx bx-collapse-vertical'></i> <span>Thu gọn</span></button>
+              <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenCanvasBtn" title="Mở rộng không gian Miro toàn màn hình"><i class='bx bx-fullscreen'></i> <span>Toàn màn hình</span></button>
+            </div>
+          </div>
+
+          <!-- MIRO INFINITE CANVAS VIEWPORT -->
+          <div class="mm-canvas-viewport" id="mmCanvasViewport">
+            <!-- CANVAS WORLD (TRANSLATED & SCALED) -->
+            <div class="mm-canvas-world" id="mmCanvasWorld">
+              <!-- SVG CONNECTORS LAYER (ROOT TREE BEZIER CURVES) -->
+              <svg class="mm-connections-svg" id="mmSvgConnectors"></svg>
+
+              <!-- TREE STRUCTURE CONTAINER -->
+              <div class="mm-tree-layout" id="mmTreeLayout">
+
+                <!-- ================= LEFT TREE SIDE ================= -->
+                <div class="mm-tree-side mm-tree-left" id="mmTreeLeft">
+
+                  <!-- BRANCH 1: CẤU TẠO & 20 AMINO ACID -->
+                  <div class="mm-branch-block" id="branch-1" data-branch="1" data-side="left" style="--branch-color: #10b981;">
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="1-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-emerald">Cấu trúc chung L-α</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          L-α amino acid: nhóm <strong>–COOH</strong> và <strong>–NH₂</strong> cùng gắn carbon α.<br/>
+                          <em>* Ngoại lệ:</em> <strong>Proline</strong> là <em>imino acid</em> (vòng pyrrolidine, nhóm –NH–).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="1-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-emerald">5 Nhóm gốc R (20 AA)</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          <ul class="mm-mini-list">
+                            <li><strong>Nhóm I (7 aa):</strong> Gly, Ala, Pro, Val, Leu, Ile, Met — <em>Kỵ nước, không phân cực</em></li>
+                            <li><strong>Nhóm II (3 aa):</strong> Phe, Tyr, Trp — <em>Chứa nhân thơm, hấp thụ UV 280 nm</em></li>
+                            <li><strong>Nhóm III (5 aa):</strong> Ser, Thr, Cys, Asn, Gln — <em>Phân cực, không tích điện</em></li>
+                            <li><strong>Nhóm IV (3 aa):</strong> Lys, His, Arg — <em>Tích điện dương (+), tính kiềm</em></li>
+                            <li><strong>Nhóm V (2 aa):</strong> Asp, Glu — <em>Tích điện âm (–), tính acid</em></li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="1-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-emerald">Acid amin thiết yếu</span>
+                          <span class="mm-leaf-badge red">8–10 AA</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          <strong>Met, Val, Leu, Ile, Thr, Phe, Trp, Lys</strong> (+ Arg, His ở trẻ em).<br/>
+                          Cơ thể không tự tổng hợp được, bắt buộc phải cung cấp qua thức ăn hàng ngày.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="1-4">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-emerald">Đặc điểm lý tính riêng</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>Pro &amp; Hydroxyproline:</strong> tan trong cồn/ether.<br/>
+                          • <strong>Tyrosine:</strong> khó tan trong acid/kiềm loãng.<br/>
+                          • <strong>Glycine:</strong> không có carbon bất đối $\to$ không có tính quang hoạt.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="1">
+                      <div class="mm-branch-icon"><i class='bx bx-atom'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 1</span>
+                        <h3 class="mm-branch-title">Cấu Tạo &amp; 20 Amino Acid</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">4</span>
+                        <i class='bx bx-chevron-left toggle-icon'></i>
+                      </button>
+                    </div>
+                  </div> <!-- /#branch-1 -->
+
+                  <!-- BRANCH 2: TÍNH CHẤT LÝ HÓA & pHi -->
+                  <div class="mm-branch-block" id="branch-2" data-branch="2" data-side="left" style="--branch-color: #3b82f6;">
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="2-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-blue">Quang học &amp; Đồng phân</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Số đồng phân lập thể $= 2^n$ ($n$ = số C bất đối).<br/>
+                          • <strong>Ile &amp; Thr:</strong> 2 carbon bất đối $\to$ có 4 đồng phân quang học.<br/>
+                          • Chiều quay góc quay cực $[\alpha]$ phụ thuộc $pH$ môi trường.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="2-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-blue">Hấp thụ quang phổ UV</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>$\lambda = 280\text{ nm}$ (nhân thơm):</strong> $\text{Trp}$ (mạnh nhất, gấp 4× $\text{Tyr}$) $&gt; \text{Tyr} \gg \text{Phe}$.<br/>
+                          • <strong>$\lambda = 190\text{ nm}$ (180–220 nm):</strong> Liên kết peptide hấp thụ.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="2-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-blue">Lưỡng tính &amp; Điểm pHi</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          $$pHi = \frac{pK_1 + pK_2}{2} \quad (\text{Glycine } pHi = 5{,}97)$$
+                          • $pH &lt; pHi \to$ Tồn tại dạng <strong>Cation (+)</strong> $\to$ Di chuyển về cực âm (Catot).<br/>
+                          • $pH &gt; pHi \to$ Tồn tại dạng <strong>Anion (–)</strong> $\to$ Di chuyển về cực dương (Anot).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="2-4">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-blue">Phản ứng hóa học đặc trưng</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          <ul class="mm-mini-list">
+                            <li><strong>Ninhydrin:</strong> Tím xanh (mọi α-aa) · Vàng (Proline)</li>
+                            <li><strong>NaBH₄:</strong> Khử –COOH $\to$ rượu amino (–CH₂OH)</li>
+                            <li><strong>Sanger (DNFB):</strong> Xác định đầu N-tận cùng</li>
+                            <li><strong>Edman (PITC):</strong> Giải mã trình tự đầu N (không phá chuỗi)</li>
+                            <li><strong>Carboxypeptidase:</strong> Thủy phân cắt đầu C-tận cùng</li>
+                            <li><strong>Van Slyke (HNO₂):</strong> –NH₂ + HNO₂ $\to \text{N}_2 \uparrow$</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="2">
+                      <div class="mm-branch-icon"><i class='bx bx-bulb'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 2</span>
+                        <h3 class="mm-branch-title">Tính Chất Lý Hóa &amp; pHi</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">4</span>
+                        <i class='bx bx-chevron-left toggle-icon'></i>
+                      </button>
+                    </div>
+                  </div> <!-- /#branch-2 -->
+
+                  <!-- BRANCH 6: PHÂN LOẠI & CHỨC NĂNG -->
+                  <div class="mm-branch-block" id="branch-6" data-branch="6" data-side="left" style="--branch-color: #f97316;">
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="6-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-orange">Phân loại theo hình dạng</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>Protein sợi:</strong> Không tan trong nước · Collagen (gân, xương), Elastin, α-keratin (tóc, móng), Fibroin (tơ tằm).<br/>
+                          • <strong>Protein cầu:</strong> Tan trong nước/muối loãng · Albumin huyết thanh, Hemoglobin, enzyme.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="6-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-orange">Phân loại theo thành phần</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>Protid thuần (đơn giản):</strong> Chỉ chứa amino acid (Albumin, Globulin, Prolamin, Glutelin, Histon).<br/>
+                          • <strong>Protid tạp (phức tạp):</strong> Chứa nhóm ngoại prosthetic (Lipoprotein, Nucleoprotein, Glycoprotein, Casein, Chromoprotein).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="6-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-orange">9 Chức năng sinh học cốt lõi</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          🏗️ Tạo hình · ⚗️ Xúc tác (3.500+ enzyme) · 🛡️ Miễn dịch/Bảo vệ (kháng thể) · 🚀 Vận chuyển (Hemoglobin, Lipoprotein) · 💪 Vận động (Myosin, Actin) · 📦 Dự trữ (Ferritin, Ovalbumin) · 📡 Dẫn truyền TK (Rhodopsin) · 🎛️ Điều hòa (hormon) · ⚡ Cung cấp năng lượng.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="6-4">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-orange">Định lượng Kjeldahl</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          $$\text{Lượng Protein (g)} = \text{Lượng Nitơ (g)} \times 6{,}25$$
+                          <em>Hệ số chuyển đổi $6{,}25 = 100 / 16$ (vì Nitơ chiếm trung bình 16% trọng lượng protein).</em>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="6">
+                      <div class="mm-branch-icon"><i class='bx bx-shield-quarter'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 6</span>
+                        <h3 class="mm-branch-title">Phân Loại &amp; Chức Năng</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">4</span>
+                        <i class='bx bx-chevron-left toggle-icon'></i>
+                      </button>
+                    </div>
+                  </div> <!-- /#branch-6 -->
+
+                </div> <!-- /.mm-tree-left -->
+
+                <!-- ================= CENTER ROOT NODE ================= -->
+                <div class="mm-tree-center" id="mmTreeCenter">
+                  <div class="mm-root-node" id="mmRootNode">
+                    <div class="mm-root-glow"></div>
+                    <div class="mm-root-badge"><i class='bx bx-dna'></i> CHƯƠNG 3 • HÓA SINH ĐẠI CƯƠNG</div>
+                    <h2 class="mm-root-title">PROTEIN &amp; 20 ACID AMIN</h2>
+                    <p class="mm-root-desc">Không gian phẳng vô hạn Miro • Hệ thống rễ cây liên kết toàn diện</p>
+                    <div class="mm-root-pills">
+                      <span class="pill-item"><i class='bx bx-git-branch'></i> 6 Nhánh lớn</span>
+                      <span class="pill-item"><i class='bx bx-layer'></i> 25 Nhánh con</span>
+                      <span class="pill-item"><i class='bx bx-check-shield'></i> Chuẩn PDF</span>
+                    </div>
+                  </div>
+                </div> <!-- /.mm-tree-center -->
+
+                <!-- ================= RIGHT TREE SIDE ================= -->
+                <div class="mm-tree-side mm-tree-right" id="mmTreeRight">
+
+                  <!-- BRANCH 3: PEPTIDE & HORMON SINH HỌC -->
+                  <div class="mm-branch-block" id="branch-3" data-branch="3" data-side="right" style="--branch-color: #f59e0b;">
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="3">
+                      <div class="mm-branch-icon"><i class='bx bx-link-alt'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 3</span>
+                        <h3 class="mm-branch-title">Peptide &amp; Hormon Sinh Học</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">5</span>
+                        <i class='bx bx-chevron-right toggle-icon'></i>
+                      </button>
+                    </div>
+
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="3-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-amber">Liên kết Peptide</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          –COOH + –NH₂ $\to$ <strong>–CO–NH–</strong> + H₂O.<br/>
+                          • Có tính đồng phẳng (không quay tự do quanh trục C–N).<br/>
+                          • <strong>Phản ứng Biure:</strong> $\text{CuSO}_4$ + kiềm $\to$ màu <strong>tím hồng</strong> ($\lambda = 540\text{ nm}$). Điều kiện: từ <em>tripeptide</em> trở lên (tối thiểu 2 liên kết peptide).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="3-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-amber">Định lượng Folin-Lowry</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Biure + thuốc thử Folin-Ciocalteu $\to$ màu <strong>xanh đậm</strong> ($\lambda = 750\text{ nm}$).<br/>
+                          Độ nhạy gấp 10–100 lần Biure thường; phản ứng thêm với gốc Tyrosine và Tryptophan.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="3-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-amber">Glutathione (GSH)</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Tripeptide: <strong>γ-Glu–Cys–Gly</strong> (nhóm hoạt động –SH của Cys).<br/>
+                          $$2\text{GSH} \rightleftharpoons \text{GSSG} + 2[\text{H}]$$
+                          Hệ oxy hóa khử tế bào: giải độc gan, chống gốc tự do, bảo vệ màng hồng cầu.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="3-4">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-amber">HGH (Hormon sinh trưởng)</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          191 aa, MW = 20.000, 2 cầu disulfua –S–S– (53–165 và 182–189).<br/>
+                          • Thiếu trước dậy thì $\to$ Người lùn cân đối.<br/>
+                          • Thừa sau dậy thì $\to$ Bệnh to đầu chi (Acromegaly).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="3-5">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-amber">Hormon Insulin</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          51 aa: Chuỗi A (21 aa) + Chuỗi B (30 aa). MW ≈ 5.700.<br/>
+                          • 2 cầu –S–S– liên chuỗi + 1 cầu nội chuỗi A (aa 6–11).<br/>
+                          • Sanger giải mã cấu trúc (Nobel 1958).<br/>
+                          • Tác dụng: <strong>hạ đường huyết</strong>, tăng tổng hợp glycogen/lipid/protein.
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- /#branch-3 -->
+
+                  <!-- BRANCH 4: BỐN BẬC CẤU TRÚC PROTEIN -->
+                  <div class="mm-branch-block" id="branch-4" data-branch="4" data-side="right" style="--branch-color: #ec4899;">
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="4">
+                      <div class="mm-branch-icon"><i class='bx bx-layer'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 4</span>
+                        <h3 class="mm-branch-title">Bốn Bậc Cấu Trúc Không Gian</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">4</span>
+                        <i class='bx bx-chevron-right toggle-icon'></i>
+                      </button>
+                    </div>
+
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="4-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-pink">Cấu trúc bậc I</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Trình tự sắp xếp các acid amin trong chuỗi polypeptide.<br/>
+                          • Liên kết: <strong>Peptide (cộng hóa trị bền vững)</strong>.<br/>
+                          • Là bản dịch mã di truyền; quyết định toàn bộ cấu trúc bậc II, III, IV.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="4-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-pink">Cấu trúc bậc II</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Dạng cuộn xoắn không gian cục bộ: <strong>Xoắn α</strong> và <strong>Phiến gấp β</strong>.<br/>
+                          • Liên kết: <strong>Hydrogen</strong> giữa các nhóm –CO– và –NH–.<br/>
+                          • Keratin tóc (dạng α thường $\to$ β khi kéo căng); Fibroin tơ tằm (phiến β).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="4-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-pink">Cấu trúc bậc III</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Sự xoắn khúc 3 chiều tạo khối hình cầu đặc trưng của protein cầu.<br/>
+                          • Liên kết: <strong>Cầu disulfua (–S–S–)</strong> giữa Cys xa nhau, tương tác kỵ nước Van der Waals, liên kết hydro, liên kết ion tĩnh điện.<br/>
+                          • Ví dụ tiêu biểu: <strong>Myoglobin</strong> (75% xoắn α).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="4-4">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-pink">Cấu trúc bậc IV</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          Sự kết hợp không gian của nhiều tiểu đơn vị (subunit) bậc III.<br/>
+                          • Liên kết: Hydro, tương tác Van der Waals giữa các bề mặt tiểu đơn vị.<br/>
+                          • <strong>Hemoglobin (Hb):</strong> 4 chuỗi gồm $2\alpha$ (141 aa) + $2\beta$ (146 aa).
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- /#branch-4 -->
+
+                  <!-- BRANCH 5: ĐỘ TAN & PHẢN ỨNG MÀU -->
+                  <div class="mm-branch-block" id="branch-5" data-branch="5" data-side="right" style="--branch-color: #06b6d4;">
+                    <!-- Branch Main Node -->
+                    <div class="mm-branch-node" data-branch="5">
+                      <div class="mm-branch-icon"><i class='bx bx-test-tube'></i></div>
+                      <div class="mm-branch-info">
+                        <span class="mm-branch-num">NHÁNH 5</span>
+                        <h3 class="mm-branch-title">Độ Tan &amp; Phản Ứng Màu</h3>
+                      </div>
+                      <button type="button" class="mm-branch-toggle-btn" title="Thu gọn / Mở nhánh">
+                        <span class="toggle-text">3</span>
+                        <i class='bx bx-chevron-right toggle-icon'></i>
+                      </button>
+                    </div>
+
+                    <div class="mm-branch-leaves-wrapper">
+                      <div class="mm-leaf-card" data-leaf-id="5-1">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-cyan">Độ tan các loại Protein</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>Albumin:</strong> Tan trong nước · Kết tủa bão hòa $(\text{NH}_4)_2\text{SO}_4$ 70–100%.<br/>
+                          • <strong>Globulin:</strong> Tan trong muối loãng (NaCl) · Kết tủa $(\text{NH}_4)_2\text{SO}_4$ 50%.<br/>
+                          • <strong>Prolamin:</strong> Tan trong ethanol 70–80%.<br/>
+                          • <strong>Glutelin:</strong> Chỉ tan trong dung dịch kiềm hoặc acid loãng.<br/>
+                          • <strong>Histon:</strong> Tan trong nước, có tính kiềm cao (giàu Lys, Arg).
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="5-2">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-cyan">Biến tính &amp; Kết tủa</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          • <strong>Thuận nghịch:</strong> Diêm tích bằng muối trung tính đậm đặc, cồn lạnh (phá lớp vỏ hydrat + trung hòa điện tích) $\to$ có thể hòa tan trở lại.<br/>
+                          • <strong>Bất thuận nghịch:</strong> Đun sôi nhiệt độ cao, acid/kiềm mạnh, cation kim loại nặng ($\text{Pb}^{2+}, \text{Hg}^{2+}, \text{Ag}^+$), tia UV.
+                        </div>
+                      </div>
+
+                      <div class="mm-leaf-card" data-leaf-id="5-3">
+                        <div class="mm-leaf-header">
+                          <span class="mm-leaf-tag tag-cyan">5 Phản ứng màu định tính</span>
+                        </div>
+                        <div class="mm-leaf-body">
+                          <ul class="mm-mini-list">
+                            <li><strong>Xanthoproteic:</strong> Tyr, Trp, Phe + $\text{HNO}_3$ đặc $\to$ Màu vàng (+ kiềm $\to$ Cam)</li>
+                            <li><strong>Millon:</strong> Tyrosine + $\text{Hg(NO}_3)_2/\text{HNO}_3 \to$ Màu nâu đất</li>
+                            <li><strong>Pauli:</strong> Tyr, His + Diazo $\to$ Màu đỏ anh đào</li>
+                            <li><strong>Sakaguchi:</strong> Arginine + $\alpha$-naphtol/hypobromite $\to$ Đỏ anh đào</li>
+                            <li><strong>Adamkiewicz:</strong> Tryptophan + acid glyoxylic/$\text{H}_2\text{SO}_4 \to$ Vòng tím đỏ</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- /#branch-5 -->
+
+                </div> <!-- /.mm-tree-right -->
+
+              </div> <!-- /.mm-tree-layout -->
+            </div> <!-- /.mm-canvas-world -->
+
+            <!-- FLOATING MIRO BOTTOM DOCK -->
+            <div class="mm-miro-dock" id="mmMiroDock">
+              <!-- MINIMAP RADAR PREVIEW -->
+              <div class="mm-minimap-box" id="mmMinimapBox" title="Bản đồ thu nhỏ Miro">
+                <canvas class="mm-minimap-canvas" id="mmMinimapCanvas" width="130" height="75"></canvas>
+                <div class="mm-minimap-viewport" id="mmMinimapViewport"></div>
               </div>
-            </details>
 
-            <!-- Branch 3: Peptide -->
-            <details class="mm-branch mm-branch-3">
-              <summary class="mm-branch-header" style="--branch-color:#f59e0b;">
-                <i class='bx bx-link-alt'></i> 3. Peptide &amp; Hormon Sinh Học
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Liên kết peptide</span>
-                  <span>–COOH + –NH₂ → <strong>–CO–NH–</strong> + H₂O · Có tính đồng phẳng (không quay tự do) · Phản ứng Biure: CuSO₄ + kiềm → <strong>tím đỏ</strong> (λ = 540 nm) · Từ <em>tripeptide</em> trở lên</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Định lượng Lowry</span>
-                  <span>Biure + Folin-Ciocalteu (phosphomolybdic + phosphovolframic acid) → <strong>màu xanh</strong> (λ = 750 nm) · Tác dụng thêm với Tyr &amp; Trp</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Glutathion (GSH)</span>
-                  <span>Tripeptide: <strong>γ-Glu–Cys–Gly</strong> · Nhóm –SH hoạt động · 2GSH ⇌ GSSG + 2[H] → hệ thống oxy hóa khử nội bào</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">HGH (Hormone sinh trưởng)</span>
-                  <ul class="mm-list">
-                    <li>191 aa, MW = 20.000 · Hoạt tính: đoạn 134 aa</li>
-                    <li>2 cầu S–S: (53–165) và (182–189)</li>
-                    <li>Thiếu trước dậy thì → <em>người lùn</em> · Thừa sau dậy thì → <em>to cực (acromegaly)</em></li>
-                    <li>Giống lactogen nhau thai 85% · Giống prolactin 32%</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Insulin</span>
-                  <ul class="mm-list">
-                    <li>51 aa · Chuỗi A (21 aa) + Chuỗi B (30 aa) · MW ≈ 5.700</li>
-                    <li>2 cầu S–S liên chuỗi + 1 nội chuỗi A (aa 6–11)</li>
-                    <li>Sanger xác định cấu trúc (Nobel 1958)</li>
-                    <li>Tác dụng: <strong>hạ đường huyết</strong> · Kích thích tổng hợp glycogen, lipid, protein</li>
-                    <li>Ức chế tân tạo glucose: ↓ pyruvate carboxylase &amp; fructose 1,6-diphosphatase</li>
-                  </ul>
-                </div>
+              <!-- GESTURE HINT -->
+              <div class="mm-dock-hint">
+                <i class='bx bx-move'></i> Kéo chuột để di chuyển • Cuộn để phóng to
               </div>
-            </details>
 
-            <!-- Branch 4: 4 Bậc cấu trúc -->
-            <details class="mm-branch mm-branch-4">
-              <summary class="mm-branch-header" style="--branch-color:#ec4899;">
-                <i class='bx bx-layer'></i> 4. Bốn Bậc Cấu Trúc Protein
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 1</span>
-                  <span>Trình tự amino acid · Liên kết: <strong>peptide (cộng hóa trị)</strong> · Là phiên bản của mã di truyền</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 2</span>
-                  <span>Xoắn cục bộ · Liên kết: <strong>hydro</strong> giữa các nhóm –C=O và –NH · 2 dạng: <strong>xoắn α</strong> và <strong>phiến gấp β</strong> (fibroin tơ tằm) · Keratin tóc: dạng α bình thường → β khi kéo căng</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 3</span>
-                  <span>Cuộn khúc 3D → hình cầu · Liên kết: <strong>disulfua, Van der Waals, hydro, tĩnh điện</strong> · VD: Myoglobin (75% xoắn α)</span>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 4</span>
-                  <span>Nhiều tiểu đơn vị (subunit) · Liên kết: <strong>hydro, Van der Waals</strong> giữa bề mặt · VD: <strong>Hemoglobin</strong> = 2α(141aa) + 2β(146aa) · % xoắn α: Hb &amp; Mb = 75%; Lysozyme = 35%; RNase = 17%</span>
-                </div>
+              <!-- ZOOM & NAVIGATION CONTROLS -->
+              <div class="mm-zoom-pill">
+                <button type="button" class="mm-pill-btn" id="mmBtnZoomOut" title="Thu nhỏ (Zoom -)"><i class='bx bx-minus'></i></button>
+                <button type="button" class="mm-pill-btn mm-pill-val" id="mmBtnZoomReset" title="Đặt lại 100%"><span id="mmZoomPercent">100%</span></button>
+                <button type="button" class="mm-pill-btn" id="mmBtnZoomIn" title="Phóng to (Zoom +)"><i class='bx bx-plus'></i></button>
+                <div class="mm-pill-sep"></div>
+                <button type="button" class="mm-pill-btn mm-pill-action" id="mmBtnFitView" title="Căn chỉnh vừa vặn khung hình (Fit View)"><i class='bx bx-scan'></i> <span>Fit</span></button>
+                <button type="button" class="mm-pill-btn mm-pill-action" id="mmBtnFocusRoot" title="Tập trung về nút Gốc"><i class='bx bx-target-lock'></i> <span>Gốc</span></button>
               </div>
-            </details>
+            </div> <!-- /.mm-miro-dock -->
 
-            <!-- Branch 5: Tính chất &amp; Phản ứng màu Protein -->
-            <details class="mm-branch mm-branch-5">
-              <summary class="mm-branch-header" style="--branch-color:#06b6d4;">
-                <i class='bx bx-test-tube'></i> 5. Tính Chất &amp; Phản Ứng Màu
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">Độ tan</span>
-                  <ul class="mm-list">
-                    <li><strong>Albumin:</strong> Tan trong nước · Kết tủa (NH₄)₂SO₄ 70–100%</li>
-                    <li><strong>Globulin:</strong> Tan trong muối loãng (NaCl, KCl) · Kết tủa (NH₄)₂SO₄ 50%</li>
-                    <li><strong>Prolamin:</strong> Tan trong ethanol/isopropanol 70–80%</li>
-                    <li><strong>Glutelin:</strong> Chỉ tan trong kiềm/acid loãng</li>
-                    <li><strong>Histon:</strong> Tan trong nước, không tan trong amoniac loãng · Tính kiềm</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">Kết tủa &amp; Biến tính</span>
-                  <ul class="mm-list">
-                    <li><strong>Thuận nghịch:</strong> Muối trung tính cao (diêm tích) · Cồn/acetone lạnh → có thể phục hồi</li>
-                    <li><strong>Không thuận nghịch:</strong> Đun sôi · Acid/kiềm mạnh · Cation kim loại nặng · Bức xạ cao</li>
-                    <li>Muối trung tính đậm đặc: phá lớp áo nước + trung hòa điện tích</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">5 Phản ứng màu đặc trưng</span>
-                  <table class="mm-mini-table">
-                    <thead><tr><th>Phản ứng</th><th>Amino acid</th><th>Màu sắc / Ghi chú</th></tr></thead>
-                    <tbody>
-                      <tr><td><strong>Xanthoproteic</strong></td><td>Tyr, Trp, Phe</td><td>HNO₃ đặc → <span style="color:#ca8a04;">Vàng</span> · + Kiềm → <span style="color:#ea580c;">Cam</span></td></tr>
-                      <tr><td><strong>Millon</strong></td><td>Tyr</td><td>Hg-nitrate + HNO₃ → <span style="color:#92400e;">Nâu đất</span></td></tr>
-                      <tr><td><strong>Pauli</strong></td><td>Tyr, His</td><td>Diazobenzosulfonic acid → <span style="color:#dc2626;">Đỏ anh đào</span></td></tr>
-                      <tr><td><strong>Sakaguchi</strong></td><td>Arg</td><td>α-naphtol + hypobromite/kiềm → <span style="color:#dc2626;">Đỏ anh đào</span></td></tr>
-                      <tr><td><strong>Adamkiewicz</strong></td><td>Trp</td><td>Glyoxylic acid + H₂SO₄ đặc → <span style="color:#7c3aed;">Vòng tím đỏ</span></td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <!-- Branch 6: Phân loại &amp; Chức năng -->
-            <details class="mm-branch mm-branch-6">
-              <summary class="mm-branch-header" style="--branch-color:#f97316;">
-                <i class='bx bx-shield-quarter'></i> 6. Phân Loại &amp; Chức Năng Protein
-              </summary>
-              <div class="mm-branch-body">
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Theo hình dạng</span>
-                  <ul class="mm-list">
-                    <li><strong>Protein sợi:</strong> Không tan trong nước · Collagen (gân, xương), Elastin, α-keratin (tóc, móng), Fibroin (tơ tằm), Sclerotin (vỏ côn trùng)</li>
-                    <li><strong>Protein cầu:</strong> Tan trong nước/muối · Albumin huyết thanh, Hemoglobin, enzyme</li>
-                    <li><strong>Protein trung gian:</strong> Myosin, Fibrinogen</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Theo thành phần hóa học</span>
-                  <ul class="mm-list">
-                    <li><strong>Protein đơn giản (protid thuần):</strong> Chỉ gồm amino acid · Albumin, Globulin, Prolamin, Glutelin, Histon</li>
-                    <li><strong>Protein phức tạp (protid tạp):</strong> Thêm nhóm ngoại · Lipoprotein (lipid), Nucleoprotein (nucleic acid), Glycoprotein (carbohydrate), Phosphoprotein → Casein, Chromoprotein → Hemoglobin (màu đỏ), Flavoprotein (màu vàng)</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">9 Chức năng sinh học</span>
-                  <ul class="mm-list">
-                    <li>🏗️ <strong>Tạo hình:</strong> Collagen, Keratin, màng tế bào</li>
-                    <li>⚗️ <strong>Xúc tác:</strong> Enzyme (3.500+ loại) + Ribozyme (RNA)</li>
-                    <li>🛡️ <strong>Bảo vệ:</strong> Kháng thể, bổ thể, đông máu (Fibrinogen)</li>
-                    <li>🚀 <strong>Vận chuyển:</strong> Hemoglobin (O₂/CO₂), Ceruloplasmin (Cu), Lipoprotein (lipid)</li>
-                    <li>💪 <strong>Vận động:</strong> Myosin, Actin</li>
-                    <li>📦 <strong>Dự trữ:</strong> Casein (sữa), Ovalbumin (trứng), Ferritin (Fe)</li>
-                    <li>📡 <strong>Dẫn truyền TK:</strong> Rhodopsin (mắt)</li>
-                    <li>🎛️ <strong>Điều hòa:</strong> Hormone, Repressor (ADN)</li>
-                    <li>⚡ <strong>Năng lượng:</strong> Phân giải aa → CO₂ + H₂O + năng lượng</li>
-                  </ul>
-                </div>
-                <div class="mm-leaf">
-                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Định lượng protein theo Kjeldahl</span>
-                  <span>$$\text{Protein (g)} = \text{N (g)} \times 6{,}25$$<br/>Vì N chiếm ≈16% → Hệ số 6,25 = 100/16</span>
-                </div>
-              </div>
-            </details>
-
-          </div> <!-- /.mindmap-container -->
+          </div> <!-- /.mm-canvas-viewport -->
         </div> <!-- /#tab-mindmap -->
       </div> <!-- /.modal-body -->
     </div> <!-- /.modal-tabbed-view -->
@@ -1485,8 +1727,8 @@
       <div class="fullscreen-board-view" id="fullscreenBoardView">
         <div class="fullscreen-board-toolbar">
           <div class="board-toolbar-title">
-            <i class='bx bx-grid-alt'></i> <strong>BẢNG TRA CỨU TOÀN MÀN HÌNH</strong>
-            <span class="board-legend-tag not-pdf"><span class="dot red"></span> Màu đỏ: Công thức mở rộng (ngoài slide)</span>
+            <i class='bx bx-grid-alt'></i> <strong id="boardToolbarTitleText">BẢNG TRA CỨU TOÀN MÀN HÌNH</strong>
+            <span class="board-legend-tag not-pdf" id="boardLegendTag"><span class="dot red"></span> Màu đỏ: Công thức mở rộng (ngoài slide)</span>
           </div>
           <div class="board-toolbar-actions">
             <span class="zoom-lbl"><i class='bx bx-zoom-in'></i> Phóng to:</span>
@@ -1497,7 +1739,8 @@
           </div>
         </div>
 
-        <div class="fullscreen-board-grid" id="fullscreenBoardGrid">
+        <!-- BẢNG HÓA PHÂN TÍCH (8 Ô CHUẨN 4 CHƯƠNG) -->
+        <div class="fullscreen-board-grid" id="fullscreenBoardGridPT">
           <!-- Ô 1: NỒNG ĐỘ DUNG DỊCH (CHƯƠNG 2) -->
           <div class="board-tile tile-c-blue">
             <div class="tile-header">
@@ -1715,7 +1958,250 @@
               </div>
             </div>
           </div>
-        </div> <!-- /.fullscreen-board-grid -->
+        </div> <!-- /#fullscreenBoardGridPT -->
+
+        <!-- BẢNG HÓA SINH ĐẠI CƯƠNG (8 Ô CHUẨN CHƯƠNG 3: PROTEIN & 20 ACID AMIN) -->
+        <div class="fullscreen-board-grid" id="fullscreenBoardGridHS" style="display:none;">
+          <!-- Ô 1: CẤU TẠO & 5 NHÓM ACID AMIN -->
+          <div class="board-tile tile-c-emerald tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-atom'></i> MỤC 1</span>
+              <h4>Cấu tạo &amp; 5 Nhóm Acid amin</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Cấu trúc chung của L-α-amino acid">
+                <div class="t-name">Cấu tạo chung $L-\alpha$-amino acid</div>
+                <div class="t-formula">$$\ce{R-CH(NH2)-COOH} \quad (\text{Trừ Proline: imino acid})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 1-2 PDF: Nhóm $-\ce{COOH}$ và $-\ce{NH2}$ gắn Carbon $\alpha$. Tự nhiên ở dạng $L-\alpha$. Proline có nhóm $-\ce{NH}-$ trong dị vòng pyrrolidine (thực chất là imino acid).</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Nhóm I & Nhóm II">
+                <div class="t-name">Nhóm I (Kỵ nước) &amp; Nhóm II (Thơm)</div>
+                <div class="t-formula">$$\text{I (7): Gly, Ala, Val, Leu, Ile, Pro, Met} \ ; \ \text{II (3): Phe, Tyr, Trp}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 2-3 PDF: Nhóm I có gốc R không phân cực kỵ nước. Nhóm II chứa nhân thơm (Tyr có $-\ce{OH}$ phenol, Trp có nhân indole), hấp thụ mạnh ánh sáng cực tím UV ở 280 nm.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Nhóm III, IV & V">
+                <div class="t-name">Nhóm III (Phân cực), IV (+), V (-)</div>
+                <div class="t-formula">$$\text{III (5): Ser, Thr, Cys, Asn, Gln} \ ; \ \text{IV (3): Lys, His, Arg (+)} \ ; \ \text{V (2): Asp, Glu (-)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 3-4 PDF: Nhóm III phân cực không tích điện (Cys chứa $-\ce{SH}$ tạo cầu $-S-S-$). Nhóm IV kiềm/base tích điện (+) do nhiều nhóm amin (Arg có nhân guanidino, His có imidazole). Nhóm V tích điện (-) do 2 nhóm carboxyl.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Amino acid thiết yếu">
+                <div class="t-name">Aa thiết yếu (Không thể thay thế)</div>
+                <div class="t-formula">$$\text{8-10 loại: Met, Val, Leu, Ile, Thr, Phe, Trp, Lys (+ His, Arg)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 5 PDF: Cơ thể người và động vật không tự tổng hợp được, phải đưa từ ngoài vào qua thức ăn. Cys ngày nay cũng được xem là aa không thể thay thế. Muối natri của glutamate là bột ngọt (mì chính MSG).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 2: TÍNH CHẤT QUANG HỌC & ĐIỂM ĐẲNG ĐIỆN pHi -->
+          <div class="board-tile tile-c-blue tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-compass'></i> MỤC 2</span>
+              <h4>Quang học, Độ tan &amp; Điểm đẳng điện $pHi$</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Tính quang học">
+                <div class="t-name">Đồng phân quang học &amp; C*</div>
+                <div class="t-formula">$$\text{Số đồng phân} = 2^n \quad (\text{Trừ Glycine không có C*, không quang hoạt})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 5 PDF: Hầu hết amino acid có 1 C bất đối $\implies 2$ đồng phân quang học (đa số dạng L). Riêng Threonine và Isoleucine có 2 C bất đối $\implies 2^2 = 4$ đồng phân. Glycine đối xứng hoàn toàn ($-\ce{H}$) nên không quang hoạt.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Điểm đẳng điện pHi">
+                <div class="t-name">Công thức điểm đẳng điện $pHi$</div>
+                <div class="t-formula">$$pHi = \frac{pK_1 + pK_2}{2} \quad (\text{Glycine: } pHi = \frac{2{,}34 + 9{,}60}{2} = 5{,}97)$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 7 PDF: Điểm đẳng điện $pHi$ là pH mà tại đó điện tích tổng của phân tử bằng 0 (tồn tại dưới dạng ion lưỡng cực / zwitterion). Amino acid acid có $pHi < 7$, amino acid kiềm có $pHi > 7$.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Điện di">
+                <div class="t-name">Điện di &amp; Hướng di chuyển</div>
+                <div class="t-formula">$$pH < pHi \implies \text{Cation (+)} \to \text{Catot (-)} \ ; \ pH > pHi \implies \text{Anion (-)} \to \text{Anot (+)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 7 PDF: Khi $pH < pHi$, phân tử tích điện dương do $-\ce{NH3+}$ trội hơn $\implies$ chạy về cực âm (catot). Khi $pH > pHi$, phân tử tích điện âm do $-\ce{COO-}$ trội hơn $\implies$ chạy về cực dương (anot). Tại $pH = pHi$ đứng yên.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Tính tan đặc biệt">
+                <div class="t-name">Tính tan đặc biệt</div>
+                <div class="t-formula">$$\text{Dễ tan trong nước} \ ; \ \text{Pro, Hyp tan trong cồn/ether} \ ; \ \text{Tyr khó tan}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 5 PDF: Amino acid thường dễ tan trong nước, khó tan trong alcohol và ether (ngoại trừ Proline và Hydroxyproline). Tyrosine khó hòa tan trong acid và kiềm loãng.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 3: PHẢN ỨNG HÓA HỌC ĐẶC TRƯNG -->
+          <div class="board-tile tile-c-purple tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-vial'></i> MỤC 3</span>
+              <h4>Phản ứng hóa học Acid amin</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Khử carboxyl">
+                <div class="t-name">Khử $-\ce{COOH}$ tạo amin sinh học</div>
+                <div class="t-formula">$$\ce{R-CH(NH2)-COOH} \xrightarrow{-\ce{CO2}} \ce{R-CH2-NH2} \quad (\text{His} \to \text{Histamine})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 8-9 PDF: Phản ứng decarboxyl hóa dưới xúc tác enzyme decarboxylase tạo amin có hoạt tính sinh học cao: Histidine $\to$ Histamine (giãn mạch, phản ứng dị ứng); Glutamate $\to$ GABA (chất ức chế dẫn truyền thần kinh); Tyrosine $\to$ Tyramine.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Phản ứng Van Slyke">
+                <div class="t-name">Phản ứng Van Slyke định lượng N</div>
+                <div class="t-formula">$$\ce{-NH2} + \ce{HNO2} \to \ce{-OH} + \ce{N2}\uparrow + \ce{H2O} \implies \text{Đo } V_{\ce{N2}}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 9 PDF: Tác dụng với acid nitrơ $\ce{HNO2}$ giải phóng khí $\ce{N2}$, đo thể tích khí $\ce{N2}$ thu được để định lượng chính xác hàm lượng Nitơ amine trong mẫu phân tích.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Base Schiff & Sørensen">
+                <div class="t-name">Base Schiff &amp; Chuẩn độ Formol</div>
+                <div class="t-formula">$$\ce{-NH2} + \ce{HCHO} \to \ce{-N=CH2} + \ce{H2O} \implies \text{Chuẩn độ } \ce{-COOH} \text{ bằng } \ce{NaOH}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 10 PDF: Aldehyde phản ứng với nhóm amine tạo dẫn xuất methylen-amino (Base Schiff) làm mất tính kiềm của $-\ce{NH2}$, cho phép chuẩn độ nhóm $-\ce{COOH}$ bằng NaOH theo phương pháp Sørensen.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Sanger & Edman">
+                <div class="t-name">Xác định đầu N (Sanger, Edman) &amp; đầu C</div>
+                <div class="t-formula">$$\text{Đầu N: Sanger (DNFB) / Edman (PITC)} \ ; \ \text{Đầu C: Carboxypeptidase}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 10-11 PDF: Thuốc thử Sanger (DNFB) tạo dẫn xuất DNP màu vàng xác định aa đầu N (phá hủy chuỗi). Thuốc thử Edman (PITC) giải trình tự từng amino acid đầu N liên tục mà không làm đứt các liên kết peptide còn lại. Carboxypeptidase thủy phân cắt đầu C.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 4: LIÊN KẾT PEPTIDE & HORMONE -->
+          <div class="board-tile tile-c-amber tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-link'></i> MỤC 4</span>
+              <h4>Liên kết Peptide &amp; Hormone</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Liên kết peptide">
+                <div class="t-name">Đặc điểm liên kết Peptide</div>
+                <div class="t-formula">$$\ce{-CO-NH-} \quad (\text{Phẳng, lai hóa } sp^2, \text{ ngắn } 1{,}32\text{ \AA}, \text{ trans})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 12 PDF: Hình thành giữa $-\ce{COOH}$ và $-\ce{NH2}$ tách nước. Cấu trúc phẳng cứng nhắc do lai hóa $sp^2$, có tính chất một phần liên kết đôi làm rút ngắn khoảng cách C-N xuống $1{,}32\text{ \AA}$ (so với liên kết đơn $1{,}47\text{ \AA}$), không quay tự do, cấu hình trans chiếm ưu thế.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Glutathione GSH">
+                <div class="t-name">Glutathione (GSH) Tripeptide</div>
+                <div class="t-formula">$$\gamma\text{-L-glutamyl-L-cysteinyl-glycine} \quad (2\text{GSH} \rightleftharpoons \text{GSSG} + 2\ce{H+} + 2e^-)$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 13 PDF: Tripeptide quan trọng có liên kết peptide bất thường qua nhóm $-\ce{COOH}$ ở vị trí $\gamma$ của Glutamate. Nhóm $-\ce{SH}$ của Cysteine là trung tâm khử bảo vệ tế bào chống lại các tác nhân oxy hóa độc hại.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Insulin">
+                <div class="t-name">Insulin (51 aa - 2 chuỗi A &amp; B)</div>
+                <div class="t-formula">$$51\text{ aa (Chuỗi A: 21, Chuỗi B: 30)} \ ; \ 2\text{ cầu } -S-S- \text{ liên chuỗi} + 1\text{ cầu nội chuỗi A}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 13-14 PDF: Do tế bào beta đảo tụy tiết ra để hạ đường huyết. Gồm 2 chuỗi nối với nhau bởi 2 cầu disulfua liên chuỗi (A7-B7, A20-B19) và 1 cầu disulfua nội chuỗi A (A6-A11). Mọi đột biến vị trí amino acid đều có thể làm giảm mạnh hoạt tính sinh học.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Hormone tăng trưởng HGH">
+                <div class="t-name">Hormone tăng trưởng (HGH)</div>
+                <div class="t-formula">$$\text{Chuỗi đơn 191 aa} \ ; \ 2\text{ cầu disulfua nội chuỗi (53-165 và 182-189)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 14 PDF: Tuyến yên tiết ra. Thiếu HGH ở trẻ gây chứng lùn tuyến yên (dwarfism), thừa ở tuổi dậy thì gây chứng khổng lồ (gigantism), thừa ở người trưởng thành gây to đầu chi (acromegaly).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 5: 4 BẬC CẤU TRÚC PROTEIN -->
+          <div class="board-tile tile-c-cyan tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-dna'></i> MỤC 5</span>
+              <h4>4 Bậc cấu trúc Protein</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Cấu trúc bậc 1">
+                <div class="t-name">Cấu trúc bậc 1 (Primary)</div>
+                <div class="t-formula">$$\text{Trình tự chuỗi amino acid} \ ; \ \text{Liên kết peptide cộng hóa trị &amp; cầu } -S-S-$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 15 PDF: Xác định thành phần và thứ tự sắp xếp của các amino acid trong chuỗi. Được quy định bởi mã di truyền trên DNA và giữ vững bởi liên kết peptide cực kỳ bền vững cùng cầu disulfua. Quyết định toàn bộ các bậc cấu trúc cao hơn.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Cấu trúc bậc 2">
+                <div class="t-name">Cấu trúc bậc 2 (Xoắn $\alpha$ &amp; Phiến $\beta$)</div>
+                <div class="t-formula">$$\text{Xoắn } \alpha\text{: LK Hydro nội chuỗi (} i \text{ với } i+4) \ ; \ \text{Phiến } \beta\text{: LK Hydro liên chuỗi}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 15-16 PDF: Xoắn $\alpha$ xoắn ốc phải, 3,6 gốc aa/vòng, bước xoắn $5{,}4\text{ \AA}$, giữ vững bởi liên kết H song song với trục xoắn giữa $\ce{C=O}$ và $\ce{N-H}$ cách 4 gốc aa (Proline bẻ gãy xoắn). Phiến gấp $\beta$ các chuỗi xếp song song/đối song song nối nhau bởi liên kết H chéo.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Cấu trúc bậc 3">
+                <div class="t-name">Cấu trúc bậc 3 (Không gian 3D)</div>
+                <div class="t-formula">$$\text{4 loại lực: Tương tác kỵ nước, LK Hydro, Cầu muối (ion), Cầu } -S-S-$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 16-17 PDF: Chuỗi polypeptide cuộn khúc tạo hình dạng không gian 3 chiều đặc thù (dạng cầu hoặc sợi). Tương tác kỵ nước là lực quan trọng nhất đưa các gốc không phân cực vào bên trong lõi phân tử để tránh tiếp xúc với nước.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Cấu trúc bậc 4">
+                <div class="t-name">Cấu trúc bậc 4 (Oligomer)</div>
+                <div class="t-formula">$$\text{Nhiều tiểu đơn vị (protomer) phối hợp} \quad (\text{Hemoglobin: } \alpha_2\beta_2)$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 17-18 PDF: Phức hợp gồm từ 2 chuỗi polypeptide trở lên liên kết với nhau bằng các liên kết phi cộng hóa trị. Ví dụ Hemoglobin có 4 chuỗi polypeptide ($\alpha_2\beta_2$), hoạt động theo cơ chế phối hợp dị lập thể (allosteric) giúp vận chuyển oxy tối ưu.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 6: ĐỘ TAN, SALTING-OUT & ĐIỆN DI -->
+          <div class="board-tile tile-c-teal tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-water'></i> MỤC 6</span>
+              <h4>Độ tan, Độ nhớt &amp; Salting-out</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • 2 Yếu tố giữ tan">
+                <div class="t-name">2 Yếu tố giữ Protein hòa tan</div>
+                <div class="t-formula">$$\text{Lớp vỏ nước Hydrate hóa} \quad \& \quad \text{Lực đẩy tĩnh điện cùng dấu}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 19-20 PDF: Dung dịch protein là hệ keo bền vững nhờ: (1) Lớp vỏ phân tử nước bao quanh các nhóm ưa nước trên bề mặt; (2) Lực đẩy tĩnh điện giữa các phân tử mang điện tích cùng dấu, ngăn cản các hạt keo kết cụm lại với nhau.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Độ tan ở pHi">
+                <div class="t-name">Độ tan tối thiểu tại $pH = pHi$</div>
+                <div class="t-formula">$$pH = pHi \implies \text{Điện tích tổng } = 0 \implies \text{Độ tan cực tiểu, dễ kết tủa nhất}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 20 PDF: Tại điểm đẳng điện $pHi$, điện tích tổng của protein bằng 0 nên lực đẩy tĩnh điện triệt tiêu hoàn toàn, protein dễ va chạm, kết tụ và kết tủa nhất. Đây là nguyên tắc tủa đẳng điện để tinh chế protein.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Salting-in & Salting-out">
+                <div class="t-name">Salting-in &amp; Salting-out</div>
+                <div class="t-formula">$$\text{Muối loãng: Tăng tan (Salting-in)} \ ; \ \text{Muối đặc: Tủa thuận nghịch (Salting-out)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 20-21 PDF: Ở nồng độ muối thấp ($<0{,}1\text{M}$), ion muối tương tác làm tăng độ tan (Salting-in). Ở nồng độ muối cao (như bão hòa $\ce{(NH4)2SO4}$), ion muối hút nước hydrate và trung hòa điện tích làm protein kết tủa thuận nghịch (Salting-out), giữ nguyên hoạt tính.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Thẩm tích">
+                <div class="t-name">Phương pháp Thẩm tích (Dialysis)</div>
+                <div class="t-formula">$$\text{Màng bán thấm: Muối khuếch tán ra ngoài, Protein được giữ lại}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 21 PDF: Dùng túi màng bán thấm ngâm trong nước cất để tách sạch muối vô cơ ra khỏi dung dịch protein sau quá trình kết tủa Salting-out, dựa vào sự chênh lệch lớn về kích thước phân tử.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 7: SỰ BIẾN TÍNH CỦA PROTEIN -->
+          <div class="board-tile tile-c-rose tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-error-alt'></i> MỤC 7</span>
+              <h4>Sự biến tính của Protein</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Bản chất biến tính">
+                <div class="t-name">Bản chất của sự biến tính</div>
+                <div class="t-formula">$$\text{Mất cấu trúc bậc 2, 3, 4} \implies \text{Giữ nguyên cấu trúc bậc 1 (không đứt liên kết peptide)}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 21-22 PDF: Phân tử protein bị duỗi xoắn, phá hủy cấu trúc không gian 3 chiều nguyên thủy, làm mất hoàn toàn hoạt tính sinh học ban đầu (như mất tính enzyme, kháng thể). Khung liên kết peptide bậc 1 vẫn được bảo toàn nguyên vẹn.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Tác nhân vật lý">
+                <div class="t-name">Tác nhân vật lý gây biến tính</div>
+                <div class="t-formula">$$\text{Nhiệt độ cao } (>60^\circ\text{C}), \ \text{Tia cực tím (UV)}, \ \text{Tia X, Siêu âm, Rung lắc, Áp suất cao}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 22 PDF: Cung cấp động năng làm dao động nhiệt phá vỡ các liên kết hydro, tương tác kỵ nước và cầu muối yếu giữ cấu trúc bậc 2, bậc 3. Thường là biến tính bất thuận nghịch (như luộc chín trứng).</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Tác nhân hóa học">
+                <div class="t-name">Tác nhân hóa học gây biến tính</div>
+                <div class="t-formula">$$\text{Acid/Kiềm mạnh, Muối KL nặng } (\ce{Hg^2+, Pb^2+}), \ \text{Cồn, Aceton, Urê 8M, Guanidine}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 22 PDF: Acid/kiềm thay đổi điện tích ion; Muối kim loại nặng ($\ce{Hg^{2+}, Pb^{2+}, Cu^{2+}}$) tạo muối không tan với $-\ce{COO-}$ và $-\ce{SH}$; Cồn/aceton hút nước phá vỡ lớp vỏ hydrate; Urê 8M hoặc Guanidine.HCl cạnh tranh phá vỡ liên kết hydro.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Hệ quả biến tính">
+                <div class="t-name">Hệ quả sinh hóa của biến tính</div>
+                <div class="t-formula">$$\text{Mất hoạt tính sinh học} \ ; \ \text{Giảm độ tan nghiêm trọng} \ ; \ \text{Dễ bị enzyme phân giải}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 22 PDF: Các gốc kỵ nước bị phơi lộ ra ngoài làm phân tử kết tụ tủa đục; trung tâm hoạt động bị biến dạng làm mất hoạt tính; cấu trúc duỗi mở giúp các enzyme tiêu hóa protease (pepsin, trypsin) dễ dàng tiếp cận cắt đứt liên kết peptide.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ô 8: CÁC PHẢN ỨNG MÀU & ĐỊNH LƯỢNG -->
+          <div class="board-tile tile-c-orange tile-hs">
+            <div class="tile-header">
+              <span class="tile-tag"><i class='bx bx-palette'></i> MỤC 8</span>
+              <h4>Phản ứng màu &amp; Định lượng Protein</h4>
+            </div>
+            <div class="tile-body">
+              <div class="tile-row" title="Bấm để phóng to • Phản ứng Biure">
+                <div class="t-name">Phản ứng Biure ($\ge 2$ LK peptide)</div>
+                <div class="t-formula">$$\ce{CuSO4} + \text{Kiềm loãng} \to \text{Phức màu tím đỏ } (\lambda_{\max} = 540\text{ nm})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 23 PDF: Phản ứng đặc trưng cho liên kết peptide. Điều kiện: phân tử phải có từ 2 liên kết peptide trở lên (từ tripeptide). Amino acid tự do và dipeptide cho kết quả âm tính. Cường độ màu tỷ lệ thuận với số liên kết peptide.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Phản ứng Ninhydrin">
+                <div class="t-name">Phản ứng Ninhydrin ($\alpha$-amino acid)</div>
+                <div class="t-formula">$$\text{Ninhydrin} \xrightarrow{t^\circ} \text{Màu xanh tím } (570\text{ nm}) \ ; \ \text{Proline: Màu vàng } (440\text{ nm})$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 23-24 PDF: Tất cả các $\alpha$-amino acid tự do phản ứng với ninhydrin đun nóng tạo phức màu xanh tím Ruhemann ($\lambda_{\max} = 570\text{ nm}$). Riêng Proline do là imino acid nên cho màu vàng đặc trưng ($\lambda_{\max} = 440\text{ nm}$).</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Xanthoproteic, Pauli, Millon">
+                <div class="t-name">Phản ứng màu nhân thơm (Xantho, Pauli, Millon)</div>
+                <div class="t-formula">$$\text{Xantho: } \ce{HNO3} \to \text{Vàng} \ ; \ \text{Pauli: His/Tyr } \to \text{Đỏ} \ ; \ \text{Millon: Tyr } \to \text{Đỏ}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 24 PDF: Xanthoproteic nitro hóa nhân thơm Tyr, Trp, Phe bằng $\ce{HNO3}$ đặc tạo kết tủa vàng, chuyển cam khi thêm kiềm dư. Pauli tạo màu đỏ cherry với gốc imidazole (His) và phenol (Tyr). Millon với $\ce{Hg(NO3)2}$ tạo màu đỏ đặc trưng cho $-\ce{OH}$ phenol của Tyr.</div>
+              </div>
+              <div class="tile-row" title="Bấm để phóng to • Phương pháp định lượng">
+                <div class="t-name">Định lượng Kjeldahl, UV &amp; Lowry</div>
+                <div class="t-formula">$$\text{Kjeldahl: Protein} = \text{N} \times 6{,}25 \ ; \ \text{UV: } A_{280} \ (\text{Trp} > \text{Tyr}) \ ; \ \text{Lowry: Biure} + \text{Folin}$$</div>
+                <div class="t-desc" style="display:none;">📚 Slide 25-26 PDF: Kjeldahl đo Nitơ tổng (N chiếm $16\% \implies 100/16 = 6{,}25$). Đo UV ở 280 nm do Tyr và Trp hấp thụ mạnh, kết hợp đo 260 nm để trừ sai số acid nucleic. Phương pháp Lowry kết hợp phản ứng Biure và thuốc thử Folin-Ciocalteu nhạy gấp 10-20 lần Biure thông thường.</div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /#fullscreenBoardGridHS -->
       </div> <!-- /.fullscreen-board-view -->
     </div> <!-- /.modal-box -->
   </div> <!-- /.modal-overlay -->
