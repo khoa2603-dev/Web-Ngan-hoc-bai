@@ -593,6 +593,151 @@ button, input, select, textarea {
   transform: translateY(-2px);
 }
 
+/* ==========================================
+   BỘ CHUYỂN ĐỔI MÔN HỌC (SUBJECT SELECTOR)
+   ========================================== */
+.subject-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.subject-switcher-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--r-pill);
+  padding: 5px;
+  gap: 6px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.sub-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.sub-tab-btn i {
+  font-size: 19px;
+  transition: transform 0.2s ease;
+}
+
+.sub-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.sub-tab-btn:hover i {
+  transform: scale(1.15);
+}
+
+.sub-tab-btn.active {
+  background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.45);
+}
+
+.sub-tab-btn[data-sub="hs"].active {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.45);
+}
+
+.sub-tag-chip {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.18);
+  color: #f8fafc;
+  letter-spacing: 0.2px;
+}
+
+.sub-chip-new {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  animation: pulseBadge 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.92; }
+}
+
+/* Preset Hóa Sinh */
+.preset-hs.active {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  border-color: #059669 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35) !important;
+}
+
+.hs-notice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--r-md);
+  color: #059669;
+  font-size: 13px;
+  font-weight: 500;
+}
+[data-theme="dark"] .hs-notice-badge {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+.hs-notice-badge i {
+  font-size: 18px;
+  color: #10b981;
+}
+
+/* Modal Tab Hóa Sinh */
+.modal-tab-hs {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  color: #059669 !important;
+}
+.modal-tab-hs.active {
+  background: #10b981 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .modal-tab-hs {
+  color: #34d399 !important;
+}
+
+/* Theme accent khi học môn Hóa Sinh */
+body[data-subject="hs"] .hero {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #0f172a 100%);
+}
+body[data-subject="hs"] .hero-badge {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(16, 185, 129, 0.2);
+}
+body[data-subject="hs"] .hero-badge i {
+  color: #34d399;
+}
+
 .hero h1 {
   font-size: clamp(26px, 4.2vw, 38px);
   font-weight: 800;

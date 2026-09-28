@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ôn tập Hóa học Phân tích - Chương 1 đến 4 | Dành cho bé Ngân</title>
-  <meta name="description" content="Trang web ôn tập Hóa học Phân tích chương 1 đến chương 4 đầy đủ công thức chuẩn PDF và chuyên đề 100% bài tập tính toán dành cho bé Ngân.">
+  <title>Hệ thống Ôn tập Hóa Phân tích &amp; Hóa sinh Đại cương | Dành cho bé Ngân</title>
+  <meta name="description" content="Trang web ôn tập Hóa học Phân tích (Chương 1-4) và Hóa sinh Đại cương (Protein, Peptide &amp; 20 Acid amin) bám sát tài liệu PDF bài giảng dành riêng cho bé Ngân.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -62,8 +62,8 @@
             <div class="hero-orb hero-orb-2"></div>
             
             <div class="hero-top">
-              <div class="hero-badge">
-                <i class='bx bxs-heart'></i> Hóa học phân tích
+              <div class="hero-badge" id="heroBadge">
+                <i class='bx bxs-heart'></i> <span id="heroBadgeText">Hóa học phân tích</span>
               </div>
 
               <!-- BỘ CHUYỂN ĐỔI THIẾT BỊ (AUTO / LAPTOP / IPHONE) -->
@@ -89,7 +89,7 @@
                 <button type="button" class="icon-btn" id="calcHubBtn" title="Mở Sổ tay công thức tính toán từ 4 file PDF">
                   <i class='bx bx-calculator'></i>
                 </button>
-                <button type="button" class="icon-btn" id="cheatSheetBtn" title="Mở Sổ tay tóm tắt toàn bộ 4 chương (Dạng Tab)">
+                <button type="button" class="icon-btn" id="cheatSheetBtn" title="Mở Sổ tay tóm tắt (Dạng Tab)">
                   <i class='bx bx-book-bookmark'></i>
                 </button>
                 <button type="button" class="icon-btn" id="cheatBoardBtn" title="Mở Bảng công thức Fullscreen không cuộn (8 Ô vuông)">
@@ -98,19 +98,35 @@
               </div>
             </div>
 
-      <h1>Hệ thống Ôn tập <span class="highlight">Hóa Phân tích 1 đến 4</span></h1>
-      <p class="hero-desc">
-        Hệ thống ôn luyện toàn diện chuẩn theo <strong>4 tập bài giảng PDF</strong>: Đại cương, Nồng độ &amp; Đương lượng, Phân tích Khối lượng - Thể tích và Cân bằng Chuẩn độ Acid-Base. Tích hợp chế độ <strong>chuyên đề 100% bài tập tính toán</strong> không kèm lý thuyết!
-      </p>
+            <!-- BỘ CHUYỂN ĐỔI MÔN HỌC (SUBJECT SELECTOR BAR) -->
+            <div class="subject-bar-container">
+              <div class="subject-switcher-pill" id="subjectSwitcher">
+                <button type="button" class="sub-tab-btn active" data-sub="pt" id="subBtnPT">
+                  <i class='bx bx-test-tube'></i>
+                  <span class="sub-tab-title">Hóa Phân Tích</span>
+                  <span class="sub-tag-chip">4 Chương • 110+ câu</span>
+                </button>
+                <button type="button" class="sub-tab-btn" data-sub="hs" id="subBtnHS">
+                  <i class='bx bx-dna'></i>
+                  <span class="sub-tab-title">Hóa Sinh Đại Cương</span>
+                  <span class="sub-tag-chip sub-chip-new">Mới • 100% Trắc nghiệm PDF</span>
+                </button>
+              </div>
+            </div>
 
-      <div class="hero-chips">
-        <div class="hero-chip"><i class='bx bx-book-content'></i> Chuẩn 4 File PDF Bài giảng</div>
-        <div class="hero-chip"><i class='bx bx-calculator'></i> Chuyên đề 100% Bài tập tính toán</div>
-        <div class="hero-chip"><i class='bx bx-math'></i> Công thức $\text{\LaTeX}$ &amp; $\ce{Phản ứng}$</div>
-        <div class="hero-chip"><i class='bx bx-collection'></i> Hơn 110 Câu hỏi phong phú</div>
-        <div class="hero-chip"><i class='bx bx-timer'></i> Đồng hồ bấm giờ làm bài</div>
-      </div>
-    </header>
+            <h1 id="heroTitle">Hệ thống Ôn tập <span class="highlight">Hóa Phân tích 1 đến 4</span></h1>
+            <p class="hero-desc" id="heroDesc">
+              Hệ thống ôn luyện toàn diện chuẩn theo <strong>4 tập bài giảng PDF</strong>: Đại cương, Nồng độ &amp; Đương lượng, Phân tích Khối lượng - Thể tích và Cân bằng Chuẩn độ Acid-Base. Tích hợp chế độ <strong>chuyên đề 100% bài tập tính toán</strong> không kèm lý thuyết!
+            </p>
+
+            <div class="hero-chips" id="heroChips">
+              <div class="hero-chip"><i class='bx bx-book-content'></i> Chuẩn 4 File PDF Bài giảng</div>
+              <div class="hero-chip"><i class='bx bx-calculator'></i> Chuyên đề 100% Bài tập tính toán</div>
+              <div class="hero-chip"><i class='bx bx-math'></i> Công thức $\text{\LaTeX}$ &amp; $\ce{Phản ứng}$</div>
+              <div class="hero-chip"><i class='bx bx-collection'></i> Hơn 110 Câu hỏi phong phú</div>
+              <div class="hero-chip"><i class='bx bx-timer'></i> Đồng hồ bấm giờ làm bài</div>
+            </div>
+          </header>
 
     <!-- BỐ CỤC WORKSPACE CHÍNH: MAIN CONTENT + SIDEBAR LAPTOP -->
     <div class="workspace-layout">
@@ -146,7 +162,9 @@
               <i class='bx bx-layout'></i>
               <span>Chế độ học &amp; Bộ đề</span>
             </div>
-            <div class="notion-views-bar preset-row">
+
+            <!-- Presets Hóa Phân Tích -->
+            <div class="notion-views-bar preset-row" id="presetRowPT">
               <button type="button" class="notion-view-tab preset active" data-preset="all">
                 <i class='bx bx-grid-alt'></i>
                 <span>Tổng hợp 1 - 4</span>
@@ -180,18 +198,55 @@
                 <span>Chỉ thị màu &amp; Chuẩn độ</span>
               </button>
             </div>
+
+            <!-- Presets Hóa Sinh Đại Cương (100% Lý thuyết trắc nghiệm) -->
+            <div class="notion-views-bar preset-row" id="presetRowHS" style="display:none;">
+              <button type="button" class="notion-view-tab preset preset-hs active" data-preset-hs="hs-all">
+                <i class='bx bx-grid-alt'></i>
+                <span>Tổng hợp Protein (Tất cả)</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-exam22">
+                <i class='bx bxs-award'></i>
+                <span>22 Câu chuẩn đề thi PDF</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-1">
+                <i class='bx bx-dna'></i>
+                <span>Cấu tạo &amp; 20 Acid amin</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-2">
+                <i class='bx bx-bulb'></i>
+                <span>Quang học, Lưỡng tính &amp; Điện di</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-3">
+                <i class='bx bx-link-alt'></i>
+                <span>Peptide, Insulin &amp; HGH</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-4">
+                <i class='bx bx-layer'></i>
+                <span>4 Bậc cấu trúc Protein</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-5">
+                <i class='bx bx-test-tube'></i>
+                <span>Biến tính &amp; Phản ứng màu</span>
+              </button>
+              <button type="button" class="notion-view-tab preset preset-hs" data-preset-hs="hs-6">
+                <i class='bx bx-shield-quarter'></i>
+                <span>Chức năng &amp; Phân loại</span>
+              </button>
+            </div>
           </div>
 
           <!-- Notion Properties Panel (Bảng thuộc tính lọc chi tiết) -->
           <div class="notion-props-panel">
-            <!-- Property: Chương học -->
+            <!-- Property: Chương học / Chuyên đề -->
             <div class="notion-prop-row">
               <div class="notion-prop-key">
                 <i class='bx bx-book-bookmark'></i>
-                <span>Chương học</span>
+                <span id="propChapterLabel">Chương học</span>
               </div>
               <div class="notion-prop-val">
-                <div class="notion-tag-group check-row" id="chapterChecks">
+                <!-- Checkboxes Hóa Phân Tích -->
+                <div class="notion-tag-group check-row" id="chapterChecksPT">
                   <div class="notion-tag-item check-item">
                     <input type="checkbox" id="ch1" value="1" checked>
                     <label for="ch1"><i class='bx bx-check'></i> Chương 1: Mở đầu</label>
@@ -209,6 +264,34 @@
                     <label for="ch4"><i class='bx bx-check'></i> Chương 4: Cân bằng &amp; Chuẩn độ Acid-Base</label>
                   </div>
                 </div>
+
+                <!-- Checkboxes Hóa Sinh Đại Cương (6 Chuyên đề Protein) -->
+                <div class="notion-tag-group check-row" id="chapterChecksHS" style="display:none;">
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch1" value="1" checked>
+                    <label for="hsch1"><i class='bx bx-check'></i> 1. Cấu tạo &amp; 20 Acid amin</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch2" value="2" checked>
+                    <label for="hsch2"><i class='bx bx-check'></i> 2. Quang học &amp; Điện di</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch3" value="3" checked>
+                    <label for="hsch3"><i class='bx bx-check'></i> 3. Peptide &amp; Hormon sinh học</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch4" value="4" checked>
+                    <label for="hsch4"><i class='bx bx-check'></i> 4. 4 Bậc cấu trúc Protein</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch5" value="5" checked>
+                    <label for="hsch5"><i class='bx bx-check'></i> 5. Tính chất &amp; Phản ứng màu</label>
+                  </div>
+                  <div class="notion-tag-item check-item">
+                    <input type="checkbox" id="hsch6" value="6" checked>
+                    <label for="hsch6"><i class='bx bx-check'></i> 6. Chức năng &amp; Phân loại</label>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -224,23 +307,23 @@
                     <input type="checkbox" id="type-mcq" value="mcq" checked>
                     <label for="type-mcq"><i class='bx bx-radio-circle-marked'></i> Trắc nghiệm</label>
                   </div>
-                  <div class="notion-tag-item check-item">
+                  <div class="notion-tag-item check-item type-optional-item">
                     <input type="checkbox" id="type-tf" value="tf" checked>
                     <label for="type-tf"><i class='bx bx-check-square'></i> Đúng / Sai</label>
                   </div>
-                  <div class="notion-tag-item check-item">
+                  <div class="notion-tag-item check-item type-optional-item">
                     <input type="checkbox" id="type-fill" value="fill" checked>
                     <label for="type-fill"><i class='bx bx-edit-alt'></i> Điền số / kết quả</label>
                   </div>
-                  <div class="notion-tag-item check-item">
+                  <div class="notion-tag-item check-item type-optional-item">
                     <input type="checkbox" id="type-drag" value="drag" checked>
                     <label for="type-drag"><i class='bx bx-move'></i> Ghép nối</label>
                   </div>
-                  <div class="notion-tag-item check-item">
+                  <div class="notion-tag-item check-item type-optional-item">
                     <input type="checkbox" id="type-color" value="color" checked>
                     <label for="type-color"><i class='bx bx-palette'></i> Nhận diện màu</label>
                   </div>
-                  <div class="notion-tag-item check-item">
+                  <div class="notion-tag-item check-item type-optional-item">
                     <input type="checkbox" id="type-short" value="short" checked>
                     <label for="type-short"><i class='bx bx-notepad'></i> Tự luận ngắn</label>
                   </div>
@@ -248,20 +331,24 @@
               </div>
             </div>
 
-            <!-- Property: Chế độ nội dung (Tính toán) -->
-            <div class="notion-prop-row">
+            <!-- Property: Chế độ nội dung (Tính toán vs Lý thuyết) -->
+            <div class="notion-prop-row" id="notionPropRowCalc">
               <div class="notion-prop-key">
                 <i class='bx bx-calculator'></i>
                 <span>Nội dung</span>
               </div>
               <div class="notion-prop-val">
-                <label class="notion-toggle-item check-item" for="calcOnlyToggle">
+                <label class="notion-toggle-item check-item" for="calcOnlyToggle" id="calcToggleWrapper">
                   <input type="checkbox" id="calcOnlyToggle">
                   <span class="notion-toggle-switch"></span>
                   <span class="notion-toggle-label">
                     Chỉ kiểm tra bài tập tính toán (100% Bài tập, không kèm lý thuyết)
                   </span>
                 </label>
+                <div class="hs-notice-badge" id="calcNoticeHS" style="display:none;">
+                  <i class='bx bx-check-shield'></i>
+                  <span><strong>Chế độ Hóa sinh:</strong> 100% Câu hỏi lý thuyết dạng Trắc nghiệm chuẩn theo file PDF bài giảng.</span>
+                </div>
               </div>
             </div>
 
@@ -281,6 +368,7 @@
                         <option value="15">15 câu</option>
                         <option value="20" selected>20 câu</option>
                         <option value="30">30 câu</option>
+                        <option value="50">50 câu</option>
                         <option value="all">Toàn bộ câu hỏi</option>
                       </select>
                       <i class='bx bx-chevron-down'></i>
@@ -484,14 +572,15 @@
       </div>
     </div>
 
-    <!-- WIDGET 3: BẢNG CÔNG THỨC HAY GẶP TỪ 4 FILE PDF -->
+    <!-- WIDGET 3: BẢNG CÔNG THỨC & KIẾN THỨC HAY GẶP TỪ PDF -->
     <div class="sidebar-card">
       <div class="sidebar-card-header">
-        <div class="sidebar-card-title">
-          <i class='bx bx-calculator'></i> Công thức hay gặp (PDF)
+        <div class="sidebar-card-title" id="sidebarWidget3Title">
+          <i class='bx bx-calculator'></i> <span id="sidebarWidget3TitleText">Công thức hay gặp (PDF)</span>
         </div>
       </div>
-      <div class="quick-formula-list">
+      <!-- Hóa Phân Tích Quick Formulas -->
+      <div class="quick-formula-list" id="sidebarQuickFormulasPT">
         <div class="quick-formula-item">
           <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Nồng độ đương lượng $C_N$</div>
           <div class="quick-formula-math">$$C_N = z \cdot C_M = \frac{10 \cdot C\% \cdot d}{Đ}$$</div>
@@ -509,9 +598,30 @@
           <div class="quick-formula-math">$$pH = \frac{1}{2}(pK_a - \log C_a) \quad ; \quad pH = pK_a + \log\frac{C_b}{C_a}$$</div>
         </div>
       </div>
+
+      <!-- Hóa Sinh Đại Cương Quick Facts -->
+      <div class="quick-formula-list" id="sidebarQuickFormulasHS" style="display:none;">
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Định lượng Kjeldahl</div>
+          <div class="quick-formula-math">$$\text{Protein} = \text{Lượng N} \times 6,25 \quad (\text{N} \approx 16\%)$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Điểm đẳng điện $pHi$</div>
+          <div class="quick-formula-math">$$pHi = \frac{pK_1 + pK_2}{2} \quad (\text{Glycine } pHi = 5,97)$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Phản ứng Biure (Tripeptide $\to$)</div>
+          <div class="quick-formula-math">$$\ce{CuSO4} + \text{Kiềm} \to \text{Tím đỏ } (\lambda_{\max} = 540\text{ nm})$$</div>
+        </div>
+        <div class="quick-formula-item">
+          <div class="quick-formula-name"><i class='bx bx-chevron-right'></i> Hấp thụ tia cực tím (UV)</div>
+          <div class="quick-formula-math">$$280\text{ nm: } \text{Trp} > \text{Tyr} \gg \text{Phe} \quad ; \quad 190\text{ nm: } \text{Peptide}$$</div>
+        </div>
+      </div>
+
       <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
         <button type="button" class="btn btn-primary btn-sm w-100" id="sidebarOpenCheatBtn">
-          <i class='bx bx-book-open'></i> Mở Sổ tay đầy đủ 4 Chương
+          <i class='bx bx-book-open'></i> <span id="sidebarCheatBtnText">Mở Sổ tay đầy đủ 4 Chương</span>
         </button>
         <button type="button" class="btn btn-outline btn-sm w-100" id="sidebarOpenBoardBtn" style="border-color:var(--primary); color:var(--primary); font-weight:700;">
           <i class='bx bx-grid-alt'></i> ⛶ Bảng Fullscreen (Không cuộn)
@@ -559,8 +669,8 @@
     <div class="modal-box" id="modalBox">
       <div class="modal-header">
         <div class="modal-title-group">
-          <h3><i class='bx bx-book-bookmark'></i> Sổ tay Công thức Hóa Phân tích</h3>
-          <span class="modal-badge-pdf">Chuẩn 4 PDF</span>
+          <h3 id="modalTitleText"><i class='bx bx-book-bookmark'></i> Sổ tay Công thức Hóa Phân tích</h3>
+          <span class="modal-badge-pdf" id="modalBadgeText">Chuẩn 4 PDF</span>
         </div>
 
         <!-- BỘ CHUYỂN DẠNG HIỂN THỊ (TAB VS TOÀN MÀN HÌNH KHÔNG CUỘN) -->
@@ -583,12 +693,16 @@
 
       <!-- DẠNG 1: DẠNG TAB (TABBED VIEW) -->
       <div class="modal-tabbed-view" id="modalTabbedView">
-        <div class="modal-tabs">
-          <button type="button" class="modal-tab-btn active" data-tab="tab-calculations">🧮 Công thức tính toán (PDF)</button>
-          <button type="button" class="modal-tab-btn" data-tab="tab-concentrations">Nồng độ &amp; Đương lượng</button>
-          <button type="button" class="modal-tab-btn" data-tab="tab-indicators">Chất chỉ thị pH</button>
-          <button type="button" class="modal-tab-btn" data-tab="tab-ph">Công thức tính pH</button>
-          <button type="button" class="modal-tab-btn" data-tab="tab-process">Quy trình &amp; Hàm lượng</button>
+        <div class="modal-tabs" id="modalTabsBar">
+          <!-- TAB HÓA PHÂN TÍCH (ẩn khi ở chế độ Hóa sinh) -->
+          <button type="button" class="modal-tab-btn modal-tab-pt active" data-tab="tab-calculations">🧮 Công thức tính toán</button>
+          <button type="button" class="modal-tab-btn modal-tab-pt" data-tab="tab-concentrations">Nồng độ &amp; Đương lượng</button>
+          <button type="button" class="modal-tab-btn modal-tab-pt" data-tab="tab-indicators">Chất chỉ thị pH</button>
+          <button type="button" class="modal-tab-btn modal-tab-pt" data-tab="tab-ph">Công thức tính pH</button>
+          <button type="button" class="modal-tab-btn modal-tab-pt" data-tab="tab-process">Quy trình &amp; Hàm lượng</button>
+          <!-- TAB HÓA SINH ĐẠI CƯƠNG (ẩn khi ở chế độ Hóa phân tích) -->
+          <button type="button" class="modal-tab-btn modal-tab-hs" data-tab="tab-biochem">📖 Sổ tay Protein &amp; Acid amin</button>
+          <button type="button" class="modal-tab-btn modal-tab-hs" data-tab="tab-mindmap">🗺️ Mindmap Hệ thống kiến thức</button>
         </div>
         <div class="modal-body">
         
@@ -970,6 +1084,400 @@
             </tbody>
           </table>
         </div> <!-- /#tab-process -->
+
+        <!-- TAB 6: HÓA SINH ĐẠI CƯƠNG - CHƯƠNG PROTEIN & 20 ACID AMIN -->
+        <div class="cheat-tab-content" id="tab-biochem" style="display:none;">
+          <div class="cheat-card-callout" style="border-left: 4px solid #10b981; background: rgba(16, 185, 129, 0.08);">
+            <strong style="color: #10b981;"><i class='bx bx-dna'></i> HÓA SINH ĐẠI CƯƠNG — CHƯƠNG 3: PROTEIN &amp; 20 ACID AMIN</strong>
+            <p style="font-size:13.5px; margin-top:5px; line-height: 1.6;">
+              Protein chiếm $\ge 50\%$ trọng lượng khô tế bào. Cấu tạo từ 4 nguyên tố chính: $\text{C} \approx 50\%$, $\text{H} \approx 7\%$, $\text{O} \approx 23\%$, $\text{N} \approx 16\%$. Định lượng protein theo Kjeldahl: $\text{Lượng protein} = \text{Lượng N} \times 6,25$.
+            </p>
+          </div>
+
+          <h4 style="font-size:15px; margin:16px 0 8px; color:var(--primary);"><i class='bx bx-grid'></i> 1. Phân loại 20 Amino Acid Thường Gặp (Theo gốc R)</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Nhóm gốc R</th>
+                <th>Số lượng &amp; Danh sách Amino Acid</th>
+                <th>Đặc điểm cấu tạo &amp; Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhóm I: Không phân cực, kỵ nước</strong></td>
+                <td><strong>7 amino acid:</strong> Glycine (Gly, G), Alanine (Ala, A), Proline (Pro, P), Valine (Val, V), Leucine (Leu, L), Isoleucine (Ile, I), Methionine (Met, M)</td>
+                <td>- Gly: không có C bất đối $\implies$ không quang hoạt.<br>- Pro: là <strong>imino acid</strong> (chứa nhóm $-\text{NH}$ trong vòng pyrrolidine).<br>- Met: chứa nguyên tố $\text{S}$.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm II: Chứa nhân thơm</strong></td>
+                <td><strong>3 amino acid:</strong> Phenylalanine (Phe, F), Tyrosine (Tyr, Y), Tryptophan (Trp, W)</td>
+                <td>- Hấp thụ mạnh ánh sáng tử ngoại $\text{UV}$ tại bước sóng $280\text{ nm}$.<br>- Khả năng hấp thụ: $\text{Trp} > \text{Tyr} \gg \text{Phe}$ ($\text{Trp}$ gấp 4 lần $\text{Tyr}$).</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm III: Phân cực, không tích điện</strong></td>
+                <td><strong>5 amino acid:</strong> Serine (Ser, S), Threonine (Thr, T), Cysteine (Cys, C), Asparagine (Asn, N), Glutamine (Gln, Q)</td>
+                <td>- Ser, Thr: chứa nhóm $-\text{OH}$ rượu.<br>- Cys: chứa nhóm thiol $-\text{SH}$ hoạt tính cao, tạo cầu disulfua $-\text{S}-\text{S}-$ (Cystin).<br>- Asn, Gln: dẫn xuất amid.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm IV: Tích điện dương (Kiềm)</strong></td>
+                <td><strong>3 amino acid:</strong> Lysine (Lys, K), Arginine (Arg, R), Histidine (His, H)</td>
+                <td>Chứa nhiều nhóm amin, $pHi$ nằm trong vùng kiềm ($pH > 7$). Khi điện di ở $pH$ trung tính sẽ di chuyển về cực âm (catot).</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm V: Tích điện âm (Acid)</strong></td>
+                <td><strong>2 amino acid:</strong> Aspartate (Asp, D), Glutamate (Glu, E)</td>
+                <td>Chứa 2 nhóm $-\text{COOH}$, $pHi$ nằm trong vùng acid ($pH < 7$). Bột ngọt (mì chính) là muối natri glutamate.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-size:15px; margin:20px 0 8px; color:var(--primary);"><i class='bx bx-palette'></i> 2. Các Phản Ứng Màu Đặc Trưng Của Protein &amp; Amino Acid</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Tên phản ứng</th>
+                <th>Thuốc thử &amp; Điều kiện</th>
+                <th>Dấu hiệu nhận biết</th>
+                <th>Bản chất &amp; Ứng dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Phản ứng Biure</strong></td>
+                <td>$\ce{CuSO4}$ trong môi trường kiềm mạnh ($\ce{NaOH}$)</td>
+                <td>Phức chất màu <strong>tím đỏ</strong> ($\lambda_{\max} = 540\text{ nm}$)</td>
+                <td>Đặc trưng cho <strong>liên kết peptide</strong>. Xảy ra từ tripeptide trở lên. Amino acid tự do và dipeptide <strong>không</strong> phản ứng.</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Ninhydrin</strong></td>
+                <td>Dung dịch Ninhydrin đun nóng</td>
+                <td>Màu <strong>xanh tím</strong> (riêng Proline cho màu <strong>vàng</strong>)</td>
+                <td>Đặc trưng cho $\alpha$-amino acid (tham gia cả $-\ce{COOH}$ và $-\ce{NH2}$).</td>
+              </tr>
+              <tr>
+                <td><strong>Phương pháp Lowry</strong></td>
+                <td>Phản ứng Biure + thuốc thử Folin-Ciocalteau</td>
+                <td>Phức chất màu <strong>xanh da trời</strong> ($\lambda_{\max} = 750\text{ nm}$)</td>
+                <td>Độ nhạy cực cao; dựa vào phản ứng tạo phức của các gốc nhân thơm $\text{Tyr}$ và $\text{Trp}$.</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Xanthoproteic</strong></td>
+                <td>$\ce{HNO3}$ đặc, sau đó kiềm hóa bằng $\ce{NaOH}$</td>
+                <td>Màu <strong>vàng</strong> $\longrightarrow$ chuyển sang <strong>da cam</strong></td>
+                <td>Đặc trưng cho các amino acid có <strong>nhân thơm</strong> ($\text{Tyr}, \text{Trp}, \text{Phe}$).</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Millon</strong></td>
+                <td>Thủy ngân nitrate $\ce{Hg(NO3)2}$ trong $\ce{HNO3}$ đặc</td>
+                <td>Kết tủa màu <strong>nâu đất</strong></td>
+                <td>Đặc trưng cho nhóm $-\text{OH}$ phenol của <strong>Tyrosine (Tyr)</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Pauli</strong></td>
+                <td>Acid diazobenzosulfonic trong kiềm</td>
+                <td>Màu <strong>đỏ anh đào</strong></td>
+                <td>Đặc trưng cho nhân thơm của <strong>Tyrosine (Tyr)</strong> và nhân imidazol của <strong>Histidine (His)</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Sakaguchi</strong></td>
+                <td>$\alpha$-naphtol + natri hypobromite trong kiềm</td>
+                <td>Màu <strong>đỏ anh đào</strong></td>
+                <td>Đặc trưng cho nhóm guanidin của <strong>Arginine (Arg)</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Phản ứng Adamkiewicz</strong></td>
+                <td>Acid glyoxylic + $\ce{H2SO4}$ đặc</td>
+                <td>Xuất hiện <strong>vòng tím đỏ</strong> ở mặt phân cách</td>
+                <td>Đặc trưng cho nhân indol của <strong>Tryptophan (Trp)</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-size:15px; margin:20px 0 8px; color:var(--primary);"><i class='bx bx-layer'></i> 3. 4 Bậc Cấu Trúc Của Protein &amp; Các Peptide Sinh Học</h4>
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Bậc cấu trúc</th>
+                <th>Mô tả cấu trúc không gian</th>
+                <th>Loại liên kết làm bền</th>
+                <th>Ví dụ tiêu biểu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cấu trúc bậc I</strong></td>
+                <td>Trình tự sắp xếp các gốc amino acid trong chuỗi polypeptide; là phiên bản mã di truyền.</td>
+                <td><strong>Liên kết peptide</strong> (liên kết cộng hóa trị bền vững).</td>
+                <td>Insulin (51 aa), Ribonuclease (124 aa).</td>
+              </tr>
+              <tr>
+                <td><strong>Cấu trúc bậc II</strong></td>
+                <td>Dạng không gian cục bộ: <strong>Xoắn $\alpha$</strong> và <strong>Phiến gấp $\beta$</strong> (Pauling &amp; Corey 1951).</td>
+                <td><strong>Liên kết hydrogen</strong> giữa các nhóm $-\ce{CO}-$ và $-\ce{NH}-$ của liên kết peptide kề gần nhau.</td>
+                <td>Keratin ở tóc ($\alpha$ thường, $\beta$ duỗi thẳng); Fibroin ở tơ tằm (phiến $\beta$).</td>
+              </tr>
+              <tr>
+                <td><strong>Cấu trúc bậc III</strong></td>
+                <td>Sự xoắn và cuộn khúc tạo cấu trúc khối cầu 3 chiều đặc trưng cho protein cầu.</td>
+                <td><strong>Cầu disulfua ($-\ce{S-S}-$)</strong> giữa các gốc Cys xa nhau, tương tác Van der Waals, liên kết hydro, liên kết ion tĩnh điện.</td>
+                <td>Myoglobin.</td>
+              </tr>
+              <tr>
+                <td><strong>Cấu trúc bậc IV</strong></td>
+                <td>Sự kết hợp không gian của từ 2 hay nhiều chuỗi polypeptide bậc III (tiểu đơn vị - subunit).</td>
+                <td>Liên kết hydrogen, tương tác Van der Waals trên bề mặt các tiểu đơn vị.</td>
+                <td>Hemoglobin (4 chuỗi: $2\alpha$ 141 aa + $2\beta$ 146 aa).</td>
+              </tr>
+              <tr>
+                <td><strong>Glutathion (GSH)</strong></td>
+                <td>Tripeptide: $\gamma\text{-glutamyl-cysteyl-glycine}$; nhóm hoạt động $-\text{SH}$ của Cys.</td>
+                <td>Hệ thống oxy hóa khử nội bào: $2\text{GSH} \rightleftharpoons \text{GSSG} + 2\text{H}$.</td>
+                <td>Bảo vệ màng hồng cầu, giải độc gan.</td>
+              </tr>
+              <tr>
+                <td><strong>Insulin</strong></td>
+                <td>51 amino acid gồm chuỗi A (21 aa) và chuỗi B (30 aa); 2 cầu $-\ce{S-S}-$ liên chuỗi, 1 cầu nội chuỗi A.</td>
+                <td>Cấu trúc được giải mã bởi Sanger (Nobel 1958).</td>
+                <td>Hạ đường huyết, tăng tổng hợp glycogen, lipid, protein.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- /#tab-biochem -->
+
+        <!-- TAB MINDMAP HÓA SINH ĐẠI CƯƠNG -->
+        <div class="cheat-tab-content" id="tab-mindmap" style="display:none;">
+          <div class="cheat-card-callout" style="border-left:4px solid #8b5cf6; background:rgba(139,92,246,0.07);">
+            <strong style="color:#7c3aed;"><i class='bx bx-sitemap'></i> MINDMAP HỆ THỐNG KIẾN THỨC — HÓA SINH ĐẠI CƯƠNG (CHƯƠNG 3: PROTEIN)</strong>
+            <p style="font-size:13px; margin-top:4px; color:var(--text-secondary);">Sơ đồ tư duy tóm tắt toàn bộ kiến thức lý thuyết cần nắm từ file PDF bài giảng. Click vào các nút để xem chi tiết.</p>
+          </div>
+
+          <!-- MINDMAP SVG-BASED INTERACTIVE -->
+          <div class="mindmap-container" id="mindmapContainer">
+            <!-- Central Node -->
+            <div class="mm-center">
+              <div class="mm-center-node">
+                <i class='bx bx-dna'></i>
+                <span>PROTEIN<br/>&amp; ACID AMIN</span>
+              </div>
+            </div>
+
+            <!-- Branch 1: Cấu tạo Amino acid -->
+            <details class="mm-branch mm-branch-1" open>
+              <summary class="mm-branch-header" style="--branch-color:#10b981;">
+                <i class='bx bx-atom'></i> 1. Cấu tạo &amp; 20 Amino Acid
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Cấu trúc chung</span>
+                  <span>L-α amino acid · nhóm <strong>–COOH</strong> và <strong>–NH₂</strong> gắn Cα · Trừ Proline (imino acid, chỉ có –NH–)</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">5 Nhóm gốc R</span>
+                  <ul class="mm-list">
+                    <li><strong>Nhóm I (7):</strong> Gly, Ala, Pro, Val, Leu, Ile, Met — Không phân cực, kỵ nước</li>
+                    <li><strong>Nhóm II (3):</strong> Phe, Tyr, Trp — Chứa nhân thơm</li>
+                    <li><strong>Nhóm III (5):</strong> Ser, Thr, Cys, Asn, Gln — Phân cực, không tích điện</li>
+                    <li><strong>Nhóm IV (3):</strong> Lys, His, Arg — Tích điện <span style="color:#10b981;">dương (+)</span></li>
+                    <li><strong>Nhóm V (2):</strong> Asp, Glu — Tích điện <span style="color:#ef4444;">âm (–)</span></li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Aa thiết yếu (8-10)</span>
+                  <span><strong>Met, Val, Leu, Ile, Thr, Phe, Trp, Lys</strong> (+Arg, His) — Cơ thể không tự tổng hợp được</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(16,185,129,0.15); color:#059669;">Độ tan đặc biệt</span>
+                  <span>Pro &amp; Hydroxyproline: tan được trong alcohol/ether · Tyr: khó tan trong acid/kiềm loãng · Glycine: không có C bất đối → không quang hoạt</span>
+                </div>
+              </div>
+            </details>
+
+            <!-- Branch 2: Tính chất lý hóa -->
+            <details class="mm-branch mm-branch-2">
+              <summary class="mm-branch-header" style="--branch-color:#3b82f6;">
+                <i class='bx bx-bulb'></i> 2. Tính Chất Lý Hóa Amino Acid
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Quang học</span>
+                  <span>Số đồng phân lập thể = <strong>2ⁿ</strong> (n = số C bất đối) · Isoleucine &amp; Threonine: 2 carbon bất đối → 4 đồng phân · Chiều quay phụ thuộc pH môi trường</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Hấp thụ UV</span>
+                  <ul class="mm-list">
+                    <li><strong>280 nm:</strong> Trp (mạnh nhất, gấp 4× Tyr) &gt; Tyr ≫ Phe</li>
+                    <li><strong>190 nm (180–220):</strong> Liên kết peptide</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Tính lưỡng tính &amp; pHi</span>
+                  <span>$$pHi = \frac{pK_1 + pK_2}{2}$$ · Glycine: $pHi = 5{,}97$ · pH &lt; pHi → cation (+) → về cực âm (catot) · pH &gt; pHi → anion (–) → về cực dương (anot)</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(59,130,246,0.15); color:#1d4ed8;">Phản ứng hóa học</span>
+                  <ul class="mm-list">
+                    <li><strong>Ninhydrin:</strong> Tím xanh (tất cả α-aa) · Vàng (Proline)</li>
+                    <li><strong>NaBH₄:</strong> Khử –COOH → rượu amino (–CH₂OH)</li>
+                    <li><strong>HNO₂ (Van Slyke):</strong> –NH₂ + HNO₂ → N₂ ↑ (định lượng N)</li>
+                    <li><strong>Aldehyde (Base Schiff):</strong> Định lượng aa bằng chuẩn độ formol</li>
+                    <li><strong>Sanger (DNFB):</strong> Xác định đầu N-tận cùng</li>
+                    <li><strong>Edman (PITC):</strong> Giải trình tự từ đầu N (không phá chuỗi)</li>
+                    <li><strong>Carboxypeptidase:</strong> Xác định đầu C-tận cùng</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <!-- Branch 3: Peptide -->
+            <details class="mm-branch mm-branch-3">
+              <summary class="mm-branch-header" style="--branch-color:#f59e0b;">
+                <i class='bx bx-link-alt'></i> 3. Peptide &amp; Hormon Sinh Học
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Liên kết peptide</span>
+                  <span>–COOH + –NH₂ → <strong>–CO–NH–</strong> + H₂O · Có tính đồng phẳng (không quay tự do) · Phản ứng Biure: CuSO₄ + kiềm → <strong>tím đỏ</strong> (λ = 540 nm) · Từ <em>tripeptide</em> trở lên</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Định lượng Lowry</span>
+                  <span>Biure + Folin-Ciocalteu (phosphomolybdic + phosphovolframic acid) → <strong>màu xanh</strong> (λ = 750 nm) · Tác dụng thêm với Tyr &amp; Trp</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Glutathion (GSH)</span>
+                  <span>Tripeptide: <strong>γ-Glu–Cys–Gly</strong> · Nhóm –SH hoạt động · 2GSH ⇌ GSSG + 2[H] → hệ thống oxy hóa khử nội bào</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">HGH (Hormone sinh trưởng)</span>
+                  <ul class="mm-list">
+                    <li>191 aa, MW = 20.000 · Hoạt tính: đoạn 134 aa</li>
+                    <li>2 cầu S–S: (53–165) và (182–189)</li>
+                    <li>Thiếu trước dậy thì → <em>người lùn</em> · Thừa sau dậy thì → <em>to cực (acromegaly)</em></li>
+                    <li>Giống lactogen nhau thai 85% · Giống prolactin 32%</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(245,158,11,0.15); color:#b45309;">Insulin</span>
+                  <ul class="mm-list">
+                    <li>51 aa · Chuỗi A (21 aa) + Chuỗi B (30 aa) · MW ≈ 5.700</li>
+                    <li>2 cầu S–S liên chuỗi + 1 nội chuỗi A (aa 6–11)</li>
+                    <li>Sanger xác định cấu trúc (Nobel 1958)</li>
+                    <li>Tác dụng: <strong>hạ đường huyết</strong> · Kích thích tổng hợp glycogen, lipid, protein</li>
+                    <li>Ức chế tân tạo glucose: ↓ pyruvate carboxylase &amp; fructose 1,6-diphosphatase</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <!-- Branch 4: 4 Bậc cấu trúc -->
+            <details class="mm-branch mm-branch-4">
+              <summary class="mm-branch-header" style="--branch-color:#ec4899;">
+                <i class='bx bx-layer'></i> 4. Bốn Bậc Cấu Trúc Protein
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 1</span>
+                  <span>Trình tự amino acid · Liên kết: <strong>peptide (cộng hóa trị)</strong> · Là phiên bản của mã di truyền</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 2</span>
+                  <span>Xoắn cục bộ · Liên kết: <strong>hydro</strong> giữa các nhóm –C=O và –NH · 2 dạng: <strong>xoắn α</strong> và <strong>phiến gấp β</strong> (fibroin tơ tằm) · Keratin tóc: dạng α bình thường → β khi kéo căng</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 3</span>
+                  <span>Cuộn khúc 3D → hình cầu · Liên kết: <strong>disulfua, Van der Waals, hydro, tĩnh điện</strong> · VD: Myoglobin (75% xoắn α)</span>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(236,72,153,0.15); color:#be185d;">Bậc 4</span>
+                  <span>Nhiều tiểu đơn vị (subunit) · Liên kết: <strong>hydro, Van der Waals</strong> giữa bề mặt · VD: <strong>Hemoglobin</strong> = 2α(141aa) + 2β(146aa) · % xoắn α: Hb &amp; Mb = 75%; Lysozyme = 35%; RNase = 17%</span>
+                </div>
+              </div>
+            </details>
+
+            <!-- Branch 5: Tính chất &amp; Phản ứng màu Protein -->
+            <details class="mm-branch mm-branch-5">
+              <summary class="mm-branch-header" style="--branch-color:#06b6d4;">
+                <i class='bx bx-test-tube'></i> 5. Tính Chất &amp; Phản Ứng Màu
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">Độ tan</span>
+                  <ul class="mm-list">
+                    <li><strong>Albumin:</strong> Tan trong nước · Kết tủa (NH₄)₂SO₄ 70–100%</li>
+                    <li><strong>Globulin:</strong> Tan trong muối loãng (NaCl, KCl) · Kết tủa (NH₄)₂SO₄ 50%</li>
+                    <li><strong>Prolamin:</strong> Tan trong ethanol/isopropanol 70–80%</li>
+                    <li><strong>Glutelin:</strong> Chỉ tan trong kiềm/acid loãng</li>
+                    <li><strong>Histon:</strong> Tan trong nước, không tan trong amoniac loãng · Tính kiềm</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">Kết tủa &amp; Biến tính</span>
+                  <ul class="mm-list">
+                    <li><strong>Thuận nghịch:</strong> Muối trung tính cao (diêm tích) · Cồn/acetone lạnh → có thể phục hồi</li>
+                    <li><strong>Không thuận nghịch:</strong> Đun sôi · Acid/kiềm mạnh · Cation kim loại nặng · Bức xạ cao</li>
+                    <li>Muối trung tính đậm đặc: phá lớp áo nước + trung hòa điện tích</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(6,182,212,0.15); color:#0e7490;">5 Phản ứng màu đặc trưng</span>
+                  <table class="mm-mini-table">
+                    <thead><tr><th>Phản ứng</th><th>Amino acid</th><th>Màu sắc / Ghi chú</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Xanthoproteic</strong></td><td>Tyr, Trp, Phe</td><td>HNO₃ đặc → <span style="color:#ca8a04;">Vàng</span> · + Kiềm → <span style="color:#ea580c;">Cam</span></td></tr>
+                      <tr><td><strong>Millon</strong></td><td>Tyr</td><td>Hg-nitrate + HNO₃ → <span style="color:#92400e;">Nâu đất</span></td></tr>
+                      <tr><td><strong>Pauli</strong></td><td>Tyr, His</td><td>Diazobenzosulfonic acid → <span style="color:#dc2626;">Đỏ anh đào</span></td></tr>
+                      <tr><td><strong>Sakaguchi</strong></td><td>Arg</td><td>α-naphtol + hypobromite/kiềm → <span style="color:#dc2626;">Đỏ anh đào</span></td></tr>
+                      <tr><td><strong>Adamkiewicz</strong></td><td>Trp</td><td>Glyoxylic acid + H₂SO₄ đặc → <span style="color:#7c3aed;">Vòng tím đỏ</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
+
+            <!-- Branch 6: Phân loại &amp; Chức năng -->
+            <details class="mm-branch mm-branch-6">
+              <summary class="mm-branch-header" style="--branch-color:#f97316;">
+                <i class='bx bx-shield-quarter'></i> 6. Phân Loại &amp; Chức Năng Protein
+              </summary>
+              <div class="mm-branch-body">
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Theo hình dạng</span>
+                  <ul class="mm-list">
+                    <li><strong>Protein sợi:</strong> Không tan trong nước · Collagen (gân, xương), Elastin, α-keratin (tóc, móng), Fibroin (tơ tằm), Sclerotin (vỏ côn trùng)</li>
+                    <li><strong>Protein cầu:</strong> Tan trong nước/muối · Albumin huyết thanh, Hemoglobin, enzyme</li>
+                    <li><strong>Protein trung gian:</strong> Myosin, Fibrinogen</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Theo thành phần hóa học</span>
+                  <ul class="mm-list">
+                    <li><strong>Protein đơn giản (protid thuần):</strong> Chỉ gồm amino acid · Albumin, Globulin, Prolamin, Glutelin, Histon</li>
+                    <li><strong>Protein phức tạp (protid tạp):</strong> Thêm nhóm ngoại · Lipoprotein (lipid), Nucleoprotein (nucleic acid), Glycoprotein (carbohydrate), Phosphoprotein → Casein, Chromoprotein → Hemoglobin (màu đỏ), Flavoprotein (màu vàng)</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">9 Chức năng sinh học</span>
+                  <ul class="mm-list">
+                    <li>🏗️ <strong>Tạo hình:</strong> Collagen, Keratin, màng tế bào</li>
+                    <li>⚗️ <strong>Xúc tác:</strong> Enzyme (3.500+ loại) + Ribozyme (RNA)</li>
+                    <li>🛡️ <strong>Bảo vệ:</strong> Kháng thể, bổ thể, đông máu (Fibrinogen)</li>
+                    <li>🚀 <strong>Vận chuyển:</strong> Hemoglobin (O₂/CO₂), Ceruloplasmin (Cu), Lipoprotein (lipid)</li>
+                    <li>💪 <strong>Vận động:</strong> Myosin, Actin</li>
+                    <li>📦 <strong>Dự trữ:</strong> Casein (sữa), Ovalbumin (trứng), Ferritin (Fe)</li>
+                    <li>📡 <strong>Dẫn truyền TK:</strong> Rhodopsin (mắt)</li>
+                    <li>🎛️ <strong>Điều hòa:</strong> Hormone, Repressor (ADN)</li>
+                    <li>⚡ <strong>Năng lượng:</strong> Phân giải aa → CO₂ + H₂O + năng lượng</li>
+                  </ul>
+                </div>
+                <div class="mm-leaf">
+                  <span class="mm-leaf-tag" style="background:rgba(249,115,22,0.15); color:#c2410c;">Định lượng protein theo Kjeldahl</span>
+                  <span>$$\text{Protein (g)} = \text{N (g)} \times 6{,}25$$<br/>Vì N chiếm ≈16% → Hệ số 6,25 = 100/16</span>
+                </div>
+              </div>
+            </details>
+
+          </div> <!-- /.mindmap-container -->
+        </div> <!-- /#tab-mindmap -->
       </div> <!-- /.modal-body -->
     </div> <!-- /.modal-tabbed-view -->
 
