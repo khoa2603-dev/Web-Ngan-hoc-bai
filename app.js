@@ -2279,13 +2279,30 @@ function switchSubject(sub) {
     if (modalBadgeHS) modalBadgeHS.textContent = 'Chuẩn PDF Hóa Sinh';
     document.querySelectorAll('.modal-tab-pt').forEach(t => { t.style.display = 'none'; });
     document.querySelectorAll('.modal-tab-hs').forEach(t => { t.style.display = 'inline-flex'; });
-    // Kích hoạt tab Sổ tay Protein làm tab mặc định
+    // Cập nhật tab Sổ tay Protein làm tab mặc định
     document.querySelectorAll('.modal-tab-btn').forEach(t => t.classList.remove('active'));
     const defaultHSTab = document.querySelector('[data-tab="tab-biochem"]');
     if (defaultHSTab) defaultHSTab.classList.add('active');
     document.querySelectorAll('.cheat-tab-content').forEach(c => { c.style.display = 'none'; });
     const biochemContent = document.getElementById('tab-biochem');
     if (biochemContent) biochemContent.style.display = 'block';
+
+    // Cập nhật bảng tra cứu toàn màn hình theo môn Hóa sinh
+    const gridPT = document.getElementById('fullscreenBoardGridPT');
+    const gridHS = document.getElementById('fullscreenBoardGridHS');
+    const boardTitle = document.getElementById('boardToolbarTitleText');
+    const boardLegend = document.getElementById('boardLegendTag');
+    if (gridPT) gridPT.style.display = 'none';
+    if (gridHS) {
+      gridHS.style.display = currentCheatMode === 'board' ? 'grid' : 'none';
+      if (currentCheatMode === 'board') renderMath(gridHS);
+    }
+    if (boardTitle) boardTitle.textContent = 'BẢNG TRA CỨU TOÀN MÀN HÌNH (HÓA SINH: PROTEIN & 20 ACID AMIN)';
+    if (boardLegend) {
+      boardLegend.className = 'board-legend-tag green';
+      boardLegend.innerHTML = '<span class="dot green"></span> Chuẩn Slide PDF Hóa Sinh Đại Cương';
+    }
+    zoomFormulaList = [];
 
   } else {
     // Giao diện Hóa phân tích
@@ -2351,6 +2368,23 @@ function switchSubject(sub) {
     document.querySelectorAll('.cheat-tab-content').forEach(c => { c.style.display = 'none'; });
     const calcContent = document.getElementById('tab-calculations');
     if (calcContent) calcContent.style.display = 'block';
+
+    // Cập nhật bảng tra cứu toàn màn hình theo môn Hóa phân tích
+    const gridPT_el = document.getElementById('fullscreenBoardGridPT');
+    const gridHS_el = document.getElementById('fullscreenBoardGridHS');
+    const boardTitle_el = document.getElementById('boardToolbarTitleText');
+    const boardLegend_el = document.getElementById('boardLegendTag');
+    if (gridHS_el) gridHS_el.style.display = 'none';
+    if (gridPT_el) {
+      gridPT_el.style.display = currentCheatMode === 'board' ? 'grid' : 'none';
+      if (currentCheatMode === 'board') renderMath(gridPT_el);
+    }
+    if (boardTitle_el) boardTitle_el.textContent = 'BẢNG TRA CỨU TOÀN MÀN HÌNH (CHUẨN 4 CHƯƠNG HÓA PHÂN TÍCH)';
+    if (boardLegend_el) {
+      boardLegend_el.className = 'board-legend-tag not-pdf';
+      boardLegend_el.innerHTML = '<span class="dot red"></span> Màu đỏ: Công thức mở rộng (ngoài slide)';
+    }
+    zoomFormulaList = [];
   }
 
   generateQuiz(false);
@@ -3206,10 +3240,33 @@ function setCheatViewMode(mode) {
   }
 
   if (isBoard) {
-    if (fullscreenBoardGrid) renderMath(fullscreenBoardGrid);
+    const isHS = currentSubject === 'hs';
+    const gridPT = document.getElementById('fullscreenBoardGridPT');
+    const gridHS = document.getElementById('fullscreenBoardGridHS');
+    const boardTitle = document.getElementById('boardToolbarTitleText');
+    const boardLegend = document.getElementById('boardLegendTag');
+
+    if (gridPT) gridPT.style.display = isHS ? 'none' : 'grid';
+    if (gridHS) gridHS.style.display = isHS ? 'grid' : 'none';
+
+    if (boardTitle) {
+      boardTitle.textContent = isHS
+        ? 'BẢNG TRA CỨU TOÀN MÀN HÌNH (HÓA SINH: PROTEIN & 20 ACID AMIN)'
+        : 'BẢNG TRA CỨU TOÀN MÀN HÌNH (CHUẨN 4 CHƯƠNG HÓA PHÂN TÍCH)';
+    }
+    if (boardLegend) {
+      boardLegend.className = isHS ? 'board-legend-tag green' : 'board-legend-tag not-pdf';
+      boardLegend.innerHTML = isHS
+        ? '<span class="dot green"></span> Chuẩn Slide PDF Hóa Sinh Đại Cương'
+        : '<span class="dot red"></span> Màu đỏ: Công thức mở rộng (ngoài slide)';
+    }
+
+    const activeGrid = isHS ? gridHS : gridPT;
+    if (activeGrid) renderMath(activeGrid);
+    zoomFormulaList = [];
   } else {
     const activeTabBtn = document.querySelector('.modal-tab-btn.active');
-    const tabId = activeTabBtn ? activeTabBtn.dataset.tab : 'tab-calculations';
+    const tabId = activeTabBtn ? activeTabBtn.dataset.tab : (currentSubject === 'hs' ? 'tab-biochem' : 'tab-calculations');
     const target = document.getElementById(tabId);
     if (target) {
       target.style.display = 'block';
@@ -3233,7 +3290,14 @@ function openModalToTab(tabId) {
   });
 
   const activeContent = document.getElementById(tabId);
+  const modalBody = document.querySelector('.modal-body');
+  if (modalBody) {
+    modalBody.classList.toggle('mindmap-active', tabId === 'tab-mindmap');
+  }
   if (activeContent) renderMath(activeContent);
+  if (tabId === 'tab-mindmap' && typeof onMindmapTabActivated === 'function') {
+    setTimeout(onMindmapTabActivated, 60);
+  }
 }
 
 function openModalToBoard() {
@@ -3252,9 +3316,9 @@ function closeCheatModal() {
 }
 
 function updateBoardZoom() {
-  if (fullscreenBoardGrid) {
-    fullscreenBoardGrid.style.setProperty('--board-zoom', boardZoomLevel);
-  }
+  document.querySelectorAll('.fullscreen-board-grid').forEach(grid => {
+    grid.style.setProperty('--board-zoom', boardZoomLevel);
+  });
   if (boardZoomVal) {
     boardZoomVal.textContent = Math.round(boardZoomLevel * 100) + '%';
   }
@@ -3353,7 +3417,10 @@ const elFzCard = document.getElementById('formulaZoomCard');
 
 function collectBoardFormulas() {
   const items = [];
-  const tiles = document.querySelectorAll('.fullscreen-board-grid .board-tile');
+  const activeGrid = currentSubject === 'hs'
+    ? document.getElementById('fullscreenBoardGridHS')
+    : document.getElementById('fullscreenBoardGridPT');
+  const tiles = (activeGrid || document).querySelectorAll('.board-tile');
   tiles.forEach((tile, tileIdx) => {
     const tileTagEl = tile.querySelector('.tile-tag');
     const tileH4 = tile.querySelector('.tile-header h4');
@@ -3489,14 +3556,19 @@ function closeFormulaZoom() {
 }
 
 function initFormulaZoom() {
-  zoomFormulaList = collectBoardFormulas();
-
-  zoomFormulaList.forEach((item, idx) => {
-    item.element.addEventListener('click', (e) => {
+  const boardViewEl = document.getElementById('fullscreenBoardView');
+  if (boardViewEl) {
+    boardViewEl.addEventListener('click', (e) => {
+      const row = e.target.closest('.tile-row');
+      if (!row) return;
       e.stopPropagation();
-      openFormulaZoom(idx);
+      zoomFormulaList = collectBoardFormulas();
+      const idx = zoomFormulaList.findIndex(item => item.element === row);
+      if (idx !== -1) {
+        openFormulaZoom(idx);
+      }
     });
-  });
+  }
 
   // Hỗ trợ cả công thức hay gặp ở thanh bên Desktop
   document.querySelectorAll('.quick-formula-item').forEach((item) => {
@@ -3510,6 +3582,7 @@ function initFormulaZoom() {
 
       if (elFzCard) {
         elFzCard.classList.toggle('fz-wide-formula', mathContent.length > 70);
+        elFzCard.classList.remove('is-not-in-pdf', 'is-extended-pdf');
       }
 
       if (elFzTag) elFzTag.innerHTML = `<i class='bx bx-calculator'></i> Công thức hay gặp (PDF)`;
@@ -3560,6 +3633,669 @@ function initFormulaZoom() {
   });
 }
 
+// ==========================================
+// ==========================================
+// 8.6. BỘ ĐIỀU KHIỂN SƠ ĐỒ TƯ DUY MIRO 2D (INFINITE CANVAS ENGINE)
+// ==========================================
+let mmEngineInitialized = false;
+let mmState = {
+  x: 0,
+  y: 0,
+  scale: 0.85,
+  isDragging: false,
+  startX: 0,
+  startY: 0,
+  dragStartX: 0,
+  dragStartY: 0,
+  currentMatchIndex: 0,
+  matchedLeaves: []
+};
+
+function onMindmapTabActivated() {
+  const tab = document.getElementById('tab-mindmap');
+  if (!tab || tab.style.display === 'none') return;
+  renderMath(tab);
+  if (!mmEngineInitialized) {
+    initMindmapControls();
+  }
+  requestAnimationFrame(() => {
+    fitMindmapToView();
+    drawMindmapConnectors();
+    updateMinimap();
+  });
+}
+
+function initMindmapControls() {
+  const viewport = document.getElementById('mmCanvasViewport');
+  const world = document.getElementById('mmCanvasWorld');
+  const svg = document.getElementById('mmSvgConnectors');
+  const rootNode = document.getElementById('mmRootNode');
+  if (!viewport || !world) return;
+
+  mmEngineInitialized = true;
+
+  // Cập nhật vị trí biến đổi CSS
+  function applyTransform(animate = false) {
+    if (animate) {
+      world.classList.add('smooth-transition');
+      setTimeout(() => world.classList.remove('smooth-transition'), 420);
+    }
+    world.style.transform = `translate3d(${mmState.x}px, ${mmState.y}px, 0) scale(${mmState.scale})`;
+    const zoomPercentEl = document.getElementById('mmZoomPercent');
+    if (zoomPercentEl) {
+      zoomPercentEl.textContent = `${Math.round(mmState.scale * 100)}%`;
+    }
+    updateMinimapViewportBox();
+  }
+
+  // Căn chỉnh toàn bộ sơ đồ vừa vặn với khung nhìn (Fit View)
+  window.fitMindmapToView = function (animate = true) {
+    const layout = document.getElementById('mmTreeLayout');
+    if (!layout || !viewport) return;
+
+    const vpW = viewport.clientWidth || 950;
+    const vpH = viewport.clientHeight || 650;
+
+    // Tạm thời đưa scale về 1 để đo kích thước chuẩn
+    const curTransform = world.style.transform;
+    world.style.transform = 'none';
+    const lRect = layout.getBoundingClientRect();
+    const wRect = world.getBoundingClientRect();
+
+    const contentW = lRect.width;
+    const contentH = lRect.height;
+    const contentX = lRect.left - wRect.left;
+    const contentY = lRect.top - wRect.top;
+
+    world.style.transform = curTransform;
+
+    const pad = 60;
+    const scaleX = (vpW - pad * 2) / contentW;
+    const scaleY = (vpH - pad * 2) / contentH;
+    let targetScale = Math.min(scaleX, scaleY);
+    targetScale = Math.max(0.35, Math.min(1.05, targetScale));
+
+    const targetX = (vpW - contentW * targetScale) / 2 - contentX * targetScale;
+    const targetY = (vpH - contentH * targetScale) / 2 - contentY * targetScale;
+
+    mmState.scale = targetScale;
+    mmState.x = targetX;
+    mmState.y = targetY;
+
+    applyTransform(animate);
+    drawMindmapConnectors();
+    updateMinimap();
+  };
+
+  // Tập trung về nút Gốc trung tâm
+  window.focusMindmapRoot = function () {
+    if (!rootNode || !viewport) return;
+    const vpW = viewport.clientWidth || 950;
+    const vpH = viewport.clientHeight || 650;
+
+    const curTransform = world.style.transform;
+    world.style.transform = 'none';
+    const rRect = rootNode.getBoundingClientRect();
+    const wRect = world.getBoundingClientRect();
+
+    const rootCenterX = (rRect.left - wRect.left) + rRect.width / 2;
+    const rootCenterY = (rRect.top - wRect.top) + rRect.height / 2;
+
+    world.style.transform = curTransform;
+
+    mmState.scale = 1.0;
+    mmState.x = vpW / 2 - rootCenterX * mmState.scale;
+    mmState.y = vpH / 2 - rootCenterY * mmState.scale;
+
+    applyTransform(true);
+    drawMindmapConnectors();
+  };
+
+  // Cuộn/Pan trực tiếp tới một thẻ cụ thể
+  window.panToNode = function (el) {
+    if (!el || !viewport) return;
+    const vpW = viewport.clientWidth || 950;
+    const vpH = viewport.clientHeight || 650;
+
+    const curTransform = world.style.transform;
+    world.style.transform = 'none';
+    const nRect = el.getBoundingClientRect();
+    const wRect = world.getBoundingClientRect();
+
+    const nodeCenterX = (nRect.left - wRect.left) + nRect.width / 2;
+    const nodeCenterY = (nRect.top - wRect.top) + nRect.height / 2;
+
+    world.style.transform = curTransform;
+
+    const targetScale = Math.max(0.85, mmState.scale);
+    mmState.scale = targetScale;
+    mmState.x = vpW / 2 - nodeCenterX * mmState.scale;
+    mmState.y = vpH / 2 - nodeCenterY * mmState.scale;
+
+    applyTransform(true);
+  };
+
+  // Lấy tọa độ mỏ neo (Anchor) của phần tử bên trong world
+  function getNodeAnchor(el, side) {
+    const wRect = world.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    const s = mmState.scale || 1;
+    const x = (r.left - wRect.left) / s;
+    const y = (r.top - wRect.top) / s;
+    const w = r.width / s;
+    const h = r.height / s;
+
+    if (side === 'left') return { x: x, y: y + h / 2 };
+    if (side === 'right') return { x: x + w, y: y + h / 2 };
+    if (side === 'top') return { x: x + w / 2, y: y };
+    if (side === 'bottom') return { x: x + w / 2, y: y + h };
+    return { x: x + w / 2, y: y + h / 2 };
+  }
+
+  // Vẽ các đường nối cong SVG dạng rễ cây (Tree Root Bezier Curves)
+  window.drawMindmapConnectors = function () {
+    if (!svg || !rootNode) return;
+
+    // Làm sạch các đường nối cũ
+    svg.innerHTML = '';
+
+    const rootLeft = getNodeAnchor(rootNode, 'left');
+    const rootRight = getNodeAnchor(rootNode, 'right');
+
+    const branchBlocks = document.querySelectorAll('.mm-branch-block');
+    branchBlocks.forEach(block => {
+      const isLeft = block.dataset.side === 'left';
+      const branchColor = block.style.getPropertyValue('--branch-color') || '#7c3aed';
+      const branchNode = block.querySelector('.mm-branch-node');
+      if (!branchNode) return;
+
+      // 1. Đường nối từ Root -> Nhánh chính
+      if (isLeft) {
+        const bRight = getNodeAnchor(branchNode, 'right');
+        const dx = Math.abs(bRight.x - rootLeft.x);
+        const cp1x = rootLeft.x - dx * 0.45;
+        const cp1y = rootLeft.y;
+        const cp2x = bRight.x + dx * 0.45;
+        const cp2y = bRight.y;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', `M ${rootLeft.x} ${rootLeft.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${bRight.x} ${bRight.y}`);
+        path.setAttribute('class', 'mm-branch-path mm-path-root');
+        path.setAttribute('stroke', branchColor);
+        svg.appendChild(path);
+      } else {
+        const bLeft = getNodeAnchor(branchNode, 'left');
+        const dx = Math.abs(bLeft.x - rootRight.x);
+        const cp1x = rootRight.x + dx * 0.45;
+        const cp1y = rootRight.y;
+        const cp2x = bLeft.x - dx * 0.45;
+        const cp2y = bLeft.y;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', `M ${rootRight.x} ${rootRight.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${bLeft.x} ${bLeft.y}`);
+        path.setAttribute('class', 'mm-branch-path mm-path-root');
+        path.setAttribute('stroke', branchColor);
+        svg.appendChild(path);
+      }
+
+      // 2. Đường nối từ Nhánh chính -> Các thẻ lá (Leaf Cards)
+      if (!block.classList.contains('is-collapsed')) {
+        const leaves = block.querySelectorAll('.mm-leaf-card');
+        leaves.forEach(leaf => {
+          if (isLeft) {
+            const bLeft = getNodeAnchor(branchNode, 'left');
+            const lRight = getNodeAnchor(leaf, 'right');
+            const dx = Math.abs(lRight.x - bLeft.x);
+            const cp1x = bLeft.x - dx * 0.5;
+            const cp1y = bLeft.y;
+            const cp2x = lRight.x + dx * 0.5;
+            const cp2y = lRight.y;
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M ${bLeft.x} ${bLeft.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${lRight.x} ${lRight.y}`);
+            path.setAttribute('class', 'mm-branch-path mm-path-leaf');
+            path.setAttribute('stroke', branchColor);
+            svg.appendChild(path);
+          } else {
+            const bRight = getNodeAnchor(branchNode, 'right');
+            const lLeft = getNodeAnchor(leaf, 'left');
+            const dx = Math.abs(lLeft.x - bRight.x);
+            const cp1x = bRight.x + dx * 0.5;
+            const cp1y = bRight.y;
+            const cp2x = lLeft.x - dx * 0.5;
+            const cp2y = lLeft.y;
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M ${bRight.x} ${bRight.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${lLeft.x} ${lLeft.y}`);
+            path.setAttribute('class', 'mm-branch-path mm-path-leaf');
+            path.setAttribute('stroke', branchColor);
+            svg.appendChild(path);
+          }
+        });
+      }
+    });
+  };
+
+  // ==========================================
+  // KÉO THẢ DI CHUYỂN KHÔNG GIAN PHẲNG (PANNING)
+  // ==========================================
+  viewport.addEventListener('pointerdown', e => {
+    // Không kích hoạt kéo nếu bấm vào input, button hoặc thẻ chi tiết
+    if (e.target.closest('button, input, a, .mm-zoom-pill, .mm-minimap-box')) return;
+
+    mmState.isDragging = true;
+    mmState.startX = e.clientX;
+    mmState.startY = e.clientY;
+    mmState.dragStartX = mmState.x;
+    mmState.dragStartY = mmState.y;
+
+    viewport.classList.add('is-panning');
+    viewport.setPointerCapture(e.pointerId);
+  });
+
+  viewport.addEventListener('pointermove', e => {
+    if (!mmState.isDragging) return;
+    const dx = e.clientX - mmState.startX;
+    const dy = e.clientY - mmState.startY;
+    mmState.x = mmState.dragStartX + dx;
+    mmState.y = mmState.dragStartY + dy;
+    applyTransform(false);
+  });
+
+  const stopDragging = (e) => {
+    if (mmState.isDragging) {
+      mmState.isDragging = false;
+      viewport.classList.remove('is-panning');
+      try { viewport.releasePointerCapture(e.pointerId); } catch (err) {}
+    }
+  };
+
+  viewport.addEventListener('pointerup', stopDragging);
+  viewport.addEventListener('pointercancel', stopDragging);
+
+  // ==========================================
+  // CUỘN CHUỘT PHÓNG TO / THU NHỎ (FOCAL ZOOM)
+  // ==========================================
+  viewport.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomFactor = e.deltaY < 0 ? 1.12 : 0.89;
+    const newScale = Math.max(0.25, Math.min(2.2, mmState.scale * zoomFactor));
+
+    const rect = viewport.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    // Zoom hướng tâm vào vị trí trỏ chuột
+    mmState.x = mouseX - (mouseX - mmState.x) * (newScale / mmState.scale);
+    mmState.y = mouseY - (mouseY - mmState.y) * (newScale / mmState.scale);
+    mmState.scale = newScale;
+
+    applyTransform(false);
+  }, { passive: false });
+
+  // ==========================================
+  // DOCK ZOOM CONTROLS
+  // ==========================================
+  const btnZoomIn = document.getElementById('mmBtnZoomIn');
+  const btnZoomOut = document.getElementById('mmBtnZoomOut');
+  const btnZoomReset = document.getElementById('mmBtnZoomReset');
+  const btnFitView = document.getElementById('mmBtnFitView');
+  const btnFocusRoot = document.getElementById('mmBtnFocusRoot');
+
+  if (btnZoomIn) {
+    btnZoomIn.addEventListener('click', () => {
+      sound.playClick();
+      const newScale = Math.min(2.2, mmState.scale * 1.18);
+      const vpW = viewport.clientWidth / 2;
+      const vpH = viewport.clientHeight / 2;
+      mmState.x = vpW - (vpW - mmState.x) * (newScale / mmState.scale);
+      mmState.y = vpH - (vpH - mmState.y) * (newScale / mmState.scale);
+      mmState.scale = newScale;
+      applyTransform(true);
+    });
+  }
+
+  if (btnZoomOut) {
+    btnZoomOut.addEventListener('click', () => {
+      sound.playClick();
+      const newScale = Math.max(0.25, mmState.scale / 1.18);
+      const vpW = viewport.clientWidth / 2;
+      const vpH = viewport.clientHeight / 2;
+      mmState.x = vpW - (vpW - mmState.x) * (newScale / mmState.scale);
+      mmState.y = vpH - (vpH - mmState.y) * (newScale / mmState.scale);
+      mmState.scale = newScale;
+      applyTransform(true);
+    });
+  }
+
+  if (btnZoomReset) {
+    btnZoomReset.addEventListener('click', () => {
+      sound.playClick();
+      mmState.scale = 1.0;
+      applyTransform(true);
+    });
+  }
+
+  if (btnFitView) {
+    btnFitView.addEventListener('click', () => {
+      sound.playClick();
+      fitMindmapToView(true);
+    });
+  }
+
+  if (btnFocusRoot) {
+    btnFocusRoot.addEventListener('click', () => {
+      sound.playClick();
+      focusMindmapRoot();
+    });
+  }
+
+  // ==========================================
+  // THU GỌN / MỞ RỘNG CÁC NHÁNH
+  // ==========================================
+  document.querySelectorAll('.mm-branch-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      sound.playClick();
+      const block = btn.closest('.mm-branch-block');
+      if (!block) return;
+      block.classList.toggle('is-collapsed');
+      drawMindmapConnectors();
+      updateMinimap();
+    });
+  });
+
+  document.querySelectorAll('.mm-branch-node').forEach(node => {
+    node.addEventListener('click', e => {
+      if (e.target.closest('.mm-branch-toggle-btn')) return;
+      sound.playClick();
+      const block = node.closest('.mm-branch-block');
+      if (block) {
+        block.classList.toggle('is-collapsed');
+        drawMindmapConnectors();
+        updateMinimap();
+      }
+    });
+  });
+
+  const btnExpandAll = document.getElementById('mmExpandAllBtn');
+  const btnCollapseAll = document.getElementById('mmCollapseAllBtn');
+
+  if (btnExpandAll) {
+    btnExpandAll.addEventListener('click', () => {
+      sound.playClick();
+      document.querySelectorAll('.mm-branch-block').forEach(b => b.classList.remove('is-collapsed'));
+      drawMindmapConnectors();
+      updateMinimap();
+    });
+  }
+
+  if (btnCollapseAll) {
+    btnCollapseAll.addEventListener('click', () => {
+      sound.playClick();
+      document.querySelectorAll('.mm-branch-block').forEach(b => b.classList.add('is-collapsed'));
+      drawMindmapConnectors();
+      updateMinimap();
+    });
+  }
+
+  // ==========================================
+  // TOÀN MÀN HÌNH CANVAS MIRO
+  // ==========================================
+  const btnFullscreen = document.getElementById('mmFullscreenCanvasBtn');
+  if (btnFullscreen) {
+    btnFullscreen.addEventListener('click', () => {
+      sound.playClick();
+      const modalBox = document.getElementById('modalBox');
+      if (!modalBox) return;
+      const isFull = modalBox.classList.toggle('mm-fullscreen-mode');
+      btnFullscreen.innerHTML = isFull
+        ? `<i class='bx bx-exit-fullscreen'></i> <span>Thu nhỏ</span>`
+        : `<i class='bx bx-fullscreen'></i> <span>Toàn màn hình</span>`;
+      setTimeout(() => {
+        fitMindmapToView(true);
+      }, 100);
+    });
+  }
+
+  // ==========================================
+  // TÌM KIẾM NHANH TRONG SƠ ĐỒ VỚI AUTO-PAN
+  // ==========================================
+  const searchInput = document.getElementById('mmSearchInput');
+  const clearBtn = document.getElementById('mmClearBtn');
+  const matchBadge = document.getElementById('mmMatchBadge');
+  const searchNav = document.getElementById('mmSearchNav');
+  const prevMatchBtn = document.getElementById('mmPrevMatchBtn');
+  const nextMatchBtn = document.getElementById('mmNextMatchBtn');
+
+  function highlightMatchAt(index) {
+    if (!mmState.matchedLeaves.length) return;
+    mmState.currentMatchIndex = (index + mmState.matchedLeaves.length) % mmState.matchedLeaves.length;
+    mmState.matchedLeaves.forEach((leaf, i) => {
+      leaf.classList.toggle('is-current-match', i === mmState.currentMatchIndex);
+    });
+    const curLeaf = mmState.matchedLeaves[mmState.currentMatchIndex];
+    if (curLeaf) {
+      const block = curLeaf.closest('.mm-branch-block');
+      if (block && block.classList.contains('is-collapsed')) {
+        block.classList.remove('is-collapsed');
+        drawMindmapConnectors();
+      }
+      panToNode(curLeaf);
+    }
+    if (matchBadge) {
+      matchBadge.textContent = `${mmState.currentMatchIndex + 1} / ${mmState.matchedLeaves.length}`;
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+
+      const leaves = document.querySelectorAll('.mm-leaf-card');
+      if (!q) {
+        leaves.forEach(l => l.classList.remove('is-matched', 'is-dimmed', 'is-current-match'));
+        if (matchBadge) matchBadge.style.display = 'none';
+        if (searchNav) searchNav.style.display = 'none';
+        mmState.matchedLeaves = [];
+        return;
+      }
+
+      mmState.matchedLeaves = [];
+      leaves.forEach(leaf => {
+        const text = leaf.textContent.toLowerCase();
+        const matched = text.includes(q);
+        leaf.classList.toggle('is-matched', matched);
+        leaf.classList.toggle('is-dimmed', !matched);
+        leaf.classList.remove('is-current-match');
+
+        if (matched) {
+          mmState.matchedLeaves.push(leaf);
+          const block = leaf.closest('.mm-branch-block');
+          if (block) block.classList.remove('is-collapsed');
+        }
+      });
+
+      drawMindmapConnectors();
+
+      const count = mmState.matchedLeaves.length;
+      if (matchBadge) {
+        matchBadge.style.display = 'inline-block';
+        matchBadge.textContent = `${count} kết quả`;
+        matchBadge.style.background = count > 0 ? 'rgba(139, 92, 246, 0.15)' : 'rgba(239, 68, 68, 0.15)';
+        matchBadge.style.color = count > 0 ? '#7c3aed' : '#ef4444';
+      }
+
+      if (searchNav) {
+        searchNav.style.display = count > 1 ? 'flex' : 'none';
+      }
+
+      if (count > 0) {
+        highlightMatchAt(0);
+      }
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        sound.playClick();
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+      });
+    }
+
+    if (prevMatchBtn) {
+      prevMatchBtn.addEventListener('click', () => {
+        sound.playClick();
+        highlightMatchAt(mmState.currentMatchIndex - 1);
+      });
+    }
+
+    if (nextMatchBtn) {
+      nextMatchBtn.addEventListener('click', () => {
+        sound.playClick();
+        highlightMatchAt(mmState.currentMatchIndex + 1);
+      });
+    }
+  }
+
+  // ==========================================
+  // MINIMAP RADAR
+  // ==========================================
+  function updateMinimap() {
+    const canvas = document.getElementById('mmMinimapCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const layout = document.getElementById('mmTreeLayout');
+    if (!layout) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const lRect = layout.getBoundingClientRect();
+    const wRect = world.getBoundingClientRect();
+    const scale = mmState.scale || 1;
+
+    const lw = lRect.width / scale;
+    const lh = lRect.height / scale;
+    const lx = (lRect.left - wRect.left) / scale;
+    const ly = (lRect.top - wRect.top) / scale;
+
+    const pad = 10;
+    const mapScale = Math.min((canvas.width - pad * 2) / lw, (canvas.height - pad * 2) / lh);
+
+    // Vẽ Root
+    if (rootNode) {
+      const r = rootNode.getBoundingClientRect();
+      const rx = (r.left - wRect.left) / scale;
+      const ry = (r.top - wRect.top) / scale;
+      const rw = r.width / scale;
+      const rh = r.height / scale;
+
+      ctx.fillStyle = '#8b5cf6';
+      ctx.fillRect((rx - lx) * mapScale + pad, (ry - ly) * mapScale + pad, rw * mapScale, rh * mapScale);
+    }
+
+    // Vẽ các nhánh
+    document.querySelectorAll('.mm-branch-block').forEach(b => {
+      const color = b.style.getPropertyValue('--branch-color') || '#10b981';
+      const node = b.querySelector('.mm-branch-node');
+      if (node) {
+        const r = node.getBoundingClientRect();
+        const nx = (r.left - wRect.left) / scale;
+        const ny = (r.top - wRect.top) / scale;
+        const nw = r.width / scale;
+        const nh = r.height / scale;
+
+        ctx.fillStyle = color;
+        ctx.fillRect((nx - lx) * mapScale + pad, (ny - ly) * mapScale + pad, nw * mapScale, nh * mapScale);
+      }
+    });
+
+    updateMinimapViewportBox();
+  }
+
+  function updateMinimapViewportBox() {
+    const box = document.getElementById('mmMinimapViewport');
+    const canvas = document.getElementById('mmMinimapCanvas');
+    const layout = document.getElementById('mmTreeLayout');
+    if (!box || !canvas || !layout || !viewport) return;
+
+    const scale = mmState.scale || 1;
+    const lRect = layout.getBoundingClientRect();
+    const wRect = world.getBoundingClientRect();
+
+    const lw = lRect.width / scale;
+    const lh = lRect.height / scale;
+    const lx = (lRect.left - wRect.left) / scale;
+    const ly = (lRect.top - wRect.top) / scale;
+
+    const pad = 10;
+    const mapScale = Math.min((canvas.width - pad * 2) / lw, (canvas.height - pad * 2) / lh);
+
+    // Vị trí camera viewport tương đối với world
+    const vpW = viewport.clientWidth;
+    const vpH = viewport.clientHeight;
+    const camX = -mmState.x / scale;
+    const camY = -mmState.y / scale;
+    const camW = vpW / scale;
+    const camH = vpH / scale;
+
+    const vx = (camX - lx) * mapScale + pad;
+    const vy = (camY - ly) * mapScale + pad;
+    const vw = camW * mapScale;
+    const vh = camH * mapScale;
+
+    box.style.left = `${Math.max(0, Math.min(canvas.width, vx))}px`;
+    box.style.top = `${Math.max(0, Math.min(canvas.height, vy))}px`;
+    box.style.width = `${Math.max(10, Math.min(canvas.width, vw))}px`;
+    box.style.height = `${Math.max(10, Math.min(canvas.height, vh))}px`;
+  }
+
+  // Click vào Minimap để nhảy nhanh camera
+  const minimapBox = document.getElementById('mmMinimapBox');
+  if (minimapBox) {
+    minimapBox.addEventListener('click', e => {
+      sound.playClick();
+      const rect = minimapBox.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      const layout = document.getElementById('mmTreeLayout');
+      if (!layout) return;
+
+      const scale = mmState.scale || 1;
+      const lRect = layout.getBoundingClientRect();
+      const wRect = world.getBoundingClientRect();
+
+      const lw = lRect.width / scale;
+      const lh = lRect.height / scale;
+      const lx = (lRect.left - wRect.left) / scale;
+      const ly = (lRect.top - wRect.top) / scale;
+
+      const pad = 10;
+      const mapScale = Math.min((rect.width - pad * 2) / lw, (rect.height - pad * 2) / lh);
+
+      const targetWorldX = (clickX - pad) / mapScale + lx;
+      const targetWorldY = (clickY - pad) / mapScale + ly;
+
+      const vpW = viewport.clientWidth;
+      const vpH = viewport.clientHeight;
+
+      mmState.x = vpW / 2 - targetWorldX * mmState.scale;
+      mmState.y = vpH / 2 - targetWorldY * mmState.scale;
+
+      applyTransform(true);
+    });
+  }
+
+  // Căn chỉnh ban đầu
+  setTimeout(() => {
+    fitMindmapToView(false);
+  }, 80);
+}
+
+
 // Modal Tabs
 document.querySelectorAll('.modal-tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -3571,7 +4307,14 @@ document.querySelectorAll('.modal-tab-btn').forEach(btn => {
     const target = document.getElementById(tabId);
     if (target) {
       target.style.display = 'block';
+      const modalBody = document.querySelector('.modal-body');
+      if (modalBody) {
+        modalBody.classList.toggle('mindmap-active', tabId === 'tab-mindmap');
+      }
       renderMath(target);
+      if (tabId === 'tab-mindmap' && typeof onMindmapTabActivated === 'function') {
+        setTimeout(onMindmapTabActivated, 60);
+      }
     }
   });
 });
@@ -3860,4 +4603,6 @@ switchSubject(currentSubject);
 initDeviceMode();
 initFontSize();
 initFormulaZoom();
+initMindmapControls();
+
 

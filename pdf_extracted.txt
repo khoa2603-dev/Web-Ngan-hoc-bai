@@ -1,0 +1,790 @@
+--- PAGE 1 ---
+34 
+ 
+CHƢƠNG 3: PROTEIN 
+Mục tiêu 
+1. Viết được công thức cấu tạo của 20 acid amin thường gặp. 
+2. Trình bày được các tính chất của acid amin 
+3. Mô tả được 4 bậc cấu trúc và các liên kết trong cấu trúc của protein 
+4. Trình bày được các tính chất của protein 
+3.1. Giới thiệu 
+Protein là hợp chất hữu cơ có ý nghĩa quan trọng bậc nhất trong cơ thể sống, về mặt số 
+lƣợng, protein chiếm không dƣới 50% trọng lƣợng khô c ủa tế bào; về thành phần cấu 
+trúc, protein đƣ ợc tạo thành ch ủ yếu từ các amino acid v ốn đƣợc nối với nhau b ằng 
+liên kết peptide. Protein đƣợc tạo thành từ 4 nguyên tố chính là C, H, O, N v ới tỷ lệ C 
+≈50%, H ≈7%, O ≈23% và N ≈16%. Đ ặc biệt tỷ lệ N trong protein khá ổn định (lợi 
+dụng tính chất này đ ể định lƣợng protein theo phƣơng pháp Kjeldahl b ằng cách tính 
+lƣợng N rồi nhân với 6,25). Ngoài ra trong protein còn gặp một số nguyên tố khác nhƣ 
+S ≈0-3% và P, Fe, Zn, Cu... 
+Protein là m ột trong nh ững đại phân t ử đƣợc tế bào tổng hợp, có vai trò quan tr ọng 
+trong các quá trình chuy ển hóa (enzyme, hormon), sinh s ản, c ấu t ạo t ế bào và mô. 
+Trong cơ th ể, protein có th ể kết h ợp v ới các thành ph ần khác nhƣ hem, lipid, acid 
+nucleic,… 
+3.2. Amino acid  
+3.2.1. Cấu tạo 
+Amino acid là ch ất hữu cơ mà phân t ử chứa ít nhất một nhóm carboxyl (COOH) và ít 
+nhất m ột nhóm amine (NH 2), tr ừ proline ch ỉ có nhóm NH (th ực ch ất là m ột imino 
+acid). Trong phân t ử amino acid đều có các nhóm COOH và NH 2 gắn với carbon ở vị 
+trí α. H ầu h ết các amino acid thu nh ận đƣ ợc khi thủy phân protein đ ều ở dạng L -α 
+amino acid. Nhƣ v ậy các protein ch ỉ khác nhau ở mạch nhánh (thƣ ờng đƣợc ký hi ệu: 
+R). 
+ 
+Hình 3.1: Công thức cấu tạo chung của các amino acid
+
+--- PAGE 2 ---
+35 
+ 
+3.2.2.  Phân loại amino acid 
+Hiện nay ngƣời ta phân loại amino acid theo nhi ều kiểu khác nhau, mỗi kiểu phân loại 
+đều có ý nghĩa và m ục đích riêng. Tuy nhiên, h ọ đều dựa trên c ấu tạo hoá h ọc hoặc 
+một số tính chất của gốc R. Ví dụ có ngƣời chia các amino acid thành 2 nhóm chính là 
+nhóm mạch thẳng và nhóm mạch vòng. 
+Trong nhóm m ạch thẳng lại tuỳ theo sự có mặt của số nhóm carboxyl hay s ố nhóm 
+amine mà chia ra thành các nhóm nh ỏ, nhóm amino acid trung tính (ch ứa một nhóm 
+COOH và m ột nhóm NH 2); nhóm amino acid ki ềm (ch ứa m ột nhóm COOH và hai 
+nhóm NH2); nhóm amino acid acid (chứa hai nhóm COOH và một nhóm NH2). 
+Trong nhóm mạch vòng lại chia thành nhóm đồng vòng hay dị vòng v.v... 
+Dựa vào tính phân c ực của gốc R ngƣ ời ta chia các amino acid thành 4 nhóm: nhóm 
+không phân cực hoặc kỵ nƣớc, nhóm phân cực nhƣng không tích đi ện, nhóm tích điện 
+dƣơng và nhóm tích điện âm. 
+Tuy nhiên, hi ện nay cách phân lo ại các amino acid đƣ ợc nhiều ngƣời sử dụng nhất là 
+dựa vào gốc R của amino acid và đƣợc chia làm 5 nhóm: 
+Nhóm I: G ồm 7 amino acid có R không phân c ực, k ỵ nƣớc, đó là: glycine, alanine, 
+proline, valine, leucine, isoleucine và methionine. (Hình 3.2) 
+ 
+Hình 3.2: Công thức cấu tạo của các amino acid nhóm I 
+Nhóm II: Gồm 3 amino acid có g ốc R ch ứa nhân thơm, đó là phenylalanine, tyrosine 
+và tryptophan (Hình 3.3)
+
+--- PAGE 3 ---
+36 
+ 
+ 
+Hình 3.3: Công thức cấu tạo của các amino acid nhóm II 
+Nhóm III:  Gồm 5 amino acid có g ốc R phân c ực, không tích đi ện, đó là serine, 
+theonine, cysteine, aspargine và glutamine (Hình 3.4) 
+ 
+Hình 3.4: Công thức cấu tạo của các amino acid nhóm III 
+Nhóm IV: Gồm 3 amino acid có R tích đ iện dƣơng, đó là lysine, histidine và arginine, 
+trong phân tử chứa nhiều nhóm amin (hình 3.5).
+
+--- PAGE 4 ---
+37 
+ 
+ 
+Hình 3.5: Công thức cấu tạo các amino acid nhóm IV 
+Nhóm V: Gồm 2 amino acid có gốc R tích điện âm, đó là aspartate và glutamate, trong 
+phân tử chứa hai hóm carboxyl (hình 3.6). 
+ 
+Hình 3.6: Công thức cấu tạo của các amino acid nhóm V 
+Các amino acid thƣ ờng gặp là những amino acid thƣ ờng có mặt trong thành ph ần của 
+các loại protein. Chúng có khoảng 20 loại và đƣợc thu nhận khi thuỷ phân protein.  
+Bảng 3.1: Các amino acid thường gặp
+
+--- PAGE 5 ---
+38 
+ 
+3.2.3. Các amino acid không thể thay thế 
+Các amino acid đƣợc hình thành bằng nhiều con đƣờng khác nhau. Nhƣ đã bi ết, trong 
+phân tử protein có kho ảng 20 lo ại amino acid, tuy nhiên trong cơ th ể ngƣời và đ ộng 
+vật không t ổng h ợp đƣ ợc t ất cả các loại đó mà ph ải đƣa t ừ ngoài vào qua th ức ăn. 
+Những amino acid ph ải đƣa t ừ ngoài vào đƣ ợc gọi là các amino acid không th ể thay 
+thế, có kho ảng 8-10 loại amino acid không th ể thay thế bao gồm: Met, Val, Leu, Ile, 
+Thr, Phe, Trp, Lys, Arg và His và ngày nay ngƣ ời ta còn xem Cys cũng là m ột amino 
+acid không th ể thay th ế. B ột ng ọt (mì chính) là mu ối c ủa natri v ới glutamic acid 
+(monosodium glutamate). 
+3.2.3. Tính tan của amino acid 
+Các amino acid thƣờng dễ tan trong nƣớc, các amino acid đều khó tan trong alcohol và 
+ether (trừ proline và hydroxyproline), chúng cũng d ễ hoà tan trong acid và ki ềm loãng 
+(trừ tyrosine). 
+3.2.4. Biểu hiện tính quang học của amino acid 
+ 
+Hình 3.7:  Đồng phân lập thể của alanine 
+Các amino acid trong phân tử protein đều có ít nhất một carbon bất đối (trừ glycine) vì 
+thế nó đều có biểu hiện hoạt tính quang h ọc, nghĩa là có th ể làm quay mặt phẳng của 
+ánh sáng phân c ực sang ph ải hoặc sang trái. Quay ph ải đƣợc ký hi ệu bằng dấu (+), 
+quay trái đƣợc ký hiệu bằng dấu (-). Góc quay đặc hiệu của amino acid phụ thuộc vào 
+pH của môi trƣờng. 
+Tuỳ theo sự sắp xếp trong c ấu trúc phân t ử của các nhóm liên k ết với carbon b ất đối 
+mà các amino acid có c ấu trúc d ạng D hay L (hình 3.7) g ọi là đ ồng phân l ập thể. Số 
+đồng phân lập thể đƣợc tính theo 2n (n là số carbon bất đối).
+
+--- PAGE 6 ---
+39 
+ 
+Hầu hết các amino acid khác h ấp thụ tia cực tím ở bƣớc sóng (λ) kho ảng từ 220 - 280 
+nm. Đặc biệt cùng n ồng độ 10-3M, trong bƣ ớc sóng kho ảng 280 nm, tryptophan h ấp 
+thụ ánh sáng cực tím mạnh nhất, gấp 4 lần khả năng hấp thụ của tyrosine (hình 3.8) và 
+phenylalanine là yếu nhất. 
+Phần lớn các protein đ ều ch ứa tyrosine nên ngƣ ời ta s ử dụng tính ch ất này đ ể định 
+lƣợng protein 
+ (nm) 
+Hình 3.8: Phổ hấp thụ ánh sáng cực tím của tryptophan và tyrosine 
+3.2.5. Tính lƣỡng tính của amino acid 
+Trong phân tử amino acid có nhóm carboxyl -COOH nên có kh ả năng nhƣờng proton 
+(H+) thể hiện tính acid, m ặt khác có nhóm amin - NH2 nên có kh ả năng nhận proton 
+nên thể hiện tính base. Vì vậy amino acid có tính chất lƣỡng tính. 
+Trong môi trƣờng acid, amino acid ở dạng cation (tích điện dƣơng), n ếu tăng dần pH 
+amino acid lần lƣợt nhƣờng proton thứ nhất chuyển qua dạng lƣỡng cực (trung hoà về 
+điện), và ti ếp tục tăng pH amino acid s ẽ nhƣờng proton th ứ hai chuyển thành d ạng 
+anion (tích điện âm). Vì vậy đôi khi ngƣời ta coi nó nhƣ một di-acid. 
+ 
+Hình 3.9: Tính lưỡng tính của amino acid 
+Tƣơng ứng với độ phân ly H+ của các nhóm COOH và NH 3
++ có các trị số pK1 và pK2 
+(biểu thị độ phân ly của các nhóm đƣợc 1/2). Từ đó trƣớc tiên chuyển sang dạng lƣỡng 
+tính và sau cùng chuyển thành dạng anion. 
+Abs
+
+--- PAGE 7 ---
+40 
+ 
+ 
+ 
+Hình 3.10: Đường cong chuẩn độ của glycine nồng độ 1M ở 25oC 
+Ngƣời ta xác đ ịnh đƣợc pHi (pI= pH đ ẳng điện) = (pK 1 + pK2 )/2. Ví d ụ khi hòa tan 
+glycine vào môi trƣ ờng acid m ạnh thì h ầu nhƣ glycine đ ều ở dạng cation. N ếu tăng 
+dần lƣợng kiềm, thu đƣợc đƣờng cong chuẩn độ. Trên đƣờng cong chuẩn độ thấy rằng 
+glycine lần lƣ ợt nhƣ ờng 2 proton trƣ ớc Tƣơng đƣơng đ ộ phân ly c ủa nhóm COOH 
+đƣợc một nửa có trị số pK1 = 2,34 và độ phân ly của NH3 đƣợc một nửa có trị số pK2= 
+9,60. Nhƣ vậy ta có:  pHi = (2,34 + 9,60)/2 = 5,97. 
+3.2.6. Các phản ứng hoá học của amino acid 
+Các amino acid đ ều có nhóm NH 2 và COOH liên k ết với Cα, vì v ậy chúng có  những 
+tính chất hoá học chung. Mặt khác các amino acid khác nhau b ởi gốc R, vì v ậy chúng 
+có nh ững phản ứng riêng bi ệt. Ngƣời ta chia các ph ản ứng hoá h ọc của amino acid 
+thành 3 nhóm 
+3.2.6.1. Phản ứng của gốc R 
+Do các amino acid có c ấu tạo gốc R khác nhau,  nên ngƣời ta có th ể dùng để xác định 
+từng amino acid riêng r ẽ nhờ phản ứng đặc trƣng của nó, ví dụ phản ứng oxy hoá khử 
+do nhóm SH c ủa cysteine, ph ản ứng t ạo mu ối do các nhóm COOH hay NH 2 của 
+glutamate hay lysine, phản ứng tạo ester do nhóm OH của tyrosine v.v... 
+Độ phân ly của H+
+
+--- PAGE 8 ---
+41 
+ 
+3.2.6.2. Phản ứng chung 
+Là phản ứng có sự tham gia c ủa cả hai nhóm α - COOH và α - NH2. Tất cả các amino 
+acid trong phân t ử protein đều phản ứng với hợp chất ninhydrin t ạo thành ph ức chất 
+màu xanh tím, riêng imino acid nhƣ proline t ạo thành màu vàng . Phản ứng đƣợc thực 
+hiện qua một số bƣớc nhƣ sau: Dƣới tác dụng của ninhydrin ở nhiệt độ cao, amino acid 
+tạo thành NH 3, CO 2 và aldehide, m ạch polypeptide ng ắn đi m ột carbon; đ ồng th ời 
+ninhydrin chuy ển thành diceto oxy hindriden. Diceto oxy hindriden, NH 3 mới t ạo 
+thành tiếp tục phản ứng với một phân t ử ninhydrin khác đ ể tạo thành ph ức chất màu 
+xanh tím (hình 3.11) 
+ 
+Hình 3.11: Phản ứng của protein với ninhydrin 
+3.2.6.3. Phản ứng riêng biệt 
+Có thể chia các phản ứng riêng biệt theo hai nhóm α- COOH và α- NH2 
+- Các ph ản ứng c ủa nhóm α - COOH. Ngoài các ph ản ứng c ủa nhóm COOH thông 
+thƣờng tạo ester, t ạo amid, t ạo muối ...thì nó còn có nh ững phản ứng đạctrƣng khác 
+nhƣcó thểbịkhửthành hợp chấtrƣợu amino dƣớisựxúc tác của NaBH4. 
+R-NH2CH-COOH   R-NH2CH-CH2OH 
+Nhóm COOH có th ể tạo thành ph ức aminoacyl –adenylate trong ph ản ứng hoạt hoá 
+amino acid để tổng hợp protein, hay có th ể loạiCO2 vốn gặp rất nhiều trong quá trình 
+thoái hoá amino acid. 
+- Các ph ản ứng của nhóm α - NH2. Nhi ều ph ản ứng của nhóm amine đƣ ợc dùng đ ể 
+định tính và định lƣợng các chỉ tiêu của amino acid nhƣ: 
+Để định lƣ ợng nitrogen c ủa amino acid ngƣ ời ta cho ph ản ứng v ới HNO 2 để giải 
+phóng N2. 
+  
+Để định lƣợng amino acid ngƣời ta cho phản ứng với aldehyde tạo thành base schiff.
+
+--- PAGE 9 ---
+42 
+ 
+Để xác đ ịnh amino acid đ ầu N -tận cùng ngƣ ời ta cho tác d ụng v ới 2 -4 
+dinitrofluobenzen (phản ứng Sanger) hay phenyliothiocyanate (phản ứng Edman). 
+3.3. Peptide 
+3.3.1. Khái niệm chung 
+Peptide là nh ững protein thƣ ờng có c ấu trúc đo ạn ng ắn khoảng từ hai đ ến vài ch ục 
+amino acid nối với nhau, có khối lƣợng phân tử thƣờng dƣới 6.000. Chúng có thể đƣợc 
+tổng h ợp trong t ự nhiên ho ặc đƣ ợc hình thành do s ự thoái hoá protein. Trong các 
+peptide các amino acid đƣợc liên kết với nhau thông qua liên kết peptide (hình 3.12). 
+ 
+Hình 3.12:  Sự tạo thành liên kết peptide 
+3.3.2. Các phƣơng pháp xác định peptide 
+Ngoài phản ứng của nhóm NH 2 và COOH đ ầu tận cùng, các g ốc R c ủa peptide cũng 
+cho những phản ứng màu đ ặc trƣng c ủa các amino acid t ự do tƣơng ứng. Một trong 
+những phản ứng màu đ ặc trƣng nh ất dành ch o liên k ết peptide đó là ph ản ứng Biure, 
+phản ứng này không x ảy ra với amino acid t ự do và với dipeptide. Trong môi trƣ ờng 
+kiềm m ạnh, liên k ết peptide ph ản ứng v ới CuSO 4 tạo thành ph ức ch ất màu tím đ ỏ 
+(hình 3.13) và có khả năng hấp thụ cực đại ở bƣớc sóng 540 nm. 
+Đây là phản ứng đƣợc sử dụng rộng rãi để định lƣợng protein. Phƣơng pháp xác đ ịnh 
+protein theo Lowry cũng d ựa trên nguyên tắc của phản ứng này bằng cách thêm thuốc 
+thử Folin-Ciocalteau để làm tăng độ nhạy của phản ứng sau khi đã thực hiện phản ứng 
+biure, đồng thời dựa vào các g ốc Tyr, Try nh ờ thuốc thử đó để tạo phức màu xanh da 
+trời.
+
+--- PAGE 10 ---
+43 
+ 
+ 
+Hình 3.13: Phức màu tím đỏ trong phản ứng Biure 
+Có một số phƣơng pháp tách phâ n lập và xác đ ịnh thành ph ần, số lƣợng và trình t ự 
+amino acid trong peptide. 
+Về nguyên tắc chung các phƣơng pháp tách phân l ập và xác đ ịnh peptide v ề cơ bản 
+cũng nhƣ đ ối v ới protein. Tuy nhiên peptide là nh ững đo ạn ng ắn c ủa chu ỗi 
+polypeptide, vì thế có thể bỏ qua giai đoạn cắt chuỗi polypeptide thành các peptide nhỏ 
+mà có thể tách, phân lập ngay bằng phƣơng pháp điện di hay sắc ký để tách riêng từng 
+peptide. 
+Sau khi đã tách riêng các peptide, ti ến hành thu ỷ phân hoàn toàn thành các amio acid 
+tự do, xác đ ịnh các amino acid, amino acid đ ầu N-tận cùng và amino acid đ ầu C-tận 
+cùng. Các dữ liệu thu đƣợc qua sự phân tích này sẽ đƣợc so sánh đối chiếu và tổng hợp 
+lại. 
+Ví dụ, Puppy và Bodo đã phân tích m ột peptide c ủa dịch khi thu ỷ phân Cytocrom C 
+thu đƣợc các dữ kiện sau đây: 
+- Thành phần amino acid c ủa peptide sau khi đƣ ợc thuỷ phân hoàn toàn và ti ến hành 
+sắc ký là 2Cys, 1 Ala, 2 Glu, 1His, 1Thr, 1Val,và 1Lys. 
+- Dùng phƣơng pháp Sanger xác đ ịnh đƣ ợc amino acid đ ầu N -tận cùng là Cys và 
+phƣơng pháp carboxypeptidase xác định đƣợc amino acid đầu C- tận cùng là Lys.  
+- Cấu tạo của peptide nh ỏ (bằng cách thu ỷ phân từng phần ban đ ầu và xác đ ịnh các 
+amino acid, amino acid đầu N-tận cùng và amino acid đ ầu C-tận cùng của mỗi peptide 
+nhỏ):  
+ 
+Tổng hợp các d ữ kiện trên, h ọ đã xác định đƣợc trình t ự các amino acid c ủa peptide 
+nghiên cứu là: 
+H2N-Cys-Ala-Glu-Cys-His-Thr-Val-Glu-Lys-COOH.
+
+--- PAGE 11 ---
+44 
+ 
+Đây là nguyên t ắc chung đ ể xác định một trình t ự trong peptide. Tuy nhiên đ ối với 
+những peptide dài, việc xác định rất phức tạp. 
+3.3.3. Các peptide thƣờng gặp trong thiên nhiên 
+Trong tự nhiên tồn tại nhiều dạng peptide có chức phận quan trọng liên quan đến hoạt 
+động sống của cơ thể nhƣ là các hormon, các chất kháng sinh hay những chất tiền thân 
+của tế bào vi khuẩn v.v... Bên cạnh đó cũng có những peptide chức phận chƣa rõ ràng, 
+có những peptide là sản phẩm thuỷ phân đang còn dang dở của protein. Sau đây là một 
+số peptide quan trọng, có nhiều ý nghĩa đối với hoạt động sống của sinh vật. 
+3.3.3.1. Glutathion và các chất tƣơng tự 
+Glutathion là một tripeptideγ-glutamyl-cysteyl-glycine có công thức cấu tạo nhƣ sau: 
+ 
+Trong cấu trúc của glutathion, nhóm SH của cysteine là nhóm hoạt động, vì vậy ngƣời 
+ta thƣ ờng vi ết t ắt ch ữ glutathion là G -SH. Đây là glutathion d ạng kh ử. Trong môi 
+trƣờng ho ạt đ ộng gluta thion có th ể nhƣờng hydrogen (H) đ ể thành d ạng oxy hoá 
+(GSSG) và ngƣợc lại có thể nhận H để thành dạng khử: 
+ 
+Nhờ phản ứng trên, glutathion đóng vai trò của một hệ thống oxy hoá khử (vận chuyển 
+hydrogen). Glutathion là m ột trong nh ững peptide n ội bào ph ổ biến nhất, nó phân b ố 
+nhiều trong các mô và các cơ quan nhƣ: gan, thận, lách, tim, phổi, hồng cầu v.v... 
+3.3.3.2. Các hormone sinh trƣởng (HGH) 
+Hormone sinh trƣ ởng của ngƣời (HGH-human growth hormone) còn có tên g ọi STH 
+(somatotropin hormone) là m ột chu ỗi p olypeptide bao g ồm 191 amino acid có kh ối 
+lƣợng phân t ử 20.000. Trong c ấu trúc có hai c ầu disulfua đƣ ợc tạo thành gi ữa amino 
+acid 53 -165 và gi ữa amino acid 182 -189. Ho ạt đ ộng sinh h ọc của HGH là ở chuỗi 
+gồm 134 amino acid. HGH có c ấu t ạo rất giống v ới hor mon lactogen c ủa nhau thai 
+(85% amino acid gi ống nhau) và g ần gi ống prolactin c ủa ngƣ ời (32% amino acid 
+giống nhau). 
+Hormon sinh trƣ ởng có tác d ụng đối với sự tăng trƣởng nói chung, kích thích s ự tạo 
+sụn hơn là t ạo xƣơng, nó cũng là m ột hormon chuy ển hoá. Hormon sinh trƣ ởng kích 
+thích sự tổng hợp protein từ những amino acid đã đƣ ợc vận chuyển dễ dàng vào trong
+
+--- PAGE 12 ---
+45 
+ 
+tế bào nhờ chúng, và là hormon gây tăng đƣ ờng huyết, sinh đái tháo đƣ ờng, đồng thời 
+kích thích s ự thoái hoá lipid đ ể đảmbảo nhu c ầu về năng lƣợng cho cơ thể, gây tăng 
+acid béo tự do trong huyết tƣơng. 
+Sự thiếu hụt HGH n ếu xảy ra trƣ ớc tu ổi dậy thì s ẽ dẫn đến chứng ngƣời lùn, s ự dƣ 
+thừa HGH n ếu xẩy ra sau tu ổi dậy thì s ẽ dẫn đến chứng ngƣời bị to cực (phát tri ển 
+chiều dày của đầu, xƣơng và mặt). 
+3.3.3.3. Insulin 
+Từ 1953, Sanger (gi ải thƣởng Nobel 1958) đã nghiên c ứu, tinh ch ế và xác đ ịnh hoàn 
+toàn cấu trúc của phân tử insulin. Phân tử insulin bao gồm 51 amino acid, có c ấu trúc 
+gồm 2 chu ỗi polypeptide, v ới kh ối lƣ ợng phân t ử 5.700 chu ỗi A có 21 amino acid , 
+chuỗi B có 30 amino acid. Hai chu ỗi đƣợc nối với nhau b ằng 2 c ầu disulfua. Trong 
+chuỗi A cũng hình thành 1 c ầu disulfua gi ữa amino acid th ứ 6 và amino acid th ứ 11. 
+Phần đặc hiệu (đặc trƣng c ủa một loài) chỉ tập trung vào các amino acid th ứ 8-9-10, 
+12-14 của chuỗi A và đặc biệt là amino acid thứ 30 của chuỗi B (hình 3.14). 
+Ngƣời ta cũng đã xác đ ịnh đƣợc cấu trúc ba chi ều của insulin và th ấy rằng cấu trúc 
+phân tử insulin đƣợc giữ vững bởi nhiều liên k ết muối, liên k ết hydro và liên k ết cầu 
+disulphate giữa chuỗi A và chuỗi B. 
+Insulin có tác dụng rõ nhất trong tất cả các hormon của tuyến tụy, đặc biệt đối với quá 
+trình chuyển hoá glucid, nó có tác d ụng h ạ đƣờng huyết. Insulin còn kích thích quá 
+trình tổng hợp và ức chế quá trình thoái hoá glycogen ở cơ, gan và  mô mỡ. Đặc biệt, 
+insulin tăng cƣờng tổng hợp acid béo, protein và kích thích s ự đƣờng phân. Tác d ụng 
+quan trọng nhất của insulin là kích thích sự thâm nhập glucose, một số ose, amino acid 
+trogn tế bào cơ và m ỡ. Do v ậy insulin làm gi ảm lƣợng glucose trong máu. Ngoài ra 
+insulin cũng làm gi ảm sự tân tạo glucose do làm gi ảm nồng độ enzyme nhƣ pyruvat 
+carboxylase và fructose 1-6 diphosphatase.
+
+--- PAGE 13 ---
+46 
+ 
+ 
+Hình 3.14: Các amino acid của chuỗi A và B ở insulin bò 
+3.4. Protein 
+3.4.1. Cấu trúc phân tử bậc 1, 2, 3, 4 
+Về mặt cấu trúc ngƣ ời ta phân bi ệt protein gồm bốn bậc: bậc I, b ậc II, b ậc III và b ậc 
+IV (Hình 3.15) 
+ 
+ 
+ 
+Hình 3.15: Sơ đồ các bậc cấu trúc của protein 
+3.4.1.1. Cấu trúc bậc I 
+Cấu trúc b ậc I bi ểu thị trình tự các gốc amino acid trong chu ỗi polypeptide, c ấu trúc 
+này đƣợc giữ vững bằng liên kết peptide (liên kết cộng hóa trị). Cấu trúc bậc I là phiên 
+bản của mã di truyền, việc xác định đƣợc cấu trúc bậc I là cơ s ở để tổng hợp nhân tạo 
+protein bằng phƣơng pháp hoá học hoặc bằng kỹ thuật của công nghệ sinh học. 
+Bậc I                Bậc II                  Bậc III                          Bậc IV
+
+--- PAGE 14 ---
+47 
+ 
+Hiện nay nhi ều lo ại protein đã bi ết đƣ ợc trình t ự các amino acid trong chu ỗi 
+polypeptide nhƣ: ribonuclease là m ột protein có 124 amino acid đƣ ợc n ối v ới nhau 
+thành m ột chu ỗi, có 4 c ầu disulfua (hình 3.16); hemoglobin là protein có 4 chu ỗi 
+polypeptide, 2 chuỗi α ( mỗi chuỗi 141 amino acid) và 2 chuỗi β (mỗi chuỗi 146 amino 
+acid); trypsinogen bò (229 amino acid); kimotrypsin bò (229 amino acid); alcol 
+dehydrogenase ngựa (374 amino acid);  glutamate dehydrogenase bò (500 amino acid) 
+v.v.. 
+ 
+Hình 3.16: Cấu trúc bậc nhất của ribonuclease của bò 
+3.4.1.2. Cấu trúc bậc II 
+Biểu thị sự xoắn của chuỗi polypeptide, là tƣơng tác không gian gi ữa các g ốc amino 
+acid ở gần nhau trong mạch polypeptide. 
+ 
+Hình 3.17: Các kiểu xoắn trong cấu trúc bậc II của protein 
+Nói cách khác, c ấu trúc b ậc II là d ạng không gian c ục bộ của từng phần trong m ạch 
+polypeptide. Cấu trúc này đƣợc làm bền nhờ các liên kết hydrogen đƣợc tạo thành giữa 
+Xoắn α  
+Xoắn β  
+Liên k ết 
+hydrogen
+
+--- PAGE 15 ---
+48 
+ 
+liên kết peptide ở kề gần nhau, cách nhau nh ững khoảng xác đ ịnh. Theo Pauling và 
+Cori (1951) cấu trúc bậc II của protein bao gồm 2 kiểu chính là xoắn α và phiến gấp β. 
+Ở trong tóc ngƣời ta tìm th ấy keratin là loại protein có hai d ạng cấu trúc: dạng α bình 
+thƣờng và dạng β du ỗi thẳng; cấu trúc phiến gấp β tìm th ấy trong fibroin c ủa tơ. Cấu 
+trúc xuắn α hiện nay đƣợc tìm thấy trong nhiều loại protein khác nhau M ặt khác tỷ lệ 
+% xo ắn α trong các protein khác nhau cũng thay đ ổi khá nhi ều. Ví d ụ trong 
+hemoglobin và mioglobin là 75%; lysosyme là 35%; ribonuclease là 17%... 
+3.4.1.3. Cấu trúc bậc III 
+Biểu thị sự xoắn và cuộn khúc của chuỗi polypeptide thành khối, đặc trƣng cho potein 
+cầu, là tƣơng tác không gian gi ữa các g ốc amino acid ở xa nhau trong chu ỗi 
+polypeptide. Trong nhi ều protein hình c ầu có ch ứa các g ốc Cys t ạo nên liên k ết 
+disulfua giữa các g ốc Cys xa nhau trong chu ỗi polypeptide làm cho chu ỗi bị cuộn lại 
+(xem myoglobin hình 3.18). Ngoài ra cấu trúc bậc III còn đƣợc giữ vững bằng các loại 
+liên kết khác nhƣ Van der Waals, liên k ết hydrogen, liên k ết tĩnh đi ện giữa các g ốc 
+amino acid v.v... 
+3.4.1.4. Cấu trúc bậc IV 
+Biểu thị sự kết hợp của các chu ỗi có c ấu trúc b ậc III trong phân t ử protein. Hay nói 
+cách khác, nh ững phân t ử protein có c ấu trúc t ừ 2 hay nhi ều chuỗi protein hình c ầu, 
+tƣơng tác v ới nhau trong không gian t ạo nên c ấu trúc b ậc IV. M ỗi m ột chu ỗi 
+polypeptide đó đƣợc gọi là một tiểu đơn vị (subunit), chúng gắn với nhau nhờ các liên 
+kết hydrogen, tƣơng tác Van der Waals gi ữa các nhóm phân b ố trên bề mặt của các 
+tiểu đơn vị để làm bền cấu trúc bậc IV. 
+ 
+ 
+Hình 3.18: Cấu trúc bậc III của myoglobin và bậc IV của hemoglobin 
+3.4.2. Một số tính chất của protein 
+3.4.2.1. Tính chất hóa lý của protein  
+Myoglobin 
+Hemoglobin
+
+--- PAGE 16 ---
+49 
+ 
+a. Tính tan của protein  
+Các loại protein khác nhau có kh ả năng hoà tan d ễ dàng trong m ột số loại dung môi 
+nhất định, chẳng hạn nhƣ albumin dễ tan trong nƣớc; globulin dễ tan trong muối loãng; 
+prolamin tan trong ethanol, glutelin chỉ tan trong dung dịch kiềm hoặc acid loãng v.v... 
+b. Tính ngậm nƣớc của protein 
+Trong môi trƣờng nƣớc, protein k ết hợp với nƣớc trƣơng lên tr ở thành dạng keo, hay 
+nói cách khác protein ở trạng thái hydrate hoá, các phân tử nƣớc bám vào các nhóm ƣa 
+nƣớc trong phân t ử protein nhƣ -NH2, -COOH..., l ớp áo nƣ ớc bao quanh phân t ử 
+protein là một trong các y ếu tố làm bền vững cấu trúc, ngăn cách các phân t ử protein 
+không cho chúng dính vào nhau để thành tủa. 
+c. Độ nhớt của dung dịch protein 
+Khi protein hoà tan trong dung d ịch, mỗi loại dung dịch của những protein khác nhau 
+có độ nhớt khác nhau. Ngƣ ời ta có th ể lợi dụng tính ch ất này để xác định khối lƣợng 
+phân tử của protein (độ nhớt càng cao thì khối lƣợng phân tử càng cao). 
+d. Hằng số điện môi của dung dịch protein 
+Khi thêm các dung môi h ữu cơ trung tính nhƣ ethanol, aceton vào dung d ịch protein 
+trong nƣ ớc thì đ ộ tan c ủa protein gi ảm và protein s ẽ kết t ủa do v iệc gi ảm m ức đ ộ 
+hydrate hoá c ủa các nhóm ion hoá c ủa protein, l ớp áo m ất nƣớc, các phân t ử protein 
+kết hợp với nhau thành tủa. Nhƣ vậy, hằng số điện môi của dung môi làm ngăn cản lực 
+tĩnh điện giữa các nhóm tích đi ện của protein và nƣớc. Mối liên hệ đó đƣợc đặc trƣng 
+bởi biểu thức: 
+ 
+e. Tính chất điện li của protein 
+Cũng nhƣ các amino acid, protein là ch ất điện li lƣỡng tính vì trong phân t ử protein có 
+nhiều nhóm phân c ực mạnh (bên g ốc R) c ủa amino acid ví d ụ: nhóm COOH th ứ hai 
+của Asp, Glu; nhóm NH 2 của Lys; nhóm OH c ủa Ser, Thr, Tyr v.v...  Trạng thái tích 
+điện của các nhóm này ph ụ thuộc vào pH c ủa môi trƣờng. Ở một pH nào đó mà t ổng 
+điện tích (+) và điện tích (-) của phân tử protein bằng không, phân tử protein không di 
+chuyển trong đi ện trƣờng gọi là pH i (isoelectric - điểm đẳng đ iện) của protein. Nhƣ
+
+--- PAGE 17 ---
+50 
+ 
+vậy protein chứa nhiều Asp, Glu (amino acid có tính acid m ạnh) thì pH i ở trong vùng 
+acid, ngƣợc lại nhiều amino acid kiềm nhƣ Lys, Arg, His thì pHi ở trong vùng kiềm. 
+Ở môi trƣờng có pH < pH i, protein đa số là một cation, số điện tích dƣơng lớn hơn số 
+điện tích âm. Ở pH > pHi phân tử protein thể hiện tính acid, cho ion H +, do đó số điện 
+tích âm lớn hơn số điện tích dƣơng, protein là một đa anion, tích điện âm. 
+Trong môi trƣờng có pH = pH i của protein, protein d ễ dàng kết tụ lại với nhau vì th ế 
+ngƣời ta l ợi d ụng tính ch ất này đ ể xác đ ịnh pH i của protein cũng nhƣ đ ể kết t ủa 
+protein. Mặt khác do sự sai khác nhau về pHi giữa các protein mà có thể điều chỉnh pH 
+của môi trƣờng để tách riêng các protein ra khỏi hỗn hợp của chúng. 
+f. Sự kết tủa bằng muối của dung dịch protein 
+Muối trung tính có ảnh hƣởng rõ tới độ hoà tan của protein hình cầu: với nồng độ thấp 
+chúng làm hòa tan nhiều protein. Tác dụng đó không phụ thuộc vào bản chất của muối 
+trung tính, mà ph ụ thuộc vào nồng độ muối và s ố điện tích c ủa mỗi ion trong dung 
+dịch, tức là phụ thuộc vào lực ion μ của dung dịch. Các muối có ion hoá tr ị 2 (MgCl2, 
+MgSO4...) làm tăng đáng k ể độ tan của protein hơn các mu ối có ion hoá tr ị 1 (NaCl, 
+NH4Cl, KCl...). Khi tăng đáng  k ể nồng độ muối trung tính thì đ ộ tan của protein b ắt 
+đầu giảm và ở nồng độ muối rất cao, protein có thể bị kết tủa hoàn toàn. 
+Các protein khác nhau bị kết tủa ở những nồng độ muối trung tính khác nhau. Ngƣời ta 
+sử dụng tính chất này để chiết xuất và tách riên g protein khỏi hỗn hợp. Đó là phƣơng 
+pháp diêm tích (k ết tủa protein b ằng muối). Thí d ụ dùng muối amonium sulfate 50% 
+bảo hòa kết tủa globulin và dung d ịch amonium sulfate b ảo hòa để kết tủa albumin từ 
+huyết thanh. 
+g. Biểu hiện quang học của protein 
+Cũng nhƣ nhiều chất hoá h ọc khác, protein có kh ả năng hấp thụ và bức xạ ánh sáng 
+dƣới dạng lƣợng tử hγ. Vì vậy có thể đo cƣờng độ hấp thụ của protein trong dung dịch 
+hay còn gọi là mật độ quang thƣờng ký hiệu bằng chữ OD (Optical Density). Dựa trên 
+tính ch ất đó ngƣời ta đã s ản xu ất ra các lo ại máy quang ph ổ hấp th ụ để phân tích 
+protein. Nhìn chung protein đều có khả năng hấp thụ ánh sáng trong vùng khả kiến (từ 
+350 nm- 800 nm) và vùng tử ngoại (từ 320 nm xuống tới 180 nm). 
+Trong vùng ánh sáng khả kiến protein kết hợp với thuốc thử hấp thụ mạnh nhất ở vùng 
+ánh sáng đỏ 750 nm (định lƣợng protein theo Lowry). 
+Đối với vùng tử ngoại dung dịch protein có kh ả năng hấp thụ ánh sáng tử ngoại ở hai 
+vùng bƣớc sóng khác nhau: 180 nm- 220 nm và 250 nm - 300 nm. 
+Ở bƣớc sóng từ 180 nm- 220 nm đó là vùng hấp thụ của liên kết peptide trong protein,
+
+--- PAGE 18 ---
+51 
+ 
+cực đại hấp thụ ở 190 nm. Do liên k ết peptide có nhi ều trong phân t ử protein nên đ ộ 
+hấp thụ khá cao, cho phép đ ịnh lƣợng tất cả các loại protein v ới nồng đ ộ thấp. Tuy 
+nhiên vùng hấp thụ này của các liên kết peptide trong protein có th ể bị dịch về phía có 
+bƣớc sóng dài hơn khi có m ột số tạp chất lẫn trong dung dịch protein. Mặt khác chính 
+các tạp chất này cũng h ấp thụ ánh sáng t ử ngoại ở vùng bƣớc sóng 180  nm- 220 nm. 
+Vì thế trong thực tế thƣờng đo độ hấp thụ của dung dịch protein ở bƣớc sóng 220 nm-
+240 nm. 
+Ở bƣớc sóng từ 250 nm- 300 nm là vùng hấp thụ các amino acid thơm (Phe, Tyr, Trp) 
+có trong phân tử protein hấp thụ cực đại ở 280 nm. Có thể sử dụng phƣơng pháp đo độ 
+hấp thụ của dung dịch protein ở bƣớc sóng 280  nm để định tính và đ ịnh lƣợng các 
+protein có ch ứa các amino acid thơm. Hàm lƣ ợng các amino acid thơm trong các 
+protein khác nhau thay đ ổi khá nhi ều, do đó dung d ịch của các protein khác nhau có 
+nồng độ giống nhau có thể khác nhau về độ hấp thụ ở bƣớc sóng 280 nm. Ngoài ra có 
+nhiều chất khác trong dung d ịch cũng có ảnh hƣởng đến độ hấp thụ protein. Vì v ậy, 
+các phƣơng pháp đo đ ộ hấp thụ ở vùng ánh sáng t ử ngoại thƣờng đƣợc dùng đ ể định 
+lƣợng protein đã đƣ ợc tinh s ạch hoặc để xác định protein trong các phân đo ạn nh ận 
+đƣợc khi sắc ký tách các protein qua cột. 
+h. Kết tủa thuận nghịch và không thuận nghịch protein 
+Khi protein bị kết tủa đơn thuần bằng dung dịch muối trung tính có nồng độ khác nhau 
+hoặc bằng alcohol, acetone ở nhiệt độ thấp thì protein v ẫn giữ nguyên đƣợc mọi tính 
+chất c ủa nó k ể cả tính ch ất sinh h ọc và có th ể hoà tan tr ở lại g ọi là k ết t ủa thu ận 
+nghịch. Các y ếu t ố kết t ủa thu ận ngh ịch đƣ ợc dùng đ ể thu nh ận ch ế phẩm protein. 
+Trong quá trình k ết tủa thuận nghịch muối trung tính vừa làm trung h òa điện vừa loại 
+bỏ lớp vỏ hydrate hoá của protein, còn dung môi h ữu cơ vốn háo nƣớc sẽ phá hủy lớp 
+vỏ hydrate nhanh chóng. Trong ch ế phẩm protein nhận đƣợc còn lẫn các chất đã dùng 
+để kết tủa, cần sử dụng phƣơng pháp thích h ợp để loại bỏ các chất này. Ví d ụ, có thể 
+dùng phƣơng pháp thẩm tích để loại bỏ muối. 
+Ngƣợc lại kết tủa không thuận nghịch là protein sau khi b ị kết tủa không thể phục hồi 
+lại trạng thái ban đ ầu. Sự kết tủa này thƣ ờng đƣợc sử dụng để loại bỏ protein ra kh ỏi 
+dung d ịch, làm ngƣng ph ản ứng c ủa enzyme. M ột trong nh ững y ếu t ố gây k ết t ủa 
+không thuận nghịch đơn giản nhất là đun sôi dung dịch protein. 
+3.4.2.2. Các phản ứng hoá học của protein 
+Cũng nhƣ các amino acid và peptide, protein có các ph ản ứng hoá học tƣơng tự, đó là: 
+phản ứng của các nhóm -COOH, -NH2, gốc R và phản ứng tạo màu đặc trƣng của liên 
+kết peptide nhƣ phản ứng biure.
+
+--- PAGE 19 ---
+52 
+ 
+a. Phản ứng với thuốc thử Folin-Ciocateau 
+Thuốc thử Folin-Ciocateau có ch ứa phosphomolipdic acid và phosphovolframic acid 
+các chất này làm tăng độ nhạy của phản ứng biure, mặt khác phản ứng với gốc Tyr và 
+Trp trong phân t ử protein. Các gốc amino acid này tham gia trong quá trình t ạo phức 
+chất màu xanh da trời. 
+b. Các phản ứng màu đặc trƣng khác của protein 
+Những phản ứng này có đƣ ợc là do s ự có mặt của các nhóm đ ịnh chức hóa h ọc xác 
+định trong phân t ử protein. Có th ể sử dụng chúng đ ể phát hi ện amino acid, protein 
+trong dung dịch. 
+- Phản ứng xanthproteic: các g ốc amino acid Tyr, Trp, Phe trong protein tác d ụng với 
+HNO3 đặc tạo thành màu vàng và sau khi thêm kiềm sẽ chuyển thành da cam. 
+- Phản ứng Pauli: các gốc Tyr, His trong protein tác d ụng với diazobenzosulfonic acid 
+tạo thành màu đỏ anh đào. 
+- Phản ứng Millon: gốc Tyr tác d ụng với thủy ngân nitrate trong HNO 3 đặc tạo thành 
+kết tủa màu nâu đất. 
+- Phản ứng Saccaguichi: g ốc Arg tác d ụng v ới dung d ịch ki ềm c ủa α -naphtol và 
+hypobromite cho màu đỏ anh đào. 
+- Phản ứng Adamkievich: gốc Trp tác dụng với glyoxylic acid và H 2SO4 đặc tạo thành 
+vòng tím đỏ ở mặt phân cách. 
+3.4.2.3. Tính chất và chức năng sinh học của protein 
+Protein là hợp chất hữu cơ có ý nghĩa quan tr ọng bậc nhất trong cơ thể sống, nó chiếm 
+không dƣ ới 50% tr ọng lƣợng khô c ủa t ế bào. Protein tham gia m ọi ho ạt đ ộng s ống 
+trong cơ th ể sinh vật, ngoài vai trò là thành ph ần chính trong c ấu trúc của tế bào và 
+mô, protein còn có nhi ều chức năng phong phú khác quy ết định những đặc đểim cơ 
+bản của sự sống nhƣ s ự truyền đạt thông tin di truy ền, sự chuyển hoá các ch ất do các 
+enzyme, các kháng thể chống lại bệnh tật, các hormon dẫn truyền các tín hiệu trong tế 
+bào v.v... đ ều có b ản chất là các protein. Trong cơ th ể protein có m ột số vai trò sau 
+đây: 
+a. Chức năng tạo hình 
+Ngoài các protein làm nhi ệm vụ cấu trúc nhƣ v ỏ virus, màng t ế bào, còn g ặp những 
+protein thƣờng có dạng sợi nhƣ: sclerotin có trong lớp vỏ ngoài của sâu bọ; fibroin của 
+tơ tằm, nhện; collagen, elastin c ủa mô liên k ết, mô xƣơng. Collagen đ ảm bảo cho đ ộ 
+bền và tính mềm dẻo của mô liên kết.
+
+--- PAGE 20 ---
+53 
+ 
+b. Chức năng xúc tác 
+Hầu hết các phản ứng xảy ra trong cơ th ể đều do các protein đ ặc biệt đóng vai trò xúc 
+tác, những protein đó đƣ ợc gọi là các enzyme. M ặc dù gần đây ngƣời ta đã phát hi ện 
+đƣợc m ột lo ại RNA có kh ả năng xúc tác quá trình chuy ển hoá ti ền RNA thông tin 
+(pre-mRNA) thành RNA thông tin (mRNA), nghĩa là enzyme không nh ất thiết phải là 
+protein. Nhƣng đ ịnh nghĩa có tính ch ất kinh đi ển: enzyme là nh ững protein có kh ả 
+năng xúc tác đ ặc hiệu cho các ph ản ứng hoá h ọc, là ch ất xúc tác sinh h ọc vẫn có ý 
+nghĩa đ ặc bi ệt quan tr ọng. Hi ện nay ngƣ ời ta bi ết đƣ ợc kho ảng 3.500 enzyme khác 
+nhau, nhiều enzyme đã đƣợc tinh sạch, kết tinh và nghiên cứu cấu trúc. 
+c. Chức năng bảo vệ 
+Ngoài vai trò là thành phần chính trong xúc tác, cấu trúc của tế bào và mô, protein còn 
+có chức năng ch ống lại bệnh tật để bảo vệ cơ thể. Đó là các protein tham gia vào h ệ 
+thống miễn dịch, đặc biệt nhiều loại protein thực hiện các chức năng riêng biệt tạo nên 
+hiệu quả miễn dịch đặc hiệu và không đ ặc hiệu. Các protein miễn dịch đƣợc nhắc đến 
+nhiều hơn cả là các kháng thể, bổ thể và các cytokine. 
+Ngoài ra protein còn tham gia vào quá trình đ ông máu đ ể chống mất máu cho cơ th ể 
+hoặc một số loài có th ể sản xuất ra nh ững độc tố có bản chất là protein nhƣ enzyme 
+nọc rắn, lectin v.v..., có khả năng tiêu diệt kẻ thù để bảo vệ cơ thể. 
+d. Chức năng vận chuyển 
+Trong cơ thể có những protein làm nhiệm vụ vận chuyển nhƣ hemoglobin, mioglobin, 
+hemocyanin v ận chuyển O 2, CO2 và H + đi kh ắp các mô, các cơ quan trong cơ th ể. 
+Ngoài ra còn có nhi ều protein khác nhƣ lipoprotein v ận chuyển lipid, ceruloplasmin 
+vận chuyển đ ồng (Cu) trong máu v.v...  Một trong nh ững protein làm nhi ệm vụ vận 
+chuyển đƣợc nhắc đến nhiều nhất đó là hemoglobin. 
+e. Chức năng vận động. 
+Nhiều protein làm nhiệm vụ vận động co rút nhƣ myosin, actin ở sợi cơ, chuyển vị trí 
+của nhiễm sắc thể trong quá trình phân bào v.v... 
+f. Chức năng dự trữ và dinh dƣỡng 
+Các protein làm nhiệm vụ dự trữ nhƣ casein của sữa, ovalbumin của trứng, feritin của 
+lách (dự trữ sắt) v.v... Protein dự trữ này chính là ngu ồn cung c ấp dinh dƣ ỡng quan 
+trọng cho các tổ chức mô, phôi phát triển. 
+g. Chức năng dẫn truyền tín hiệu thần kinh 
+Nhiều loại protein tham gia vào vi ệc d ẫn truyền tín hi ệu thần kinh đ ối với các kích
+
+--- PAGE 21 ---
+54 
+ 
+thích đặc hiệu nhƣ: sắc tố thị giác rodopsin ở màng lƣới mắt. 
+h. Chức năng điều hoà 
+Các protein làm nhi ệm vụ điều hoà quá trình trao đ ổi chất thông qua tác đ ộng lên bộ 
+máy thông tin di truy ền nhƣ các hormon, các protein ức chế đặc hiệu enzyme đ ều có 
+chức năng điều hoà nhiều quá trình trao đ ổi chất, chẳng hạn các protein repressor ở vi 
+khuẩn có thể làm ngừng quá trình sinh tổng hợp enzyme từ các gen tƣơng ứng. 
+i. Chức năng cung cấp năng lƣợng 
+Protein cũng là ngu ồn cung cấp năng lƣợng quan trọng cho mọi hoạt động sống trong 
+cơ thể. Trong cơ th ể các protein b ị phân giải thành các amino acid, t ừ đó tiếp tục tạo 
+thành hàng loạt các sản phẩm, trong đó có các ceto acid, al dehyde và carboxylic acid. 
+Các chất này đ ều bị oxy hóa dần dần tạo thành CO 2 và H2O đồng thời giải phóng ra 
+năng lƣợng. 
+3.4.3. Phân loại protein 
+Protein là hợp chất đa dạng về thành phần cấu trúc, chức năng; khối lƣợng phân tử của 
+chúng cũng rất khác nhau. Do đó sự phân loại protein có th ể dựa vào những mục đích 
+khác nhau. Có hai cách phân loại thông thƣờng nhất: 
+3.4.3.1. Phân loại theo hình dạng  
+a. Protein dạng sợi  
+Có hình dạng dài, thƣờng là hình sợi, chiều dài của phân tử protein sợi lớn hơn đƣờng 
+kính của nó hàng trăm l ần. Protein s ợi tƣơng đ ối bền vững, không tan trong nƣ ớc và 
+dung d ịch muối loãng, các chu ỗi polypeptide c ủa protein s ợi nằm dọc theo m ột trục 
+thành những sợi dài. Protein s ợi là y ếu tố cấu trúc cơ b ản của mô liên k ết ở động vật 
+cao cấp, thí dụ collagen ở gân và mô xƣơng, elastin ở mô liên kết đàn hồi, α-keratin ở 
+tóc da v.v... 
+b. Protein dạng cầu 
+Có dạng gần nhƣ hình cầu hoặc hình bầu dục, chiều dài của phân tử protein cầu có thể 
+lớn hơn đƣờng kính của nó từ 3 đến 10 lần. Protein cầu không bền vững bằng protein 
+sợi, đa số tan trong dung dịch nƣớc và dễ khuếch tán, thƣờng có chức năng trong hoạt 
+động s ống c ủa t ế bào nhƣ các enzyme, các hormon, các protein v ận chuy ển nhƣ 
+albumin huyết thanh, hemoglobin v.v… 
+c. Protein dạng trung gian 
+Một số protein dạng trung gian, vừa có đặc điểm của protein sợi, vừa có đặc điểm của 
+protein cầu. Thí d ụ myosin (yếu tố cấu trúc và ch ức năng quan tr ọng của cơ) có c ấu
+
+--- PAGE 22 ---
+55 
+ 
+trúc hình que dài là đ ặc điểm của protein s ợi, nhƣng l ại tan trong dung d ịch muối là 
+đặc điểm của protein c ầu. Ngoài ra, trong nhóm trung gian này còn có ch ất tiền thân 
+của fibrin là fibrinogen. 
+3.4.3.2. Phân loại theo thành phần hoá học 
+Protein gồm hàng trăm, hàng ngàn, th ậm chí hàng v ạn amino acid n ối với nhau b ằng 
+liên kết peptide tạo nên một hay nhiều chuỗi polypeptide có cấu trúc rất phức tạp. 
+Căn cứ sự có hay vắng mặt của một số thành phần có bản chất không phải protein mà 
+ngƣời ta chia protein thành hai nhóm 
+a. Protein đơn giản 
+Protein đơn giản là những protein mà phân t ử của chúng gồm toàn amino acid. Thí dụ 
+một số enzyme của tụy bò nhƣ ribonuclease g ồm toàn amino acid n ối với nhau thành 
+một chuỗi polypeptide duy nh ất (có 124 g ốc amino acid, kh ối lƣợng phân t ử 12.640), 
+chymotrypsin gồm toàn amino acid n ốivới nhau thành ba chu ỗi polypeptide (có 241 
+gốc amino acid, kh ối lƣ ợng phân t ử 22.600) v.v...D ựa theo kh ả năng hoà tan trong 
+nƣớc hoặc trong dung d ịch ngƣời ta có th ể chia các protein đơn gi ản ra một số nhóm 
+nhỏ nhƣ: 
+- Albumin: tan trong nƣớc, bị kết tủa ở nồng độ muối (NH4)2SO4 khá cao (70-100%).  
+- Globulin: không tan ho ặc tan ít  trong nƣớc, tan trong dung d ịch loãng c ủa một số 
+muối trung tính nhƣ NaCl, KCl, Na 2SO4..., và b ị kết tủa ở nồng độ muối (NH 4)2SO4 
+bán bão hoà. 
+- Prolamin: không tan trong nƣ ớc ho ặc dung d ịch mu ối loãng, tan trong ethanol, 
+isopropanol 70-80%. 
+- Glutein: chỉ tan trong dung dịch kiềm hoặc acid loãng.  
+- Histon: là protein có tính kiềm dễ tan trong nƣớc, không tan trong dung dịch amoniac 
+loãng.  
+b. Protein phức tạp  
+Protein phức tạp là nh ững protein mà phân t ử của chúng ngoài các amino acid nhƣ 
+protein đơn gi ản còn có thêm thành ph ần khác có b ản chất không ph ải là protein còn 
+gọi là nhóm thêm (nhóm ngo ại). Tuỳ thuộc vào bản chất của nhóm ngoại mà ngƣời ta 
+chia các protein ph ức tạp ra các nhóm nh ỏ và thƣờng gọi tên các protein đó b ắt đầu 
+bằng tiếp đầu ngữ chỉ bản chất nhóm ngoại: 
+- Lipoprotein: nhóm ngoại là lipid.  
+- Nucleoprotein: nhóm ngoại là nucleic acid.
+
+--- PAGE 23 ---
+56 
+ 
+- Glucoprotein: nhóm ngoại là carbohydrate và dẫn xuất của nó.  
+- Phosphoprotein: nhóm ngoại là phosphoric acid.  
+Chromoprotein: nhóm ngo ại là h ợp ch ất có màu. Tu ỳ theo tính ch ất của từng nhóm 
+ngoại mà có những màu sắc khác nhau nhƣ đỏ ở hemoglobin, vàng ở flavoprotein,... 
+CÂU HỎI TRẮC NGHIỆM 
+1. Tập hợp nào sau đây thuộc loại protid thuần 
+A. Casein, Fibrinogen, Feritin 
+B. Fibrinogen, Feritin, globulin 
+C. Feritin, globulin, collagen 
+D. Fibrinogen, globulin, collagen 
+2. Nguyên nhân nào sau đây làm cho protein tủa bởi muối trung tính có nồng độ cao: 
+A. Do sự biến tính cấu trúc của protein 
+B. Do có lớp áo nƣớc bao quanh phân tử protein 
+C. Do sự tích điện của các tiểu phân protein 
+D. Do sự mất lớp áo nƣớc và bị trung hoà điện tích của các tiểu phân protein 
+3. Acid amin nào sau đây chứa lƣu huỳnh 
+A. Lysin.  
+B. Histidin    
+C. Tryptophan     
+D. Methionin  
+  
+4.  Trong phƣơng pháp điện di, acid amin nào có pH điểm đẳng điện nhỏ hơn pH dung 
+dịch điện di thì sẽ: 
+A. Tủa.  
+B. Di chuyển về cực âm.  
+C. Di chuyển về cực dƣơng   
+D. Không di chuyển.  
+5. Trong phƣơng pháp đi ện di protein, n ếu pH dung d ịch điện nhỏ hơn pH đ ẳng điện 
+thì protein sẽ: 
+A. Tủa.  
+B. Di chuyển về cực âm  
+C. Di chuyển về cực dƣơng   
+D. Không di chuyển. 
+6. Acid amin nào sau đây có chứa nhóm SH:
+
+--- PAGE 24 ---
+57 
+ 
+A. Threonin   
+B. Cystein.   
+C. Histidin     
+D. Methionin.  
+7. Globulin và albumin đƣợc xem là: 
+A. Protein sợi.   
+B. Protein của tóc.  
+C. Protein không tan.    
+D. Protein thuần.   
+8. Tập nào sau đây chỉ gồn toàn acid amin mạch thẳng: 
+A. Asp, Gly, Val, Tyr 
+B. Ala, Gly, His, Tyr 
+C. Ala, Asp, Arg, Leu 
+D. Leu, Try, Met, Phe 
+9.  Công thức sau đây là: 
+CH(CH3)2-CH2-CH(NH2)-COOH 
+A. Lys.   
+B. Leu.    
+C. Val     
+D. Arg.  
+10. Tập hợp nào sau đây chỉ gồm toàn acid amin dị vòng: 
+A. Pro, His, Try 
+B. Try, Tyr, His 
+C. Phe, His, Ile 
+D. Tyr, Try, Pro 
+11. Phản ứng Ninhydrin dùng để xác định 
+A. Acid amin có chứa nhóm SH 
+B. Acid amin α 
+C. Tryptophan 
+D. Liên kết glucosid 
+12. Chọn câu đúng: 
+Cấu trúc bậc 2 của protein là: 
+A. Sự xoắn đều đặn của chuỗi nucleotid 
+B. Sự xoắn cuộn gập khúc của chuỗi polypeptid
+
+--- PAGE 25 ---
+58 
+ 
+C. Sự xoắn đều đặn của chuỗi polypeptid do liên kết hydro quyết định 
+D. Do các liên kết disulfua quyết định 
+13. Cấu trúc bậc 4 của hemoglobin là: 
+A. Do liên kết peptid quyết định 
+B. Do liên kết disulfua quyết định 
+C. Do 4 chuỗi polypeptid có cấu trúc bậc 3 sắp xếp tƣơng hỗ với nhau 
+D. Do sự xoắn của chuỗi polypeptid 
+14. Chọn câu sai 
+Potein có thể bị biến tính bởi: 
+A. Các chất nkhử 
+B. Các chất bức xạ có năng lƣợng cao 
+C. Việc đƣa pH môi trƣờng về pHi của protein 
+D. Các cation kim loại nặng 
+15. Acid amin nào sau đây có nhóm –NH2 gắn vào cacbon β ? 
+A. Cystein    
+B. Glutathion    
+C. Lysin 
+D. Beta- alanin  
+16. Acid amin nào sau đây là acid amin kiềm? 
+A. Cystein    
+B. Glutathion    
+C. Lysin 
+D. Acid γ –amino – butyric 
+17. Acid amin nào sau đây cho phản ứng Biure dƣơng tính? 
+A. Cystein 
+B. Glutathion 
+C. Lysin  
+D. Beta- alanin    
+18. Acid amin nào sau đây chứa 1 cầu disulfua? 
+A. Methionin   
+B. Lysine    
+C. Homocystein 
+D. Cystin    
+19. Keratin là:
+
+--- PAGE 26 ---
+59 
+ 
+A. Globulin 
+B. Tripeptid   
+C. Protein sợi   
+D. Histon    
+20. Công thức sau đây là:  
+NH2-CO-CH Asparagin 2-CH(NH2)-COOH 
+A. Asparagin   
+B. Glutamin   
+C. Lysine   
+D. Arginin     
+21. Chọn tập hợp đúng: 
+1) Phản ứng Biure dƣơng tính cho tất cả các acid amin 
+2) Các dipeptid luôn dƣơng tính với phản ứng Biure 
+3) Glutathion chứa acid glutamic, glycin và histidin 
+4) Các tripeptid, protein luôn dƣơng tính với phản ứng Biure 
+A. 1,2 ,3. 
+B. 1,3.    
+C. 2,4    
+D. 4  
+22. Acid amin nào sau đây chứa 1 nhóm hydroxyl trong phân tử 
+A. Alanin  
+B. Leucin   
+C. Serin    
+D. Prolin 
+ĐÁP ÁN TRẮC NGHIỆM 
+1D 2D 3D 4C 5B 6B 7D 8C 9B 10A 11B 
+12C 13C 14C 15D 16C 17B 18D 19C 20A 21D 22C

@@ -3772,3 +3772,823 @@ body[data-device-mode="iphone"] .ios-tab-bar {
     justify-content: space-between;
   }
 }
+
+/* ==========================================================================
+   MINDMAP INTERACTIVE & HÓA SINH ĐẠI CƯƠNG ENHANCEMENTS
+   ========================================================================== */
+
+/* ==========================================================================
+   MIRO 2D INFINITE CANVAS MINDMAP (HÓA SINH PROTEIN & ACID AMIN)
+   ========================================================================== */
+
+#tab-mindmap,
+#tab-mindmap[style*="display: block"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  background: var(--bg);
+  flex: 1;
+}
+
+#tab-mindmap[style*="display: none"] {
+  display: none !important;
+}
+
+.modal-body.mindmap-active {
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-box.mm-fullscreen-mode {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  z-index: 1005 !important;
+  margin: 0 !important;
+}
+
+.modal-box.mm-fullscreen-mode .modal-tabbed-view {
+  height: calc(100vh - 48px);
+}
+
+.modal-box.mm-fullscreen-mode #tab-mindmap {
+  min-height: calc(100vh - 90px);
+}
+
+/* Miro Top Bar */
+.mm-miro-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 18px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  z-index: 10;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.mm-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mm-brand-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.mm-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-brand-text strong {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: 0.3px;
+}
+
+.mm-brand-text span {
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+/* Search Box */
+.mm-search-box {
+  display: flex;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-md);
+  border-radius: 10px;
+  padding: 3px 10px;
+  gap: 8px;
+  flex: 1;
+  max-width: 440px;
+  min-width: 220px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.mm-search-box:focus-within {
+  border-color: #8b5cf6;
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.mm-search-box .search-icon {
+  font-size: 16px;
+  color: var(--text-4);
+  flex-shrink: 0;
+}
+
+.mm-search-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 13px;
+  color: var(--text-1);
+  font-family: inherit;
+  outline: none;
+  padding: 4px 0;
+}
+
+.mm-search-input::placeholder {
+  color: var(--text-4);
+}
+
+.mm-clear-btn {
+  background: none;
+  border: none;
+  color: var(--text-4);
+  cursor: pointer;
+  font-size: 16px;
+  display: none;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.mm-clear-btn:hover {
+  color: var(--text-1);
+  background: var(--surface-3);
+}
+
+.mm-search-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #7c3aed;
+  white-space: nowrap;
+  display: none;
+}
+
+.mm-search-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-left: 1px solid var(--border);
+  padding-left: 6px;
+}
+
+.mm-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.15s;
+}
+
+.mm-nav-btn:hover {
+  background: var(--surface-3);
+  color: var(--text-1);
+}
+
+/* Actions in Topbar */
+.mm-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-md);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.mm-btn:hover {
+  background: var(--surface-3);
+  color: var(--text-1);
+  border-color: var(--text-3);
+}
+
+.mm-btn.mm-btn-fullscreen {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.mm-btn.mm-btn-fullscreen:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ==========================================
+   INFINITE CANVAS VIEWPORT & WORLD
+   ========================================== */
+.mm-canvas-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  cursor: grab;
+  user-select: none;
+  background-color: var(--bg);
+  /* Miro dot grid */
+  background-image: radial-gradient(var(--mm-grid-dot, rgba(148, 163, 184, 0.32)) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  background-position: 0 0;
+}
+
+[data-theme="dark"] .mm-canvas-viewport {
+  --mm-grid-dot: rgba(148, 163, 184, 0.18);
+  background-color: #0b0f19;
+}
+
+.mm-canvas-viewport.is-panning {
+  cursor: grabbing !important;
+}
+
+.mm-canvas-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.mm-canvas-world.smooth-transition {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* SVG Connection Lines (Tree Roots / Bezier Branches) */
+.mm-connections-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.mm-branch-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity 0.3s ease;
+}
+
+.mm-path-root {
+  stroke-width: 3.5px;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+}
+
+.mm-path-leaf {
+  stroke-width: 2px;
+  opacity: 0.7;
+}
+
+.mm-branch-path.path-highlight {
+  stroke-width: 4.5px !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 8px currentColor) !important;
+}
+
+/* ==========================================
+   TREE NODES HIERARCHICAL LAYOUT
+   ========================================== */
+.mm-tree-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 110px;
+  padding: 200px 240px;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.mm-tree-side {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Central Root Node */
+.mm-tree-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mm-root-node {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  color: #ffffff;
+  padding: 24px 32px;
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(99, 102, 241, 0.32), 0 0 24px rgba(139, 92, 246, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  min-width: 330px;
+  max-width: 360px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.mm-root-node:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.42), 0 0 32px rgba(139, 92, 246, 0.35);
+}
+
+.mm-root-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.mm-root-title {
+  font-size: 19px;
+  font-weight: 900;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mm-root-desc {
+  font-size: 12px;
+  margin: 0 0 14px 0;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.mm-root-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Branch Blocks */
+.mm-branch-block {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  position: relative;
+}
+
+/* Left side: Leaves to the left, Branch Node to the right (towards Root) */
+.mm-tree-left .mm-branch-block {
+  flex-direction: row-reverse;
+}
+
+/* Right side: Branch Node to the left (towards Root), Leaves to the right */
+.mm-tree-right .mm-branch-block {
+  flex-direction: row;
+}
+
+/* Branch Node (Level 1 Pill Card) */
+.mm-branch-node {
+  background: var(--surface);
+  border: 2px solid var(--branch-color);
+  border-radius: 14px;
+  padding: 11px 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05), 0 0 16px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 250px;
+  position: relative;
+  z-index: 3;
+}
+
+.mm-branch-node:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09), 0 0 20px var(--branch-color);
+}
+
+.mm-branch-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--branch-color);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mm-branch-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.mm-branch-num {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--branch-color);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.mm-branch-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-1);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Branch Fold/Unfold Toggle Button */
+.mm-branch-toggle-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border-md);
+  color: var(--text-2);
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+}
+
+.mm-branch-toggle-btn:hover {
+  background: var(--branch-color);
+  color: #ffffff;
+  border-color: var(--branch-color);
+}
+
+.mm-branch-toggle-btn .toggle-icon {
+  font-size: 14px;
+  transition: transform 0.22s ease;
+}
+
+.mm-branch-block.is-collapsed .mm-branch-toggle-btn .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.mm-branch-block.is-collapsed .mm-branch-leaves-wrapper {
+  display: none !important;
+}
+
+/* Leaves Column (Sub-Cards) */
+.mm-branch-leaves-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Leaf Card (Level 2 Notes) */
+.mm-leaf-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border-md);
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 290px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.mm-leaf-card:hover {
+  border-color: var(--branch-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 14px rgba(0, 0, 0, 0.03);
+}
+
+.mm-leaf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mm-leaf-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2.5px 8px;
+  border-radius: 6px;
+}
+
+.tag-emerald { background: rgba(16, 185, 129, 0.12); color: #059669; }
+.tag-blue    { background: rgba(59, 130, 246, 0.12); color: #2563eb; }
+.tag-amber   { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+.tag-pink    { background: rgba(236, 72, 153, 0.12); color: #db2777; }
+.tag-cyan    { background: rgba(6, 182, 212, 0.12); color: #0891b2; }
+.tag-orange  { background: rgba(249, 115, 22, 0.12); color: #ea580c; }
+
+[data-theme="dark"] .tag-emerald { color: #34d399; }
+[data-theme="dark"] .tag-blue    { color: #60a5fa; }
+[data-theme="dark"] .tag-amber   { color: #fbbf24; }
+[data-theme="dark"] .tag-pink    { color: #f472b6; }
+[data-theme="dark"] .tag-cyan    { color: #22d3ee; }
+[data-theme="dark"] .tag-orange  { color: #fb923c; }
+
+.mm-leaf-badge.red {
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.mm-leaf-body {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.mm-leaf-body strong {
+  color: var(--text-1);
+}
+
+.mm-mini-list {
+  margin: 4px 0 0 16px;
+  padding: 0;
+  font-size: 12px;
+}
+
+.mm-mini-list li {
+  margin-bottom: 4px;
+}
+
+/* Search Highlights */
+.mm-leaf-card.is-matched {
+  border-color: #8b5cf6 !important;
+  background: rgba(139, 92, 246, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3), 0 8px 24px rgba(139, 92, 246, 0.2) !important;
+  transform: scale(1.03) !important;
+  z-index: 5;
+  animation: pulseMiroMatch 1.6s infinite ease-in-out;
+}
+
+.mm-leaf-card.is-current-match {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.4), 0 10px 30px rgba(239, 68, 68, 0.25) !important;
+  animation: pulseCurrentMatch 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseMiroMatch {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3), 0 8px 20px rgba(139, 92, 246, 0.15); }
+  50% { box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.45), 0 12px 28px rgba(139, 92, 246, 0.25); }
+}
+
+@keyframes pulseCurrentMatch {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.6); }
+}
+
+.mm-leaf-card.is-dimmed {
+  opacity: 0.28;
+  filter: grayscale(0.7);
+}
+
+/* ==========================================
+   FLOATING MIRO DOCK (BOTTOM CONTROLS)
+   ========================================== */
+.mm-miro-dock {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* Radar Minimap */
+.mm-minimap-box {
+  width: 130px;
+  height: 75px;
+  background: var(--surface);
+  border: 1.5px solid var(--border-md);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mm-minimap-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mm-minimap-viewport {
+  position: absolute;
+  border: 1.5px solid #8b5cf6;
+  background: rgba(139, 92, 246, 0.18);
+  border-radius: 3px;
+  pointer-events: none;
+  transition: all 0.08s ease-out;
+}
+
+/* Gesture hint */
+.mm-dock-hint {
+  font-size: 11.5px;
+  color: var(--text-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 768px) {
+  .mm-dock-hint, .mm-minimap-box {
+    display: none !important;
+  }
+}
+
+/* Zoom Pill */
+.mm-zoom-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1.5px solid var(--border-md);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+  gap: 2px;
+}
+
+.mm-pill-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-2);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.18s ease;
+}
+
+.mm-pill-btn:hover {
+  background: var(--surface-2);
+  color: var(--text-1);
+}
+
+.mm-pill-val {
+  width: auto;
+  border-radius: 999px;
+  padding: 0 8px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--text-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.mm-pill-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 2px;
+}
+
+.mm-pill-action {
+  width: auto;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mm-pill-action i {
+  font-size: 14px;
+}
+
+.mm-pill-action:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+
+/* Fullscreen Board Hóa Sinh Extra Styles */
+.board-tile.tile-hs {
+  border-left-width: 4px;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.board-tile.tile-hs:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09), 0 0 16px var(--tile-glow, rgba(99, 102, 241, 0.15));
+}
+
+.board-tile.tile-hs .tile-tag {
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.board-legend-tag.green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .board-legend-tag.green {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.board-legend-tag .dot.green {
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
